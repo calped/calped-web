@@ -7,19 +7,34 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="site-header">
-        <img src="img/header-banner.jpg" alt="Banner de Pediatria" class="header-banner">
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">☰</button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="support.html">Suporte</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="contact.html">Contato</a></li>
+        </ul>
+    </nav>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner de Pediatria" class="responsive-image">
         <h1>Bem-vindo ao CalPed</h1>
+        <p>Plataforma inovadora de suporte à pediatria e tecnologias de blockchain.</p>
     </header>
     <main>
-        <section class="intro">
-            <img src="img/pediatric-tools.jpg" alt="Ferramentas Pediátricas" class="responsive-image">
-            <p>O CalPed é um projeto que oferece uma série de calculadoras pediátricas online, criadas para auxiliar profissionais de saúde em suas práticas diárias.</p>
-            <p>As ferramentas são projetadas para fornecer cálculos rápidos e precisos para uso em diferentes aspectos do atendimento pediátrico.</p>
+        <section id="about">
+            <img src="img/pediatric-tools.jpg" alt="Sobre o CalPed" class="responsive-image">
+            <h2>Sobre o CalPed</h2>
+            <p>O CalPed é uma iniciativa dedicada a melhorar o atendimento pediátrico através de soluções digitais avançadas, incluindo uma plataforma de calculadora pediátrica e integração com tecnologia blockchain para segurança dos dados médicos.</p>
         </section>
-        <section class="contact">
-            <h2>Entre em Contato</h2>
-            <p>Quer fazer parte da nossa equipe ou tem sugestões? Envie um email para: <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        <section id="support">
+            <img src="img/header-banner.jpg" alt="Suporte CalPed" class="responsive-image">
+            <h2>Projeções para o Futuro</h2>
+            <p>Planejamos expandir nossa oferta de ferramentas digitais e também implementar funcionalidades que permitam a emissão e gestão de tokens e NFTs que possam suportar o financiamento e investimento em saúde pediátrica.</p>
+        </section>
+        <section id="contact">
+            <h2>Contato</h2>
+            <p>Para mais informações ou para apoiar o projeto, entre em contato conosco através do email <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a>.</p>
         </section>
     </main>
     <footer>

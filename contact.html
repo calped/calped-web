@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - CalPed</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">☰</button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="support.html">Suporte</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="contact.html">Contato</a></li>
+        </ul>
+    </nav>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner de Contato" class="responsive-image">
+        <h1>Contato</h1>
+        <p>Entre em contato conosco para mais informações ou para apoiar o projeto CalPed.</p>
+    </header>
+    <main>
+        <section id="contact-info">
+            <h2>Informações de Contato</h2>
+            <p>Você pode entrar em contato conosco através do email <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a> ou preencher o formulário abaixo.</p>
+        </section>
+        <section id="contact-form">
+            <h2>Formulário de Contato</h2>
+            <form action="mailto:calculospediatricos@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
