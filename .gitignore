@@ -1,2 +1,4 @@
 git config user.name "calped"
 git config user.email "calculospediatricos@gmail.com"
+git remote set-url origin https://calped@github.com/calped/calped-web.git
+

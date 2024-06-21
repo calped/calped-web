@@ -4,74 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo ao CalPed</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .intro {
-            width: 80%;
-            max-width: 800px;
-            background: white;
-            margin: 20px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        .notice {
-            font-size: 1.2em;
-            color: #d04;
-        }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        .email-invite {
-            background-color: #e7e7e7;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
+        <img src="img/header-banner.jpg" alt="Banner Pediatría" class="header-banner">
         <h1>Bem-vindo ao CalPed</h1>
     </header>
-    <div class="content">
-        <div class="intro">
-            <p>O "CalPed" é um projeto que oferece uma série de calculadoras pediátricas online, criadas para auxiliar profissionais de saúde em suas práticas diárias. Estas ferramentas são projetadas para fornecer cálculos rápidos e precisos que podem ser usados em diferentes aspectos do atendimento pediátrico, como dosagem de medicamentos, cálculo de índice de massa corporal (IMC), e outras métricas importantes.</p>
-            <p class="notice">Nota importante: os resultados fornecidos pelo site são apenas sugestões e devem ser validados pelo julgamento clínico do profissional de saúde.</p>
-            <p>O site enfatiza que, embora busque precisão nos cálculos fornecidos, os usuários devem sempre confirmar os dados e não se basear exclusivamente nas sugestões do site para tomadas de decisão clínicas. A equipe por trás do CalPed inclui pediatras dedicados e é um trabalho voluntário que visa melhorar a eficiência dos cuidados pediátricos.</p>
-        </div>
-        <div class="email-invite">
-            <p>Quer fazer parte da nossa equipe ou tem sugestões para melhorar o CalPed? Entre em contato conosco pelo e-mail <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a>.</p>
-        </div>
-        <p><strong>Atenção:</strong> Em breve, o CalPed será atualizado para melhor atender às suas necessidades. Fique ligado!</p>
-    </div>
+    <main>
+        <section class="intro">
+            <img src="img/pediatric-tools.jpg" alt="Ferramentas Pediátricas" class="float-image">
+            <p>O CalPed é um projeto que oferece uma série de calculadoras pediátricas online, criadas para auxiliar profissionais de saúde em suas práticas diárias.</p>
+            <p>As ferramentas são projetadas para fornecer cálculos rápidos e precisos para uso em diferentes aspectos do atendimento pediátrico.</p>
+        </section>
+        <section class="contact">
+            <h2>Entre em Contato</h2>
+            <p>Quer fazer parte da nossa equipe ou tem sugestões? Envie um email para: <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        </section>
+    </main>
     <footer>
         <p>&copy; 2024 CalPed. Todos os direitos reservados.</p>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
