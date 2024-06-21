@@ -1,30 +1,55 @@
 /* Estilo geral da página */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
     color: #333;
 }
 
-header, footer {
+.site-header, footer {
     background-color: #4CAF50;
     color: white;
     text-align: center;
-    padding: 10px 20px;
+    padding: 20px 10px;
+}
+
+.site-header img.header-banner, .intro img.responsive-image {
+    width: 100%;
+    height: auto;
+    display: block; /* Garante que a imagem seja exibida como bloco, ocupando toda a largura */
+}
+
+h1 {
+    margin: 0.5em 0;
 }
 
 main {
-    margin: 20px;
     padding: 20px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: left;
 }
 
 .intro, .contact {
-    margin-bottom: 20px;
+    background: white;
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.intro p, .contact p {
+    line-height: 1.6;
+    text-align: justify;
 }
 
 a {
     color: #06C;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 10px 0;
 }
