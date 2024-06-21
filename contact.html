@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - CalPed</title>
-    <link rel="stylesheet" href="css/stylescontato.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
         <ul id="menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
@@ -26,6 +29,7 @@
             <h2>Informações de Contato</h2>
             <p>Você pode entrar em contato conosco através do email <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a> ou preencher o formulário abaixo.</p>
         </section>
+
         <section id="contact-form">
             <h2>Formulário de Contato</h2>
             <form id="contactForm" action="https://formspree.io/f/mpwaaqen" method="POST">
@@ -41,6 +45,12 @@
                 <button type="submit">Enviar</button>
             </form>
             <div id="formMessage"></div>
+        </section>
+        <section id="donation">
+            <h2>Doação</h2>
+            <p>Se você deseja apoiar o projeto CalPed, pode fazer uma doação através do PIX.</p>
+            <img src="img/pix-qrcode.png" alt="QR Code para doação via PIX" class="medium-image">
+            <p>Email do PIX: <strong id="pix-email">calculospediatricos@gmail.com</strong> <button onclick="copyPixEmail()">Copiar Email</button></p>
         </section>
     </main>
     <footer>
