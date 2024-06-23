@@ -5,6 +5,7 @@ body {
     padding: 0;
     background-color: #f0f0f0;
     color: #333;
+    text-align: center; /* Centraliza todo o texto da página */
 }
 
 .main-nav {
@@ -27,6 +28,7 @@ body {
     position: absolute;
     right: 20px;
     top: 10px;
+    width: auto;
 }
 
 .menu-toggle:hover {
@@ -39,7 +41,7 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Para garantir que o menu se ajuste em telas menores */
+    flex-wrap: wrap;
 }
 
 .main-nav li {
@@ -64,7 +66,16 @@ header, footer {
     margin: 20px 10%;
     background-color: #4CAF50;
     color: white;
+    
 }
+
+header p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 
 footer p {
     display: flex;
@@ -73,6 +84,7 @@ footer p {
     text-align: center;
 }
 
+
 .responsive-image {
     width: 100%;
     height: auto;
@@ -80,18 +92,18 @@ footer p {
 }
 
 .small-image {
-    width: 150px; /* Definindo um tamanho menor para a imagem */
+    width: 150px;
     height: auto;
     display: block;
-    margin: 0 auto 20px; /* Centralizando a imagem */
+    margin: 0 auto 20px;
 }
 
 .medium-image {
-    max-width: 300px; /* Definindo um tamanho intermediário para a imagem */
+    max-width: 300px;
     width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto 20px; /* Centralizando a imagem */
+    margin: 0 auto 20px;
 }
 
 main {
@@ -112,80 +124,81 @@ p {
 }
 
 /* Estilos para formularios */
-#contact-form,
-#login,
-#reset-password {
-    max-width: 600px;
+form {
+    max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
 }
 
-#contact-form h2,
-#login h2,
-#reset-password h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#contact-form form,
-#login form,
-#reset-password form {
-    display: flex;
-    flex-direction: column;
-}
-
-#contact-form label,
-#login label,
-#reset-password label {
+label {
+    display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-#contact-form input,
-#contact-form textarea,
-#login input,
-#login textarea,
-#reset-password input,
-#reset-password textarea,
+input[type="text"],
+input[type="email"],
+input[type="datetime-local"],
+textarea,
 button {
-    margin-bottom: 15px;
+    width: calc(100% - 20px); /* Para deixar espaço entre o campo de entrada e a parede do container */
     padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#contact-form button,
-#login button,
-#reset-password button {
+button {
     background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
     width: auto;
-    
 }
 
-#contact-form button:hover,
-#login button:hover,
-#reset-password button:hover {
+button:hover {
     background-color: #45a049;
 }
 
-#formMessage,
-#loginMessage,
-#resetMessage {
+/* Estilos para mensagens de feedback */
+#formMessage {
     text-align: center;
     margin-top: 10px;
+}
+
+/* Estilos para o container de resultados */
+#result-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#result-container h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#result p {
+    margin: 10px 0;
+    font-weight: bold;
 }
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
+        width: auto;
     }
 
     .main-nav ul {
@@ -217,44 +230,33 @@ button {
         border-radius: 4px;
     }
 
-    #contact-form,
-    #login,
-    #reset-password {
+    form {
         padding: 10px;
     }
 
-    .reset-button {
-        background-color: red;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        margin-top: 15px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .reset-button:hover {
-        background-color: darkred;
-    }
-
-    #contact-form input,
-    #contact-form textarea,
-    #login input,
-    #login textarea,
-    #reset-password input,
-    #reset-password textarea,
+    input[type="text"],
+    input[type="email"],
+    input[type="datetime-local"],
+    textarea,
     button {
         font-size: 14px;
         padding: 8px;
+        width: calc(100% - 20px); /* Para deixar espaço entre o campo de entrada e a parede do container */
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    #contact-form button,
-    #login button,
-    #reset-password button {
+    button {
         font-size: 14px;
         padding: 10px;
         width: auto;
     }
-   
+
+    #result-container {
+        padding: 10px;
+    }
+
+    #result-container h3 {
+        margin-bottom: 10px;
+    }
 }
