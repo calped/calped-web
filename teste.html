@@ -3,10 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regra de Três na Prescrição Pediátrica</title>
+    <title>CalPed</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Adicione o SDK do Firebase -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1pm1frtaatfCp6zljW4I8JWHvXDu0IBQ",
+            authDomain: "calpedv1.firebaseapp.com",
+            projectId: "calpedv1",
+            storageBucket: "calpedv1.appspot.com",
+            messagingSenderId: "555116152565",
+            appId: "1:555116152565:web:fefe88fd6bbc007600a7bc",
+            measurementId: "G-72H4MPJ1DQ"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const loginMessage = document.getElementById('loginMessage');
+
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        loginMessage.style.color = 'green';
+                        loginMessage.textContent = 'Login bem-sucedido!';
+                        setTimeout(() => {
+                            window.location.href = 'calculadora.html';
+                        }, 1000);
+                    })
+                    .catch((error) => {
+                        loginMessage.style.color = 'red';
+                        loginMessage.textContent = error.message;
+                    });
+            });
+
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // Usuário está logado
+                    if (window.location.pathname.endsWith('login.html')) {
+                        window.location.href = 'calculadora.html';
+                    }
+                } else {
+                    // Usuário não está logado
+                    if (window.location.pathname.endsWith('calculadora.html')) {
+                        window.location.href = 'login.html';
+                    }
+                }
+            });
+        });
+    </script>
 </head>
 <body>
+    <!-- Conteúdo da página -->
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
             ☰
@@ -17,61 +78,45 @@
             <li><a href="prontuario.html">Prontuário Médico</a></li>
             <li><a href="contact.html">Contato</a></li>
             <li><a href="about.html">Sobre</a></li>
-            <li><a href="regra-de-tres.html">Regra de 3</a></li>
+            <li><a href="login.html">login</a></li>
         </ul>
     </nav>
     <header id="home">
         <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Regra de Três na Prescrição Pediátrica</h1>
-        <p>Entenda como a regra de três é aplicada para calcular a dosagem de medicamentos em pediatria.</p>
+        <h1>Bem-vindo ao CalPed</h1>
+        <p>Otimizar o dia a dia do pediatra com cálculos médicos e gestão de prontuários.</p>
     </header>
     <main>
         <section id="about">
-            <h2>O Que é a Regra de Três?</h2>
-            <p>A regra de três é uma técnica matemática utilizada para resolver problemas de proporcionalidade. Ela é baseada na relação direta entre três valores conhecidos e um valor desconhecido. A fórmula básica da regra de três é:</p>
-            <p><em>A/B = C/D</em></p>
-            <p>Onde <strong>A</strong>, <strong>B</strong> e <strong>C</strong> são valores conhecidos, e <strong>D</strong> é o valor que se deseja encontrar.</p>
-            <p>Na prática pediátrica, a regra de três é amplamente utilizada para calcular a dosagem de medicamentos com base no peso corporal da criança e na apresentação do medicamento.</p>
+            <h2>O CalPed</h2>
+            <p>O CalPed é uma plataforma inovadora desenvolvida para auxiliar pediatras em sua prática diária. Nossa missão é proporcionar ferramentas precisas e seguras que facilitem o trabalho dos profissionais de saúde na área pediátrica.</p>
+            <p>Nosso objetivo é otimizar o dia a dia dos pediatras com ferramentas tecnológicas que permitem realizar cálculos médicos de maneira rápida e precisa, além de gerenciar prontuários médicos de forma eficiente e segura.</p>
         </section>
-        <section id="example">
-            <h2>Exemplo Prático: Cálculo de Dosagem de Amoxicilina</h2>
-            <p>Vamos utilizar a regra de três para calcular a dosagem de Amoxicilina para uma criança com base em uma apresentação específica do medicamento.</p>
-            <h3>Contexto</h3>
-            <p><strong>Apresentação do medicamento:</strong> 250 mg por 5 ml</p>
-            <p><strong>Dose recomendada:</strong> 50 mg/kg</p>
-            <p><strong>Frequência da administração:</strong> 3 vezes ao dia (a cada 8 horas)</p>
-            <h3>Exemplo: Cálculo de Dosagem de Amoxicilina para uma Criança de 10 kg</h3>
-            <p><strong>Passo 1:</strong> Calcular a dose total necessária.</p>
-            <p>Peso da criança: 10 kg</p>
-            <p>Dose recomendada: 50 mg/kg</p>
-            <p><em>Dose total = 10 kg × 50 mg/kg = 500 mg</em></p>
-            <p><strong>Passo 2:</strong> Dividir a dose total diária em três administrações.</p>
-            <p><em>Dose por administração = 500 mg ÷ 3 ≈ 166.67 mg</em></p>
-            <p><strong>Passo 3:</strong> Utilizar a regra de três para encontrar o volume correspondente à dose por administração.</p>
-            <p>Apresentação do medicamento: 250 mg/5 ml</p>
-            <p>Dose por administração: 166.67 mg</p>
-            <p><em>250 mg/5 ml = 166.67 mg/D</em></p>
-            <p><strong>Passo 4:</strong> Resolver para <em>D</em>.</p>
-            <p><em>D = (166.67 mg × 5 ml) ÷ 250 mg</em></p>
-            <p><em>D = 833.35 ÷ 250</em></p>
-            <p><em>D ≈ 3.33 ml</em></p>
-            <p>Portanto, a criança de 10 kg deve receber aproximadamente 3,3 ml de Amoxicilina a cada 8 horas.</p>
-            <h3>Receita Exemplo</h3>
-            <p><strong>Uso Interno</strong></p>
-            <p>Paciente: [Nome da Criança]</p>
-            <p>Peso: 10 kg</p>
-            <p>1) Amoxicilina 250 mg/5 ml--------- 1 frasco</p>
-            
-            <p>Dar 3,3 ml a cada 8 horas (8/8 horas) por 7 dias.</p>
+        <section id="calculator">
+            <h2>Calculadora Pediátrica</h2>
+            <img src="img/pediatric-tools.png" alt="Ferramentas Pediátricas" class="responsive-image">
+            <p>Nossa calculadora pediátrica é uma ferramenta essencial para os pediatras, oferecendo diversas funcionalidades que facilitam o trabalho clínico. Com ela, é possível calcular dosagens de medicamentos, índices de massa corporal (IMC), percentis de crescimento, entre outros. Tudo isso de forma rápida e precisa, garantindo maior segurança e eficiência no atendimento aos pacientes.</p>
+            <ul>
+                <li><strong>Calculadora de Dosagem de Medicamentos:</strong> Permite calcular a dose exata de medicamentos com base no peso e idade da criança.</li>
+                <li><strong>Calculadora de IMC Infantil:</strong> Ajuda a monitorar o crescimento e o desenvolvimento saudável das crianças.</li>
+                <li><strong>Calculadora de Percentis de Crescimento:</strong> Avalia o crescimento da criança em relação aos padrões de referência.</li>
+            </ul>
+            <a href="calculadora.html" class="button">Saiba Mais</a>
         </section>
-        <section id="conclusion">
-            <h2>Conclusão</h2>
-            <p>A regra de três é uma ferramenta essencial na prática pediátrica, permitindo que os profissionais de saúde façam cálculos precisos e rápidos de dosagem de medicamentos. Este exemplo prático demonstra como a regra de três pode ser aplicada de maneira eficaz para garantir a segurança e a eficácia dos tratamentos pediátricos. A prescrição precisa e clara é fundamental para a adesão ao tratamento e para garantir resultados terapêuticos positivos.</p>
+        <section id="prontuario">
+            <h2>Prontuário Médico</h2>
+            <img src="img/prontuario-medico.png" alt="Prontuário Médico" class="responsive-image">
+            <p>Nosso sistema de prontuário médico eletrônico oferece uma maneira segura e eficiente de gerenciar os dados dos pacientes. Com uma interface intuitiva, permite aos pediatras acessar rapidamente o histórico médico, registrar novas consultas e acompanhar o desenvolvimento dos pacientes ao longo do tempo.</p>
+            <ul>
+                <li><strong>Armazenamento Seguro de Dados:</strong> Garantimos a proteção dos dados médicos com tecnologias de criptografia avançada.</li>
+                <li><strong>Acesso Rápido ao Histórico Médico:</strong> Facilita o acesso aos registros médicos completos, melhorando a qualidade do atendimento.</li>
+                <li><strong>Relatórios e Análises:</strong> Ferramentas de análise que ajudam na tomada de decisões clínicas informadas.</li>
+            </ul>
+            <a href="prontuario.html" class="button">Saiba Mais</a>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/* Estilos básicos */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -99,9 +100,14 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* CSS adicional para o formulário de contato */
+p {
+    text-align: justify;
+}
 
-#contact-form {
+/* Estilos para formularios */
+#contact-form,
+#login,
+#reset-password {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -110,23 +116,34 @@ h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#contact-form h2 {
+#contact-form h2,
+#login h2,
+#reset-password h2 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-#contact-form form {
+#contact-form form,
+#login form,
+#reset-password form {
     display: flex;
     flex-direction: column;
 }
 
-#contact-form label {
+#contact-form label,
+#login label,
+#reset-password label {
     margin-bottom: 5px;
     font-weight: bold;
 }
 
 #contact-form input,
-#contact-form textarea {
+#contact-form textarea,
+#login input,
+#login textarea,
+#reset-password input,
+#reset-password textarea,
+button {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -134,25 +151,30 @@ h2 {
     font-size: 16px;
 }
 
-#contact-form button {
-    padding: 10px;
+#contact-form button,
+#login button,
+#reset-password button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    width: auto;
 }
 
-#contact-form button:hover {
+#contact-form button:hover,
+#login button:hover,
+#reset-password button:hover {
     background-color: #45a049;
 }
 
-#formMessage {
-    margin-top: 20px;
+#formMessage,
+#loginMessage,
+#resetMessage {
     text-align: center;
+    margin-top: 10px;
 }
 
+/* Estilos responsivos */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -187,17 +209,28 @@ h2 {
         border-radius: 4px;
     }
 
-    #contact-form {
+    #contact-form,
+    #login,
+    #reset-password {
         padding: 10px;
     }
 
     #contact-form input,
-    #contact-form textarea {
-        font-size: 14px;
-    }
-
-    #contact-form button {
+    #contact-form textarea,
+    #login input,
+    #login textarea,
+    #reset-password input,
+    #reset-password textarea,
+    button {
         font-size: 14px;
         padding: 8px;
+    }
+
+    #contact-form button,
+    #login button,
+    #reset-password button {
+        font-size: 14px;
+        padding: 10px;
+        width: auto;
     }
 }

@@ -13,11 +13,11 @@
         </button>
         <ul id="menu">
             <li><a href="index.html">Home</a></li>
-            <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
+            <li><a href="login.html">Acesso à Calculadora Pediátrica</a></li>
             <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="fundamentos.html">Fundamentos da Prescrição</a></li>
             <li><a href="contact.html">Contato</a></li>
             <li><a href="about.html">Sobre</a></li>
-            <li><a href="fundamentos.html">Fundamentos da prescrição</a></li>
         </ul>
     </nav>
     <header id="home">
@@ -30,7 +30,6 @@
             <h2>Informações de Contato</h2>
             <p>Você pode entrar em contato conosco através do email <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a> ou preencher o formulário abaixo.</p>
         </section>
-
         <section id="contact-form">
             <h2>Formulário de Contato</h2>
             <form id="contactForm" action="https://formspree.io/f/mpwaaqen" method="POST">
@@ -57,6 +56,16 @@
     <footer>
         <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
     </footer>
+    <script>
+        function copyPixEmail() {
+            const pixEmail = document.getElementById('pix-email').textContent;
+            navigator.clipboard.writeText(pixEmail).then(() => {
+                alert('Email do PIX copiado para a área de transferência');
+            }).catch(err => {
+                alert('Erro ao copiar o email do PIX: ', err);
+            });
+        }
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>

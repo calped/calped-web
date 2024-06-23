@@ -5,31 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Pediátrica - CalPed</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Adicionar o SDK do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script>
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1pm1frtaatfCp6zljW4I8JWHvXDu0IBQ",
+            authDomain: "calpedv1.firebaseapp.com",
+            projectId: "calpedv1",
+            storageBucket: "calpedv1.appspot.com",
+            messagingSenderId: "555116152565",
+            appId: "1:555116152565:web:fefe88fd6bbc007600a7bc",
+            measurementId: "G-72H4MPJ1DQ"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Verificar o estado de autenticação
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                // Redirecionar para a página de login se não estiver autenticado
+                window.location.href = 'login.html';
+            }
+        });
+
+        function logout() {
+            auth.signOut().then(() => {
+                window.location.href = 'login.html';
+            }).catch((error) => {
+                console.error('Erro ao deslogar:', error);
+            });
+        }
+    </script>
 </head>
 <body>
     <nav class="main-nav">
-        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
-            ☰
-        </button>
         <ul id="menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
             <li><a href="prontuario.html">Prontuário Médico</a></li>
             <li><a href="contact.html">Contato</a></li>
             <li><a href="about.html">Sobre</a></li>
-            <li><a href="fundamentos.html">Fundamentos da prescrição</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
         </ul>
     </nav>
     <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner da Calculadora Pediátrica" class="responsive-image">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
         <h1>Calculadora Pediátrica</h1>
-        <p>Ferramentas essenciais para cálculos médicos precisos e rápidos.</p>
     </header>
     <main>
-        <section id="calculator-info">
-            <h2>A Calculadora Pediátrica</h2>
-            <p>A Calculadora Pediátrica do CalPed é uma ferramenta indispensável para pediatras, permitindo a realização de cálculos médicos com precisão e eficiência. Nossas calculadoras abrangem diversas áreas essenciais da pediatria, facilitando o atendimento e garantindo resultados confiáveis.</p>
-        </section>
+
         <section id="calculator-features">
             <h2>Funcionalidades</h2>
             <ul>
