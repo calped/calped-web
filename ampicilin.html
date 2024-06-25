@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dosagem de Ampicilina</title>
+    <link rel="stylesheet" href="css/stylesampicillin.css">
+    <!-- Adicionar o SDK do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/scriptampicillin.js"></script>
+</head>
+<body>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
+            <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Calculadora de Dosagem de Ampicilina</h1>
+        <p>Calcule a dosagem apropriada de Ampicilina com base na idade gestacional, idade pós-natal e peso.</p>
+    </header>
+    <main>
+        <section id="calculator">
+            <h2>Calculadora de Dosagem de Ampicilina</h2>
+            <div class="form-container">
+                <form id="calculatorForm" onsubmit="event.preventDefault(); calcularDosagem();">
+                    <label for="idadeGestacional">Idade Gestacional (semanas):</label>
+                    <input type="number" id="idadeGestacional" name="idadeGestacional" required>
+
+                    <label for="idadePosNatal">Idade Pós-Natal (dias):</label>
+                    <input type="number" id="idadePosNatal" name="idadePosNatal" required>
+
+                    <label for="peso">Peso (kg):</label>
+                    <input type="number" id="peso" name="peso" step="0.1" required>
+
+                    <label for="condicao">Condição:</label>
+                    <select id="condicao" name="condicao" required>
+                        <option value="antraz">Antraz</option>
+                        <option value="streptococcus_bacteremia">Streptococcus Bacteremia</option>
+                        <option value="streptococcus_meningitis">Streptococcus Meningitis</option>
+                        <option value="bacteremia">Bacteremia</option>
+                        <option value="meningitis">Meningitis</option>
+                        <option value="sepsis">Sepsis</option>
+                    </select>
+
+                    <label for="diluente">Quantidade de Diluente (ml):</label>
+                    <input type="number" id="diluente" name="diluente" step="0.1" required placeholder="20 ml">
+
+                    <button type="submit">Calcular</button>
+                </form>
+            </div>
+            <div id="resultado" class="result-container"></div>
+        </section>
+        <ul>
+            <li><strong><a href="referencia-ampicillin.html">Referências:</a></strong> NeoFax® 2020 - MICROMEDEX.</li>
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+</body>
+</html>
