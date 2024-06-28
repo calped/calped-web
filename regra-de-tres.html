@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos Teóricos da Prescrição Pediátrica</title>
+    <link rel="stylesheet" href="css/stylestruste2.css">
+</head>
+<body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Fundamentos Teóricos da Prescrição Pediátrica</h1>
+    </header>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Calculadora Pediátrica</a></li>
+            <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="fundamentos.html">Fundamentos teóricos</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section class="container">
+            <h2>O Que é a regra de três?</h2>
+            <p>A regra de três é uma técnica matemática utilizada para resolver problemas de proporcionalidade. Ela é baseada na relação direta entre três valores conhecidos e um valor desconhecido. A fórmula básica da regra de três é:</p>
+            <p><em>A/B = C/D</em></p>
+            <p>Onde <strong>A</strong>, <strong>B</strong> e <strong>C</strong> são valores conhecidos, e <strong>D</strong> é o valor que se deseja encontrar.</p>
+            <p>Na prática pediátrica, a regra de três é amplamente utilizada para calcular a dosagem de medicamentos com base no peso corporal da criança e na apresentação do medicamento.</p>
+        </section>
+        <section class="container">
+            <h2>Exemplo Prático: Cálculo de dosagem de amoxicilina</h2>
+            <p>Vamos utilizar a regra de três para calcular a dosagem de Amoxicilina para uma criança com base em uma apresentação específica do medicamento.</p>
+            <h3>Contexto</h3>
+            <p><strong>Apresentação do medicamento:</strong> 250 mg por 5 ml</p>
+            <p><strong>Dose recomendada:</strong> 50 mg/kg</p>
+            <p><strong>Frequência da administração:</strong> 3 vezes ao dia (a cada 8 horas)</p>
+            <h3>Exemplo: Cálculo de Dosagem de Amoxicilina para uma Criança de 10 kg</h3>
+            <p><strong>Passo 1:</strong> Calcular a dose total necessária.</p>
+            <p>Peso da criança: 10 kg</p>
+            <p>Dose recomendada: 50 mg/kg</p>
+            <p><em>Dose total = 10 kg × 50 mg/kg = 500 mg</em></p>
+            <p><strong>Passo 2:</strong> Dividir a dose total diária em três administrações.</p>
+            <p><em>Dose por administração = 500 mg ÷ 3 ≈ 166.67 mg</em></p>
+            <p><strong>Passo 3:</strong> Utilizar a regra de três para encontrar o volume correspondente à dose por administração.</p>
+            <p>Apresentação do medicamento: 250 mg/5 ml</p>
+            <p>Dose por administração: 166.67 mg</p>
+            <p><em>250 mg/5 ml = 166.67 mg/D</em></p>
+            <p><strong>Passo 4:</strong> Resolver para <em>D</em>.</p>
+            <p><em>D = (166.67 mg × 5 ml) ÷ 250 mg</em></p>
+            <p><em>D = 833.35 ÷ 250</em></p>
+            <p><em>D ≈ 3.33 ml</em></p>
+            <p>Portanto, a criança de 10 kg deve receber aproximadamente 3,3 ml de Amoxicilina a cada 8 horas.</p>
+            <h3>Receita Exemplo</h3>
+            <p><strong>Uso Interno</strong></p>
+            <p>Paciente: [Nome da Criança]</p>
+            <p>Peso: 10 kg</p>
+            <p>1) Amoxicilina 250 mg/5 ml--------- 1 frasco</p>
+            
+            <p>Dar 3,3 ml a cada 8 horas (8/8 horas) por 7 dias.</p>
+        </section>
+        <section class="container">
+            <h2>Conclusão</h2>
+            <p>A regra de três é uma ferramenta essencial na prática pediátrica, permitindo que os profissionais de saúde façam cálculos precisos e rápidos de dosagem de medicamentos. Este exemplo prático demonstra como a regra de três pode ser aplicada de maneira eficaz para garantir a segurança e a eficácia dos tratamentos pediátricos. A prescrição precisa e clara é fundamental para a adesão ao tratamento e para garantir resultados terapêuticos positivos.</p>
+        </section>
+
+        <section class="container">
+            <h2>Fundamentos da prescriçao pediátrica</h2>
+            <p>Entender a particularidade da prescriçao em Pediatria é essencial para ajustar as prescrições de medicamentos corretamente.</p>
+            <ul>
+                <li><a href="fundamentos.html">Artigo sobre farmacocinética  e farmacodinâmica em Pediatria</a></li>
+                <li><a href="consideracoes.html">Artigo sobre considerações específicas da prescrição pediátrica</a></li>
+                <li><a href="regra-de-tres.html">O que é regra de três?</a></li>
+                <li><a href="diretrizes e protocolos.html">Diretrizes e protocolos</a></li>
+            </ul>
+        </section>
+
+
+        
+    </main>
+    <footer>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+    <script>
+        // Script para atualizar o ano no rodapé automaticamente
+        const startYear = 2021;
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startYear').textContent = startYear;
+        document.getElementById('currentYear').textContent = currentYear;
+
+        // Script para o menu toggle em dispositivos móveis
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const menu = document.querySelector('.main-nav ul');
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            menu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

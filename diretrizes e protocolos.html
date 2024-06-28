@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos Teóricos da Prescrição Pediátrica</title>
+    <link rel="stylesheet" href="css/stylestruste2.css">
+</head>
+<body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Fundamentos Teóricos da Prescrição Pediátrica</h1>
+    </header>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Calculadora Pediátrica</a></li>
+            <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="fundamentos.html">Fundamentos teóricos</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+      
+<section class="container">
+    <h2>Diretrizes e Protocolos na Prescrição Pediátrica</h2>
+    <p>A utilização de diretrizes e protocolos é fundamental na prática pediátrica para assegurar a qualidade e a consistência dos cuidados. Esses documentos fornecem recomendações baseadas em evidências para a prescrição de medicamentos e o manejo de diversas condições médicas em crianças.</p>
+    
+    <h3>1. Importância das Diretrizes</h3>
+    <p>Diretrizes são desenvolvidas por associações médicas, órgãos de saúde e especialistas, e são baseadas em revisões sistemáticas da literatura científica. Elas ajudam os profissionais de saúde a tomar decisões informadas sobre o tratamento de seus pacientes, proporcionando uma abordagem padronizada que pode melhorar os resultados clínicos.</p>
+
+    <h3>2. Protocolos de Tratamento</h3>
+    <p>Os protocolos de tratamento são conjuntos específicos de instruções que detalham como gerenciar uma condição particular. Eles são baseados em diretrizes, mas podem ser adaptados para se adequar às práticas locais e aos recursos disponíveis. Protocolos ajudam a garantir que todos os pacientes recebam cuidados consistentes e baseados em evidências.</p>
+
+    <h3>3. Benefícios das Diretrizes e Protocolos</h3>
+    <ul>
+        <li><strong>Padronização:</strong> Asseguram que o cuidado prestado seja consistente, independentemente de onde ou por quem o paciente esteja sendo tratado.</li>
+        <li><strong>Segurança:</strong> Reduzem a variabilidade na prescrição de medicamentos e nas práticas clínicas, diminuindo o risco de erros médicos.</li>
+        <li><strong>Eficiência:</strong> Ajudam a otimizar o uso de recursos de saúde, promovendo práticas que são comprovadamente eficazes.</li>
+        <li><strong>Educação:</strong> Servem como uma ferramenta educativa para profissionais de saúde, mantendo-os atualizados com as últimas evidências e recomendações.</li>
+        <li><strong>Melhoria da Qualidade:</strong> Facilitam a implementação de programas de melhoria contínua da qualidade, permitindo a medição e avaliação do desempenho clínico.</li>
+    </ul>
+
+    <h3>4. Implementação das Diretrizes e Protocolos</h3>
+    <p>A implementação eficaz de diretrizes e protocolos requer um esforço coordenado, incluindo a educação dos profissionais de saúde, a adaptação das recomendações à prática local e o monitoramento contínuo da adesão e dos resultados.</p>
+    <ul>
+        <li><strong>Educação e Treinamento:</strong> Capacitar os profissionais de saúde sobre o conteúdo das diretrizes e a importância de segui-las.</li>
+        <li><strong>Adaptação Local:</strong> Ajustar as diretrizes gerais para atender às necessidades e realidades específicas do contexto local.</li>
+        <li><strong>Monitoramento e Avaliação:</strong> Realizar auditorias e avaliações regulares para garantir que as diretrizes e protocolos estão sendo seguidos e que estão resultando em melhorias nos cuidados aos pacientes.</li>
+        <li><strong>Feedback Contínuo:</strong> Fornecer feedback aos profissionais de saúde sobre seu desempenho e promover a discussão sobre como melhorar a adesão e os resultados.</li>
+    </ul>
+
+   
+
+    <p>Adotar diretrizes e protocolos na prática diária não apenas melhora a qualidade dos cuidados, mas também promove um ambiente de aprendizado contínuo e adaptação às novas evidências científicas, garantindo que os pacientes pediátricos recebam o melhor atendimento possível.</p>
+</section>
+<section class="container">
+    <h2>Fundamentos da prescriçao pediátrica</h2>
+    <p>Entender a particularidade da prescriçao em Pediatria é essencial para ajustar as prescrições de medicamentos corretamente.</p>
+    <ul>
+        <li><a href="fundamentos.html">Artigo sobre farmacocinética  e farmacodinâmica em Pediatria</a></li>
+        <li><a href="consideracoes.html">Artigo sobre considerações específicas da prescrição pediátrica</a></li>
+        <li><a href="regra-de-tres.html">O que é regra de três?</a></li>
+        <li><a href="diretrizes e protocolos.html">Diretrizes e protocolos</a></li>
+    </ul>
+</section>
+        
+    </main>
+    <footer>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+    <script>
+        // Script para atualizar o ano no rodapé automaticamente
+        const startYear = 2021;
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startYear').textContent = startYear;
+        document.getElementById('currentYear').textContent = currentYear;
+
+        // Script para o menu toggle em dispositivos móveis
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const menu = document.querySelector('.main-nav ul');
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            menu.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

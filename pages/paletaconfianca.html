@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Médico - Cálculos de Medicamentos</title>
+    <style>
+        :root {
+            --color-bg: #F0F8FF; /* AliceBlue */
+            --color-primary: #007BFF; /* Azul */
+            --color-secondary: #6C757D; /* Cinza */
+            --color-accent: #28A745; /* Verde */
+            --color-accent-dark: #218838; /* Verde Escuro */
+            --color-text: #2F4F4F; /* DarkSlateGray */
+            --color-white: #FFFFFF; /* Branco */
+            --color-light-gray: #F8F9FA; /* Cinza Claro */
+            --color-lighter-gray: #E9ECEF; /* Cinza Muito Claro */
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--color-white); /* Garantindo que o texto do cabeçalho seja branco */
+            margin: 0;
+        }
+
+        nav {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: var(--color-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: var(--color-primary);
+        }
+
+        button {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--color-accent-dark);
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid var(--color-secondary);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--color-light-gray);
+            color: var(--color-text);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--color-light-gray);
+        }
+
+        tr:nth-child(odd) {
+            background-color: var(--color-lighter-gray);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bem-vindo ao Site Médico</h1>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+</nav>
+
+<div class="container">
+    <h2>Sobre Nós</h2>
+    <p>Utilize as ferramentas abaixo para calcular dosagens e obter informações sobre medicamentos.</p>
+    <button>Calcular Dosagem</button>
+</div>
+
+<div class="container">
+    <h2>Paleta de Cores Harmoniosas</h2>
+    <table>
+        <tr>
+            <th>Nome da Cor</th>
+            <th>Código Hexadecimal</th>
+            <th>Amostra</th>
+        </tr>
+        <tr>
+            <td>AliceBlue</td>
+            <td>#F0F8FF</td>
+            <td style="background-color: #F0F8FF;"></td>
+        </tr>
+        <tr>
+            <td>DarkSlateGray</td>
+            <td>#2F4F4F</td>
+            <td style="background-color: #2F4F4F;"></td>
+        </tr>
+        <tr>
+            <td>Azul</td>
+            <td>#007BFF</td>
+            <td style="background-color: #007BFF;"></td>
+        </tr>
+        <tr>
+            <td>Cinza</td>
+            <td>#6C757D</td>
+            <td style="background-color: #6C757D;"></td>
+        </tr>
+        <tr>
+            <td>Verde</td>
+            <td>#28A745</td>
+            <td style="background-color: #28A745;"></td>
+        </tr>
+        <tr>
+            <td>Verde Escuro</td>
+            <td>#218838</td>
+            <td style="background-color: #218838;"></td>
+        </tr>
+        <tr>
+            <td>Cinza Claro</td>
+            <td>#F8F9FA</td>
+            <td style="background-color: #F8F9FA;"></td>
+        </tr>
+        <tr>
+            <td>Cinza Muito Claro</td>
+            <td>#E9ECEF</td>
+            <td style="background-color: #E9ECEF;"></td>
+        </tr>
+    </table>
+</div>
+
+<footer>
+    <p>&copy; 2024 Site Médico. Todos os direitos reservados. | <a href="mailto:info@sitemedico.com">info@sitemedico.com</a></p>
+</footer>
+
+</body>
+</html>

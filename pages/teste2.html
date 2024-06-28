@@ -9,10 +9,12 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="js/configfirebase.js"></script>
+
+   
 </head>
 <body>
     <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image"> 
+        <!-- <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image"> -->
         <h1>Login</h1>
         <p>Acesse a calculadora.</p>
     </header>
@@ -28,7 +30,7 @@
         </ul>
     </nav>
     <main>
-        <section id="login">
+        <section id="login" class="container">
             <h2>Faça Login para Acessar as Calculadoras</h2>
             <form id="loginForm">
                 <label for="email">Email:</label>
@@ -43,18 +45,26 @@
             <button class="reset-button" onclick="window.location.href='reset-password.html'">Esqueceu a Senha?</button>
         </section>
     </main>
+
     <footer>
-        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const startYear = 2017;
-            const currentYear = new Date().getFullYear();
-            const yearText = (currentYear > startYear) ? `${startYear} - ${currentYear}` : `${startYear}`;
-            document.getElementById('copyright-year').textContent = yearText;
+        // Script para atualizar o ano no rodapé automaticamente
+        const startYear = 2021;
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startYear').textContent = startYear;
+        document.getElementById('currentYear').textContent = currentYear;
+
+        // Script para o menu toggle em dispositivos móveis
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const menu = document.querySelector('.main-nav ul');
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            menu.classList.toggle('show');
         });
     </script>
-       <!-- Adicionar o script de login -->
+    <!-- Adicionar o script de login -->
     <script src="js/firebase.js"></script>
     <script src="js/script.js"></script>
 </body>

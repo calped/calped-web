@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prontuário Médico - CalPed</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylestruste2.css">
 </head>
 <body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do Prontuário Médico" class="responsive-image">
+        <h1>Prontuário Médico</h1>
+        <p>Gestão eficiente e segura dos dados médicos dos pacientes pediátricos.</p>
+    </header>
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
             ☰
@@ -21,17 +26,15 @@
             
         </ul>
     </nav>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do Prontuário Médico" class="responsive-image">
-        <h1>Prontuário Médico</h1>
-        <p>Gestão eficiente e segura dos dados médicos dos pacientes pediátricos.</p>
-    </header>
+
     <main>
-        <section id="prontuario-info">
+        
+        <section class="container">
             <h2>O Prontuário Médico</h2>
             <p>O sistema de prontuário médico do CalPed é uma ferramenta essencial para pediatras, permitindo a gestão eficiente e segura dos dados dos pacientes. Nosso sistema facilita o acesso ao histórico médico completo, o registro de novas consultas e o acompanhamento do desenvolvimento dos pacientes ao longo do tempo.</p>
         </section>
-        <section id="prontuario-features">
+        
+        <section class="container">
             <h2>Funcionalidades</h2>
             <ul>
                 <li><strong>Armazenamento Seguro de Dados:</strong> Utiliza tecnologias de criptografia avançada para garantir a segurança dos dados médicos.</li>
@@ -41,7 +44,8 @@
                 <li><strong>Interface Intuitiva:</strong> Interface amigável que facilita o uso do sistema por profissionais de saúde.</li>
             </ul>
         </section>
-        <section id="prontuario-benefits">
+        
+        <section class="container">
             <h2>Benefícios</h2>
             <p>Utilizar o sistema de prontuário médico do CalPed traz diversos benefícios para os profissionais de saúde e para os pacientes:</p>
             <ul>
@@ -51,15 +55,30 @@
                 <li>Facilidade de uso, com uma interface intuitiva e amigável.</li>
             </ul>
         </section>
-        <section id="prontuario-images">
+        
+        <section class="container">
             <h2>Imagens</h2>
             
             <img src="img/future.png" alt="Futuro do Prontuário Médico" class="responsive-image">
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
     </footer>
-    <script src="js/script.js"></script>
+    <script>
+        // Script para atualizar o ano no rodapé automaticamente
+        const startYear = 2017;
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startYear').textContent = startYear;
+        document.getElementById('currentYear').textContent = currentYear;
+
+        // Script para o menu toggle em dispositivos móveis
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const menu = document.querySelector('.main-nav ul');
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            menu.classList.toggle('show');
+        });
+    </script>
 </body>
 </html>
