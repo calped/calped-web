@@ -112,6 +112,7 @@
         background-color: var(--color-white);
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+        text-align: justify; /* Justifica o texto */
     }
 
     h1, h2 {
