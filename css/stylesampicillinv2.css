@@ -10,7 +10,6 @@
     --color-lighter-gray: #E9ECEF; /* Cinza Muito Claro */
     --color-link: #FFD700; /* Dourado */
     --color-link-hover: #FF4500; /* Laranja Vermelho */
-    --color-link-visited: #FF4500; /* Vermelho */
 }
 
 /* Estilos básicos */
@@ -28,8 +27,6 @@ body {
     padding: 10px 20px;
     text-align: center;
     position: relative;
-    border-radius: 8px;
-    margin-top: 20px;
 }
 
 .menu-toggle {
@@ -76,14 +73,12 @@ body {
 }
 
 header, footer {
+    text-align: center;
+    padding: 20px;
+    margin: 20px 10%;
     background-color: var(--color-primary);
     color: var(--color-white);
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
     border-radius: 8px;
-    margin-bottom: 20px; /* Espaço entre o header e o menu */
 }
 
 header p, footer p {
@@ -91,22 +86,6 @@ header p, footer p {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0;
-    width: 100%; /* Adiciona largura total */
-}
-
-footer a {
-    color: var(--color-link);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer a:visited {
-    color: var(--color-link-visited);
-}
-
-footer a:hover {
-    color: var(--color-link-hover);
 }
 
 .responsive-image {
@@ -205,7 +184,6 @@ p {
 .result-box p {
     margin: 0 0 10px;
 }
-
 
 
 @media (max-width: 768px) {

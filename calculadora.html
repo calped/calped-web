@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Pediátrica - CalPed</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylestruste.css">
     <!-- Adicionar o SDK do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="js/configfirebasesessao.js"></script>
 </head>
 <body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Calculadora Pediátrica</h1>
+    </header>
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
             ☰
@@ -21,15 +25,12 @@
             <li><a href="prontuario.html">Prontuário Médico</a></li>
             <li><a href="contact.html">Contato</a></li>
             <li><a href="about.html">Sobre</a></li>
-            <li><a href="#" onclick="logout()">Logout</a></li>
+            <li><a href="calculadora.html" onclick="logout()">Logout</a></li>
         </ul>
     </nav>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Calculadora Pediátrica</h1>
-    </header>
+  
     <main>
-        <section id="calculator-sections">
+        <section id="calculator-sections" class="container">
             <h2>Calculadoras Pediátricas</h2>
 
             <div class="section">
@@ -41,7 +42,7 @@
                 </ul>
             </div>
 
-            <div class="section">
+            <div class="section" class="container">
                 <h3>Calculadoras de Idade e Tempo</h3>
                 <ul>
                     <li><strong><a href="tempo-vivido.html">Calculadora de Tempo Vivido:</a></strong> Calcule o tempo vivido em horas, dias, meses e anos.</li>
@@ -49,21 +50,21 @@
                 </ul>
             </div>
 
-            <div class="section">
+            <div class="section" class="container">
                 <h3>Calculadoras de Lógica Médica</h3>
                 <ul>
                     <!-- Adicione as calculadoras de lógica médica aqui -->
                 </ul>
             </div>
 
-            <div class="section">
+            <div class="section" class="container">
                 <h3>Calculadoras de Idade Gestacional</h3>
                 <ul>
                     <!-- Adicione as calculadoras de idade gestacional aqui -->
                 </ul>
             </div>
 
-            <div class="section">
+            <div class="section" class="container">
                 <h3>Calculadoras de Scores</h3>
                 <ul>
                     <!-- Adicione as calculadoras de scores aqui -->
@@ -71,7 +72,7 @@
             </div>
         </section>
 
-        <section id="calculator-benefits">
+        <section id="calculator-benefits" class="container">
             <h2>Benefícios</h2>
             <p>Utilizar a Calculadora Pediátrica do CalPed traz diversos benefícios para os profissionais de saúde e para os pacientes:</p>
             <ul>
@@ -82,7 +83,7 @@
             </ul>
         </section>
         
-        <section id="calculator-images">
+        <section id="calculator-images" class="container">
             <h2>Imagens</h2>
             <img src="img/pediatric-tools.png" alt="Ferramentas Pediátricas" class="responsive-image">
         </section>
