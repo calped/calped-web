@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Referências para a Calculadora de Penicilina G - CalPed</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesgentamicinv2.css">
 </head>
 <body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Referências para a Calculadora de Penicilina G</h1>
+    </header>
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
             ☰
@@ -19,13 +23,10 @@
             <li><a href="about.html">Sobre</a></li>
         </ul>
     </nav>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Referências para a Calculadora de Penicilina G</h1>
-    </header>
+
     <main>
-        <section id="references">
-            <h2>Resumo da Monografia da Penicilina G (NeoFax® - MICROMEDEX)</h2>
+        <section id="references" class="container">
+            <h2>Resumo da Penicilina G (NeoFax® - MICROMEDEX)</h2>
             <h3>Dosagem e Administração</h3>
             <ul>
                 <li><strong>Anthrax</strong> (como parte de terapia combinada ou tripla)
@@ -92,9 +93,15 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
     </footer>
     <script>
+        // Script para atualizar o ano no rodapé automaticamente
+        const startYear = 2017;
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startYear').textContent = startYear;
+        document.getElementById('currentYear').textContent = currentYear;
+
         // Função para o menu responsivo
         const menuToggle = document.querySelector('.menu-toggle');
         const menu = document.querySelector('.main-nav ul');

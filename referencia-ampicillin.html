@@ -1,13 +1,16 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Referência - Ampicilina</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesampicillin.css">
 </head>
 <body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Referência - Ampicilina</h1>
+    </header>
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
             ☰
@@ -21,13 +24,10 @@
             <li><a href="#" onclick="logout()">Logout</a></li>
         </ul>
     </nav>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Referência - Ampicilina</h1>
-    </header>
+
     <main>
-        <section id="reference">
-            <h2>Resumo da Monografia da Ampicilina (NeoFax® 2020 - MICROMEDEX)</h2>
+        <section id="reference" class="container">
+            <h2>Resumo da ampicilina (NeoFax® 2020 - MICROMEDEX)</h2>
 
             <h3>Dosagem e Administração</h3>
             <p><strong>Dose Usual:</strong> 25 a 50 mg/kg/dose por IV lento ou IM.</p>
@@ -103,12 +103,7 @@
                         <li>Duração: 14 dias para meningite não complicada; durações mais longas podem ser necessárias para cursos prolongados ou complicados.</li>
                     </ul>
                 </li>
-                <li><strong>Outros organismos suscetíveis</strong>
-                    <ul>
-                        <li>Bacteremia: 25,000 a 50,000 unidades/kg/dose IV infundido em 15 minutos, ou IM.</li>
-                        <li>Meningite: 75,000 a 100,000 unidades/kg/dose IV infundido em 30 minutos, ou IM.</li>
-                    </ul>
-                </li>
+
             </ul>
 
             <h3>Considerações Especiais</h3>
@@ -128,8 +123,18 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
     </footer>
+    <script>
+        // Script para atualizar o ano no rodapé automaticamente
+        const startYear = 2017;
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startYear').textContent = startYear;
+        document.getElementById('currentYear').textContent = currentYear;
+
+
+        
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Dosagem de Penicilina G</title>
-    <link rel="stylesheet" href="css/stylespeng.css">
+    <link rel="stylesheet" href="css/stylesgentamicinv2.css">
     <!-- Adicionar o SDK do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -12,6 +12,11 @@
     
 </head>
 <body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Calculadora de Dosagem de Penicilina G</h1>
+        <p>Calcule a dosagem apropriada de Penicilina G com base na idade gestacional, idade pós-natal e peso.</p>
+    </header>
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
             ☰
@@ -25,11 +30,7 @@
             <li><a href="#" onclick="logout()">Logout</a></li>
         </ul>
     </nav>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Calculadora de Dosagem de Penicilina G</h1>
-        <p>Calcule a dosagem apropriada de Penicilina G com base na idade gestacional, idade pós-natal e peso.</p>
-    </header>
+
     <main>
         <section id="calculator">
             <h2>Calculadora de Dosagem de Penicilina G</h2>
@@ -68,7 +69,17 @@
         </ul>
     </main>
     <footer>
-        <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
     </footer>
+    <script>
+        // Script para atualizar o ano no rodapé automaticamente
+        const startYear = 2017;
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startYear').textContent = startYear;
+        document.getElementById('currentYear').textContent = currentYear;
+
+
+        
+    </script>
 </body>
 </html>

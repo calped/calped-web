@@ -30,9 +30,9 @@ function logout() {
 }
 
 function calcularDosagem() {
-    const idadeGestacional = document.getElementById('idadeGestacional').value;
-    const idadePosNatal = document.getElementById('idadePosNatal').value;
-    const peso = document.getElementById('peso').value;
+    const idadeGestacional = parseInt(document.getElementById('idadeGestacional').value);
+    const idadePosNatal = parseInt(document.getElementById('idadePosNatal').value);
+    const peso = parseFloat(document.getElementById('peso').value);
     const apresentacao = document.getElementById('apresentacao').value;
     const condicao = document.getElementById('condicao').value;
 
@@ -57,7 +57,7 @@ function calcularDosagem() {
             }
         } else if (idadeGestacional <= 34) {
             if (idadePosNatal <= 7) {
-                dosagem = 4;
+                dosagem = 4.5;
                 intervalo = 'a cada 36 horas';
             } else {
                 dosagem = 4;
@@ -95,6 +95,7 @@ function calcularDosagem() {
         </div>
     `;
 }
+
 
 // Função para o menu responsivo
 document.addEventListener('DOMContentLoaded', function() {

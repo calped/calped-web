@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumo da Monografia da Gentamicina</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesgentamicinv2.css">
 </head>
 <body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Referência da Gentamicina </h1>
+    </header>
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
             ☰
@@ -20,12 +24,9 @@
             <li><a href="#" onclick="logout()">Logout</a></li>
         </ul>
     </nav>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Referência da Gentamicina </h1>
-    </header>
+
     <main>
-        <section id="resumo">
+        <section id="resumo" class="container">
             <h2>Dosagem e Administração (NeoFax® - MICROMEDEX)</h2>
             <p><strong>Dose:</strong></p>
             <ul>
@@ -47,7 +48,7 @@
                                 </li>
                                 <li><strong>IPM 30 a 34 semanas:</strong>
                                     <ul>
-                                        <li>0 a 7 dias: 4 mg/kg a cada 36 horas</li>
+                                        <li>0 a 7 dias: 4.5 mg/kg a cada 36 horas</li>
                                         <li>≥8 dias: 4 mg/kg a cada 24 horas</li>
                                     </ul>
                                 </li>
@@ -110,7 +111,29 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
     </footer>
+    <script>
+        // Script para atualizar o ano no rodapé automaticamente
+        const startYear = 2017;
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startYear').textContent = startYear;
+        document.getElementById('currentYear').textContent = currentYear;
+// Função para o menu responsivo
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.main-nav ul');
+
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('click', function() {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            menu.classList.toggle('show');
+        });
+    }
+});
+
+        
+    </script>
 </body>
 </html>
