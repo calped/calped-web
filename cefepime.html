@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dosagem de Cefepime</title>
+    <link rel="stylesheet" href="css/stylesgentamicinv2.css">
+    <!-- Adicionar o SDK do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/scriptcefepime.js"></script>
+</head>
+<body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Calculadora de Dosagem de Cefepime</h1>
+        <p>Calcule a dosagem apropriada de Cefepime com base na idade gestacional, idade pós-natal e peso.</p>
+    </header>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
+            <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="calculator">
+            <h2>Calculadora de Dosagem de Cefepime</h2>
+            <div class="form-container">
+                <form id="calculatorForm" onsubmit="event.preventDefault(); calcularDosagem();">
+                    <label for="idadeGestacional">Idade Gestacional (semanas):</label>
+                    <input type="number" id="idadeGestacional" name="idadeGestacional" required>
+
+                    <label for="idadePosNatal">Idade Pós-Natal (dias):</label>
+                    <input type="number" id="idadePosNatal" name="idadePosNatal" required>
+
+                    <label for="peso">Peso (kg):</label>
+                    <input type="number" id="peso" name="peso" step="0.1" required>
+
+                    <label for="condicao">Condição:</label>
+                    <select id="condicao" name="condicao" required>
+                        <option value="termo_maior_28_dias">Termo e Pré-termos (mais de 28 dias)</option>
+                        <option value="termo_menor_28_dias">Termo e Pré-termos (28 dias ou menos)</option>
+                        <option value="meningite_infeccoes_graves">Meningite e infecções graves</option>
+                    </select>
+
+                    <label for="apresentacao">Apresentação:</label>
+                    <select id="apresentacao" name="apresentacao" required>
+                        <option value="1g_10ml">1g/10ml</option>
+                        <option value="1g_11.5ml">1g/11.5ml</option>
+                    </select>
+
+                    <button type="submit">Calcular</button>
+                </form>
+            </div>
+            <div id="resultado" class="result-container"></div>
+        </section>
+        <ul>
+            <li><strong><a href="referencia-cefepime.html">Referências:</a></strong> NeoFax® 2020 - MICROMEDEX.</li>
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+    <script src="js/menuresponsivo.js"></script>
+    <script src="js/copyright.js"></script>
+</body>
+</html>
