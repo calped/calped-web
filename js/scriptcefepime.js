@@ -31,7 +31,6 @@ function logout() {
 
 function calcularDosagem() {
     const idadeGestacional = parseInt(document.getElementById('idadeGestacional').value);
-    const idadePosNatal = parseInt(document.getElementById('idadePosNatal').value);
     const peso = parseFloat(document.getElementById('peso').value);
     const condicao = document.getElementById('condicao').value;
     const apresentacao = document.getElementById('apresentacao').value;
@@ -70,3 +69,4 @@ function calcularDosagem() {
         </div>
     `;
 }
+
