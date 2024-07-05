@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso - CalPed</title>
+    <link rel="stylesheet" href="css/stylestruste2.css">
+    <!-- Adicionar o SDK do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="js/configfirebase.js"></script>
+</head>
+<body>
+    <header>
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Termos de Uso</h1>
+    </header>
+    <main>
+        <section class="container">
+            <h2>Isenção de Responsabilidade</h2>
+            <p>Bem-vindo ao calped.com.br. Ao utilizar este site, você concorda com os seguintes termos de isenção de responsabilidade:</p>
+            <h3>Uso das Informações</h3>
+            <p>O conteúdo fornecido no calped.com.br é apenas para fins informativos...</p>
+            <!-- Resto dos termos de uso -->
+
+            <button id="acceptTerms">Aceitar</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+    <script>
+        // Script para atualizar o ano no rodapé automaticamente
+        const startYear = 2017;
+        const currentYear = new Date().getFullYear();
+        document.getElementById('startYear').textContent = startYear;
+        document.getElementById('currentYear').textContent = currentYear;
+
+        document.getElementById('acceptTerms').addEventListener('click', () => {
+            const user = firebase.auth().currentUser;
+            if (user) {
+                db.collection('users').doc(user.uid).set({
+                    acceptedTerms: true
+                }, { merge: true }).then(() => {
+                    window.location.href = 'index.html';
+                }).catch((error) => {
+                    console.error('Erro ao salvar aceitação dos termos: ', error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
