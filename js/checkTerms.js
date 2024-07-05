@@ -4,7 +4,7 @@ function checkTerms() {
     if (user) {
         db.collection('users').doc(user.uid).get().then((doc) => {
             if (doc.exists && doc.data().acceptedTerms) {
-                window.location.href = 'index.html'; // Redireciona para a página principal se os termos já foram aceitos
+                window.location.href = 'calculadora.html'; // Redireciona para a página principal se os termos já foram aceitos
             } else {
                 window.location.href = 'termos.html'; // Redireciona para a página de termos se ainda não foram aceitos
             }
