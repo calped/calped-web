@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redefinir Senha - CalPed</title>
-    <link rel="stylesheet" href="css/stylesglobalv1.css">
+    <title>Login - CalPed</title>
+    <link rel="stylesheet" href="css/stylesdegrade.css">
+    <!-- Adicionar o SDK do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="js/configfirebase.js"></script>
- 
 </head>
 <body>
     <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Redefinir Senha</h1>
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image"> 
+        <h1>Login</h1>
+        <p>Acesse a calculadora.</p>
     </header>
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
@@ -21,21 +22,25 @@
         </button>
         <ul id="menu">
             <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="about.html">Sobre</a></li>
+            <li><a href="reset-password.html">Redefinir senha</a></li>
             <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li> 
         </ul>
     </nav>
     <main>
-        <section id="reset-password">
-            <h2>Redefina sua Senha</h2>
-            <form id="resetPasswordForm">
+        <section id="login" class="container">
+            <h2>Faça Login para Acessar as Calculadoras</h2>
+            <form id="loginForm">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 
-                <button type="submit">Redefinir Senha</button>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Login</button>
             </form>
-            <div id="resetMessage"></div>
+            <div id="loginMessage"></div>
+            <button class="reset-button" onclick="window.location.href='reset-password.html'">Esqueceu a Senha?</button>
         </section>
     </main>
     <footer>
@@ -49,10 +54,8 @@
             document.getElementById('copyright-year').textContent = yearText;
         });
     </script>
-       <script src="js/scriptfirebase.js"></script>
-       <script src="js/menuresponsivov1.js"></script>
-       <script src="js/copiaremailpixv1.js"></script>
-       <script src="js/copirightv1.js"></script>
-       <script src="js/script.js"></script>
+    <!-- Adicionar o script de login -->
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
