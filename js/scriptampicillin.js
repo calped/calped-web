@@ -30,18 +30,18 @@ function logout() {
 }
 
 function calcularDosagem() {
-    const idadeGestacional = document.getElementById('idadeGestacional').value;
-    const idadePosNatal = document.getElementById('idadePosNatal').value;
-    const peso = document.getElementById('peso').value;
+    const idadeGestacional = parseInt(document.getElementById('idadeGestacional').value);
+    const idadePosNatal = parseInt(document.getElementById('idadePosNatal').value);
+    const peso = parseFloat(document.getElementById('peso').value);
     const condicao = document.getElementById('condicao').value;
-    const diluente = document.getElementById('diluente').value;
+    const diluente = parseFloat(document.getElementById('diluente').value);
 
     let dosagem = 0;
     let intervalo = '';
     let duracao = '';
     let unidadesTotais = 0;
 
-    switch(condicao) {
+    switch (condicao) {
         case 'antraz':
             if (idadeGestacional <= 34) {
                 if (idadePosNatal <= 7) {
@@ -126,30 +126,16 @@ function calcularDosagem() {
             duracao = '';
     }
 
-    const doseMg = peso * dosagem;
-    const volumeMl = (doseMg / 1000) * diluente; // Assumindo que 1000 mg é a quantidade padrão de ampicilina
+    const doseMg = (peso * dosagem).toFixed(2);
+    const volumeMl = ((doseMg / 1000) * diluente).toFixed(2); // Assumindo que 1000 mg é a quantidade padrão de ampicilina
 
     document.getElementById('resultado').innerHTML = `
         <div class="result-box">
-            <p><strong>Dosagem:</strong> ${dosagem} mg/kg/dose</p>
+            <p><strong>Dosagem:</strong> ${dosagem.toFixed(2)} mg/kg/dose</p>
             <p><strong>Intervalo:</strong> ${intervalo}</p>
             <p><strong>Duração:</strong> ${duracao}</p>
             <p><strong>Unidades Totais:</strong> ${doseMg} mg</p>
-            <p><strong>Volume a Administrar:</strong> ${volumeMl.toFixed(2)} ml</p>
+            <p><strong>Volume a Administrar:</strong> ${volumeMl} ml</p>
         </div>
     `;
 }
-
-// Função para o menu responsivo
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('.main-nav ul');
-
-    if (menuToggle && menu) {
-        menuToggle.addEventListener('click', function() {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            menu.classList.toggle('show');
-        });
-    }
-});

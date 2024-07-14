@@ -1,7 +1,7 @@
 :root {
     --color-bg: #F0F8FF; /* AliceBlue */
     --color-primary: #007BFF; /* Azul */
-    --color-secondary: #6C757D; /* Cinza */
+    --color-secondary: #0964b4; /* Cinza */
     --color-accent: #28A745; /* Verde */
     --color-accent-dark: #218838; /* Verde Escuro */
     --color-text: #2F4F4F; /* DarkSlateGray */
@@ -22,61 +22,8 @@ body {
     color: var(--color-text);
 }
 
-.main-nav {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    padding: 10px 20px;
-    text-align: center;
-    position: relative;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-.menu-toggle {
-    display: none;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    position: absolute;
-    right: 20px;
-    top: 10px;
-}
-
-.menu-toggle:hover {
-    background-color: var(--color-accent-dark);
-}
-
-.main-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.main-nav li {
-    margin: 0 10px;
-}
-
-.main-nav a {
-    color: var(--color-white);
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-}
-
-.main-nav a:hover {
-    background-color: var(--color-accent-dark);
-    border-radius: 4px;
-}
-
 header, footer {
-    background-color: var(--color-primary);
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
     color: var(--color-white);
     padding: 20px;
     text-align: center;
@@ -113,6 +60,7 @@ footer a:hover {
     width: 100%;
     height: auto;
     margin-bottom: 20px;
+    border-radius: 4px;
 }
 
 .small-image {
@@ -128,6 +76,72 @@ footer a:hover {
     height: auto;
     display: block;
     margin: 0 auto 20px;
+}
+
+.main-nav {
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    padding: 10px 20px;
+    text-align: center;
+    position: relative;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.menu-toggle {
+    display: none;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.menu-toggle:hover {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    border-radius: 4px;
+}
+
+.main-nav ul {
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 4px;
+}
+
+.main-nav li {
+    margin: 0 10px;
+}
+
+.main-nav a {
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.main-nav a:hover {
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    border-radius: 4px;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: justify; /* Justifica o texto */
 }
 
 main {
@@ -148,18 +162,7 @@ p {
     text-align: justify;
 }
 
-.container {
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 800px;
-    background-color: var(--color-white);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-   
-    text-align: justify; /* Justifica o texto */
-}
-
-/* Estilos para formularios */
+/* Estilos para os Formulários */
 .form-container {
     max-width: 600px;
     margin: 0 auto;
@@ -202,7 +205,7 @@ p {
     background-color: var(--color-accent-dark);
 }
 
-/* Estilos para os resultados */
+/* Estilos para os Resultados */
 .result-container {
     max-width: 600px;
     margin: 20px auto;
@@ -217,8 +220,7 @@ p {
     margin: 0 0 10px;
 }
 
-
-
+/* Estilos Responsivos */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
