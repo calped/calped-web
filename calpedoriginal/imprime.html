@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Aporte calórico</title>
+ 
+<!--Arquivo javascript externo-->	
+<script language="JavaScript" src="js/imprimeaporte.js"></script>
+    
+
+</head>
+<body>
+<div id="print" class="conteudo">
+<br>
+<h2>calped.com.br</h2> 
+<br>
+<p>Hospital: ________________________________________________________</p>
+<p>Nome do paciente: ________________________________________________</p>
+<p>Registro: ______________________________Leito:_____________________</p>
+<br><br>
+    
+<label class="control-label" >Prescrição da glicose:</label> 
+<p>TH: <strong id="idCampoTaxaHidrica" ></strong> ml/kg/dia; VIG: <strong id="idCampoVIG" ></strong> mg/kg/min; Concentração: <strong id="idCampoACR"></strong> %</p>
+<p><strong id="idCampoApresentacaoSolucaoA" ></strong>% ---<strong id="idCampoVolumeSolucaoA" ></strong> ml</p>
+<p><strong id="idCampoApresentacaoSolucaoB" ></strong>% --- <strong id="idCampoVolumeSolucaoB" ></strong> ml</p>
+<br>
+<label class="control-label" >Prescrição dos eletrólitos:</label>   
+<p>(<strong id="idCampoSodio" ></strong>) NaCl: <strong id="idCampoApresentacaoNaCl" ></strong> % -----<strong id="idCampoVolumeNaCl" ></strong> ml</p>
+<p>(<strong id="idCampoPotassio" ></strong>) KCl: <strong id="idCampoApresentacaoKCl" ></strong> % -----<strong id="idCampoVolumeKCl" ></strong> ml</p>
+<p>(<strong id="idCampoCalcio" ></strong>) Cálcio: <strong id="idCampoApresentacaoCalcio" ></strong> % -----<strong id="idCampoVolumeCalcio" ></strong> ml</p>
+<p>(<strong id="idCampoMagnesio" ></strong>) Sulfato de Magnésio: <strong id="idCampoApresentacaoMagnesio" ></strong>% -----<strong id="idCampoVolumeMagnesio" ></strong> ml</p>
+<br>
+<p>Osmolaridade: <strong id="idCampoOsmolaridade"></strong> mOsm/l</p>
+<p>Volume total: <strong id="idCampoVolumeTotal"></strong> ml</p>
+<p>Velocidade: <strong id="idCampoVelocidade"></strong> ml/h</p>   
+
+</div>
+    
+<style type="text/css">
+  .botao{
+        font-size:15px;
+        font-family:Verdana,Helvetica;
+        font-weight:bold;
+        color:white;
+        background:#638cb5;
+        border:2px;
+        width:100px;
+        height:30px;
+       }
+</style>
+<div align="left">
+<!--  <form name="form1" action="http://br.yahoo.com/" target="_blank" method="post">-->
+<!--    <input type="text" name="prova"><br><br>-->
+    <input type="submit" value="Imprimir" class="botao" onclick="cont();">
+<!--  </form>-->
+</div>
+    
+    
+
+<!--<input type="button" onclick="cont();" value="Imprimir">-->
+   
+</body>
+</html>

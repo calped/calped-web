@@ -1,0 +1,370 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>Aporte calórico</title>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/theme.css" rel="stylesheet">
+<script src="js/ie-emulation-modes-warning.js"></script>
+
+<!--Arquivo javascript externo-->	
+<script language="JavaScript" src="js/calculaAporteBeta.js"></script>
+<script language="JavaScript" src="js/validacaracterAporteBeta.js"></script> 
+
+</head>
+
+<body role="document">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="calped.com.br">CalPed</a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+<li class="active">
+<a href="calped.com.br/calpedoriginal/aportebeta.html">Aporte calórico</a>
+</li>
+<li>
+<a href="calped.com.br/about.html">Sobre</a>
+</li>
+<li>
+<a href="calped.com.br/contact.html">Contato</a>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Calculadoras <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li>
+<a href="calped.com.br/calculadora.html">Calculadoras</a>
+</li>
+	
+<li role="separator" class="divider"></li>
+<li class="dropdown-header">CalPed</li>
+<li>
+<a href="calped.com.br/about.html">Sobre</a>
+</li>
+<li>
+<a href="calped.com.br/contact.html">Contato</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!--/.nav-collapse -->
+</div>
+</nav>
+<div class="container theme-showcase" role="main">
+<!-- Main jumbotron for a primary marketing message or call to action
+-->
+<div class="jumbotron">
+<h2>CalPed</h2>
+<p>Calculadora Pediátrica</p>
+</div>
+
+
+
+<ul class="nav nav-pills" role="tablist"></ul>
+
+<div class="dropdown theme-dropdown clearfix">
+<a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+
+</div>
+
+
+<ul class="nav nav-pills" role="tablist"></ul>
+			
+			
+			
+
+<div class="page-header">
+<h3>Aporte calórico - Versão 2.1</h3>
+</div>
+<div class="row">
+<div class="col-sm-5">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">Aporte calórico - variáveis</h3>
+</div>
+<div class="panel-body">
+<!--formulario-->
+<form  name ="form" id="idForm"  action="imprime.html" method="get">
+<!--campo de textos	-->
+<div class="form-group">
+<label class="control-label"  for="CampoPeso">Peso (kg)</label>
+<input class="form-control" name="CampoPeso" id="idCampoPeso" value="2" placeholder="texto" type="txt" onBlur="javascript:NumericCampoPeso()">
+<label class="control-label" for="CampoTaxaHidrica">Taxa hídrica (ml/kg/dia)</label>
+<input class="form-control" name="CampoTaxaHidrica"id="idCampoTaxaHidrica" value="100" placeholder="texto" type="txt" onBlur="javascript:NumericCampoTaxaHidrica()">
+<label class="control-label" for="CampoVIG">VIG (mg/kg/min)</label>
+<input class="form-control" name="CampoVIG"id="idCampoVIG" value="5" placeholder="mg/kg/min" type="txt" onBlur="javascript:NumericCampoVIG()">	
+<label class="control-label" for="CampoSodio">Sódio (mEq/kg/dia)</label>
+<input class="form-control" name="CampoSodio"id="idCampoSodio" value="3" placeholder="mEq/kg/dia" type="txt" onBlur="javascript:NumericCampoSodio()">
+<label class="control-label" for="CampoPotassio">Potássio (mEq/kg/dia)</label>
+<input class="form-control" name="CampoPotassio"id="idCampoPotassio" value="1.3" placeholder="mEq/kg/dia" type="txt" onBlur="javascript:NumericCampoPotassio()">
+<label class="control-label" for="CampoCalcio">Cálcio (mg/kg/dia)</label>
+<input class="form-control" name="CampoCalcio"id="idCampoCalcio" value="376" placeholder="mg/kg/dia" type="txt" onBlur="javascript:NumericCampoCalcio()">
+<label class="control-label" for="CampoMagnesio">Magnésio (mEq/kg/dia)</label>
+<input class="form-control" name="CampoMagnesio"id="idCampoMagnesio" value="0.5" placeholder="mEq/kg/dia" type="txt" onBlur="javascript:NumericCampoMagnesio()">		
+
+<br><br>
+<label class="control-label" >Apresentações dos eletrólitos:</label>
+<br><br>
+	
+<!--select -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectNaCl">NaCl</label>
+<div class="col-md-5">
+<select id="idSelectNaCl" name="selectNaCl" class="form-control" onChange="calcula(form)">
+<!--<option value="0.9">0.9%</option>-->
+<option value="10" selected>10%</option>
+<option value="17.5">17.5%</option>
+<option value="20">20%</option>
+</select>
+</div>
+</div>
+<br><br>
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectKCl">KCl</label>
+<div class="col-md-5">
+<select id="idSelectKCl" name="selectKCl" class="form-control" onChange="calcula(form)">
+<option value="10" selected>10%</option>
+<option value="15">15%</option>
+<option value="19.1">19.1%</option>
+<option value="20">20%</option>
+</select>
+</div>
+</div>
+<br><br>
+	
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectCalcio">Cálcio</label>
+<div class="col-md-5">
+<select id="idSelectCalcio" name="selectCalcio" class="form-control" onChange="calcula(form)">
+<option value="Gluconato" selected> Gluconato de Cácio 10%</option>
+<option value="Cloreto">Cloreto de Cálcio 10%</option>
+</select>
+</div>
+</div>
+	
+<br><br>	
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectMgSO4">MgSO4</label>
+<div class="col-md-5">
+<select id="idSelectMgSO4" name="selectMgSO4" class="form-control" onChange="calcula(form)">
+<option value="10" selected>10%</option>
+<option value="20">20%</option>
+<option value="50">50%</option>
+</select>
+</div>
+</div>	
+</div>
+<br><br>
+	
+<!--botões-->
+<div class="form-group">
+<!--<button type="button" class="btn btn-default" >Default</button>-->
+<button type="button" class="btn btn-primary"onclick="calcula(form)">Calcular</button>
+<!--	<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-warning">Warning</button>-->
+<button type="reset" class="btn btn-danger" type = "reset">Limpar</button>
+    
+  
+<!--<button type="button" class="btn btn-link">Link</button>-->
+</div>
+
+ 
+
+  
+ 
+<div class="form-group">	
+<label class="control-label" for="CampoCaloriasTotais">Calorias</label>
+<input class="form-control" name="CampoCaloriasTotais"id="idCampoCaloriasTotais" value="" placeholder="kCal" type="txt">
+</div>
+<div class="form-group">	
+<label class="control-label" for="CampoACR">Aporte calórico em:</label>
+<input class="form-control" name="CampoACR"id="idCampoACR" value="" placeholder="%" type="txt">
+</div>  
+   
+<br><br>    
+
+
+</div>
+</div>
+</div>
+
+<div class="col-sm-5">
+<div class="panel panel-primary" id="idpanel" class="conteudo">
+<div class="panel-heading">
+<h3 class="panel-title">Prescrição</h3>
+</div>
+
+<br><br>
+<label class="control-label" >&nbsp &nbsp Prescrição da glicose:</label>
+<br><br>   
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectSolucaoA">Primeira solução:</label>
+<div class="col-md-5">
+<select id="idselectSolucaoA" name="selectSolucaoA" class="form-control" onChange="calcula(form)" hidden>
+<option value="0" >AD</option>
+<option value="5"selected>SG 5%</option>
+</select>
+</div>
+</div>
+
+ <br><br> 
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectSolucaoB">Segunda solução:</label>
+<div class="col-md-5">
+<select id="idselectSolucaoB" name="selectSolucaoB" class="form-control" onChange="calcula(form)">
+<!--<option value="5" >SG 5%</option>-->
+<option value="10">SG 10%</option>
+<option value="25">SG 25%</option>
+<option value="50"selected>SG 50%</option>    
+</select>
+</div>
+</div>
+    
+<br><br>     
+<div class="panel-body">
+<div class="form-group">
+<label class="control-label" for="CampoVolumeSolucaoA">Primeira solução:<div id="messageSoluçãoA"></div></label>
+<input class="form-control" name="CampoVolumeSolucaoA"id="idCampoVolumeSolucaoA" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoSolucaoA"id="idCampoApresentacaoSolucaoA" hidden>
+</div>
+	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeSolucaoB">Segunda solução:<div id="messageSoluçãoB"></div></label>
+<input class="form-control" name="CampoVolumeSolucaoB"id="idCampoVolumeSolucaoB" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoSolucaoB"id="idCampoApresentacaoSolucaoB" hidden>
+</div>    
+<br><br>
+<label class="control-label" id="div1">Prescrição dos eletrólitos:</label>
+<br><br>  
+<div class="panel-body">
+<div class="form-group">
+<label class="control-label" for="CampoVolumeNaCl" >Volume do NaCl<div id="messageNaCl"  name="namemessageNaCl"></div></label>
+<input class="form-control" name="CampoVolumeNaCl"id="idCampoVolumeNaCl" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoNaCl"id="idCampoApresentacaoNaCl" hidden>
+</div>
+	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeKCl">Volume do KCl<div id="messageKCl"></div></label>
+<input class="form-control" name="CampoVolumeKCl"id="idCampoVolumeKCl" value="" placeholder="ml" type="txt">
+   <input  name="CampoApresentacaoKCl"id="idCampoApresentacaoKCl" hidden>
+</div>
+	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeCalcio">Volume do Calcio<div id="messageCalcio"></div></label>
+<input class="form-control" name="CampoVolumeCalcio"id="idCampoVolumeCalcio" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoCalcio"id="idCampoApresentacaoCalcio" hidden>
+</div>
+	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeMagnesio">Volume do magnésio<div id="messageMgSO4"></div></label>
+<input class="form-control" name="CampoVolumeMagnesio"id="idCampoVolumeMagnesio" value="" placeholder="ml" type="txt">
+<input  name="CampoApresentacaoMagnesio"id="idCampoApresentacaoMagnesio" hidden>
+</div>
+    
+<br><br>
+    
+<div class="form-group">	
+<label class="control-label" for="CampoOsmolaridade">Osmolaridade</label>
+<input class="form-control" name="CampoOsmolaridade"id="idCampoOsmolaridade" value="" placeholder="Osm" type="txt">
+</div>	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeTotal">Volume total</label>
+<input class="form-control" name="CampoVolumeTotal"id="idCampoVolumeTotal" value="" placeholder="ml" type="txt">
+</div>
+
+<div class="form-group1" >	
+<label class="control-label" for="CampoVelocidade">Velocidade</label>
+<input class="form-control" name="CampoVelocidade"id="idCampoVelocidade" value="" placeholder="ml/h" type="txt">
+</div>	
+
+
+   <br><br> 
+<!--<label><input type="" name="ok" value="ok" /></label>   -->
+ <button type="submit" name="ok" class="btn btn-info">Imprimir prescrição</button>   
+ 
+    
+    
+</div>
+</div>
+</div><!-- /.col-sm-4 -->
+</form>
+</div>
+            
+	
+ <div class="row">
+        <div class="col-sm-5">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">AVISO:</h3>
+            </div>
+            <div class="panel-body">
+              Todos os dados mostrados devem ser confirmados. O autor do site tenta mostrar os cálculos com o máximo de precisão, porém eles são apenas sugestões que não podem substituir a conduta médica. calped.com.br, nem qualquer outra parte envolvida na preparação ou publicação deste site, poderão ser resposabilizados por qualquer tipo de dano causado, inerente ao ato médico dos usuários deste site.
+            </div>
+          </div>
+
+        </div><!-- /.col-sm-5 -->
+        <div class="col-sm-5">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Direitos autorais</h3>
+            </div>
+            <div class="panel-body">
+              
+	<font  size="-1">  
+
+      <script language="JavaScript" src="js/copyright.js"></script>
+
+      Criação: Segunda, 2 de janeiro de 2017.<BR>
+
+      Última modificação: 
+
+      <script language="javascript" src="js/mod.js"></script>
+            </div>
+          </div>
+
+        </div><!-- /.col-sm-5 -->
+        <div class="col-sm-4">
+
+        </div><!-- /.col-sm-4 -->
+      </div>	
+   
+            
+                   <div class="col-sm-4">
+ 
+        </div><!-- /.col-sm-4 -->
+            
+
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/docs.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+    
+
+</body>
+</html>
