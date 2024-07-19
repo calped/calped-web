@@ -1,0 +1,323 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head
+content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>Hidratação venosa</title>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/theme.css" rel="stylesheet">
+
+<script src="js/ie-emulation-modes-warning.js"></script>
+
+<script language="JavaScript" src="js/calculaHVbeta.js"></script>
+<script language="JavaScript" src="js/validacaracterHV.js"></script> 
+
+
+
+</head>
+	
+	
+
+<body role="document">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../">CalPed</a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+<li class="active">
+<a href="../calpedoriginal/hidratacaobeta.html">Hidratação venosa</a>
+</li>
+<li>
+  <a href="../about.html">Sobre</a>
+  </li>
+  <li>
+  <a href="../contact.html">Contato</a>
+  </li>
+  <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Calculadoras <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+  <li>
+  <a href="../calculadora.html">Calculadoras</a>
+  </li>
+<li role="separator" class="divider"></li>
+<li class="dropdown-header">CalPed</li>
+<li>
+<a href="../about.html">Sobre</a>
+</li>
+<li>
+<a href="../contact.html">Contato</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container theme-showcase" role="main">
+<!-- Main jumbotron for a primary marketing message or call to action
+-->
+<div class="jumbotron">
+<h2>CalPed</h2>
+<p>Calculadora Pediátrica</p>
+</div>
+
+
+
+<ul class="nav nav-pills" role="tablist"></ul>
+
+<div class="dropdown theme-dropdown clearfix">
+<a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+
+</div>
+
+
+<ul class="nav nav-pills" role="tablist"></ul>
+			
+			
+			
+
+<div class="page-header">
+<h2>Hidratação Venosa de Manutenção - Versão 1.0</h2>
+</div>
+<div class="row">
+<div class="col-sm-5">
+<!--<div class="panel panel-default">-->
+<div class="panel panel-primary">	
+<div class="panel-heading">
+<h3 class="panel-title">Hidratação venosa - Volume para 24h</h3>
+</div>
+<div class="panel-body">
+<!--formulario-->
+<form  name ="formHV" id="idformHV" action="" method="get">
+	
+<!--campo de textos	-->
+<div class="form-group">
+<label class="control-label"  for="CampoPeso">Peso</label>
+<input class="form-control" name="CampoPeso" id="idCampoPeso" value="10" placeholder="texto" type="txt" onBlur="javascript:NumericCampoPri()">
+	
+
+</div>
+	<div><h4>Necessidades diárias:</h4></div>
+<div class="form-group">
+<label class="control-label" for="CampoCalorias">Calorias (kcal/kg/dia)</label>
+<input class="form-control" name="CampoCalorias"id="idCampoCalorias" value="" placeholder="kcal/kg/dia" type="txt" disabled>
+</div>
+	
+<div class="form-group">
+<label class="control-label" for="CampoAgua">Água (ml/kg/dia)</label>
+<input class="form-control" name="CampoAgua"id="idCampoAgua" value="" placeholder="ml/kg/dia" type="txt" disabled>
+</div>
+<div class="form-group">
+<label class="control-label" for="CampoNecessidadeGlicose">Glicose (g/kg/dia)</label>
+<input class="form-control" name="CampoNecessidadeGlicose"id="idCampoNecessidadeGlicose" value="" placeholder="g/kg/dia" type="txt" disabled>
+</div>	
+<div class="form-group">
+<label class="control-label" for="CampoNecessidadeSodio">Sódio (mEq/kg/dia)</label>
+<input class="form-control" name="CampoNecessidadeSodio"id="idCampoNecessidadeSodio" value="" placeholder="mEq/kg/dia" type="txt" disabled>
+</div>
+	<div class="form-group">
+<label class="control-label" for="CampoNecessidadePotassio">Potásio (mEq/kg/dia)</label>
+<input class="form-control" name="CampoNecessidadePotassio"id="idCampoNecessidadePotassio" value="" placeholder="mEq/kg/dia" type="txt" disabled>
+</div>	
+<!--botões-->	
+<button type="button" class="btn btn-primary"onclick="calcula(formHV)">Calcular</button>
+<button type="reset" class="btn btn-danger" type = "reset">Limpar</button>
+<div class="form-group">		
+<label class="control-label" for="CampoGlicose10">Glicose 10%</label>
+<input class="form-control" name="CampoGlicose10"id="idCampoGlicose10" value="" placeholder="Glicose 5%" type="txt" disabled>
+</div>
+	
+<!--select -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectNaCl">NaCl</label>
+<div class="col-md-5">
+<select id="idSelectNaCl" name="selectNaCl" class="form-control" onChange="calcula(formHV)" disabled>
+<option value="0.9"selected>0.9%</option>
+<option value="10" >10%</option>
+<option value="17.5">17.5%</option>
+<option value="20">20%</option>
+</select>
+</div>
+</div>
+<br><br>
+<!--campo de textos	-->
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeNaCl">NaCl</label>
+<input class="form-control" name="CampoVolumeNaCl"id="idCampoVolumeNaCl" value="" placeholder="Volume NaCl" type="txt" disabled>
+</div>
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectNaCl">KCl</label>
+<div class="col-md-5">
+<select id="idSelectKCl" name="selectKCl" class="form-control" onChange="calcula(formHV)" disabled>
+<option value="10" >10%</option>
+<option value="15">15%</option>
+<option value="19.1"selected>19.1%</option>
+<option value="20">20%</option>
+</select>
+</div>
+</div>
+<br><br>	
+<div class="form-group">
+	
+<label class="control-label" for="CampoVolumeKCl">KCl</label>
+<input class="form-control" name="CampoVolumeKCl"id="idCampoVolumeKCl" value="" placeholder="Volume KCl" type="txt" disabled >
+		
+</div>
+<div class="form-group">
+<label class="control-label" for="CampoVolumeTotal">Volume total</label>
+<input class="form-control" name="CampoVolumeTotal"id="idCampoVolumeTotal" value="" placeholder="ml" type="txt" disabled>
+</div>
+<div class="form-group">
+<label class="control-label" for="CampoVelocidade">Velocidade</label>
+<input class="form-control" name="CampoVelocidade"id="idCampoVelocidade" value="" placeholder="ml/h ou microgts/min" type="txt" disabled>	
+</div>
+</div>
+</div>
+</div>
+<!--segundo painel-->	
+<div class="col-sm-5">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">Hidratação venosa - Prescrição por etapas</h3>
+</div>
+<div class="panel-body">
+	
+<div class="form-group">
+<label class="control-label" for="CampoEtapas">Etapas em 24h</label>
+<input class="form-control" name="CampoEtapas"id="idCampoEtapas" value="" placeholder="número de etapas" type="txt">	
+</div>
+	
+<div class="form-group">
+<label class="control-label" for="CampoEtapasGlicose10">Glicose 10%</label>
+<input class="form-control" name="CampoEtapasGlicose10"id="idCampoEtapasGlicose10" value="" placeholder="Etapas de solução glicosada a 5%" type="txt">	
+</div>	
+	
+<div class="form-group">
+<label class="control-label" for="CampoEtapasNaCl">NaCl<div id="messageNaCl"></div></label>
+<input class="form-control" name="CampoEtapasNaCl"id="idCampoEtapasNaCl" value="" placeholder="Etapas de solução de NaCl" type="txt">	
+</div>
+	
+<div class="form-group">
+<label class="control-label" for="CampoEtapasKCl">KCl<div id="messageKCl"></div></label>
+<input class="form-control" name="CampoEtapasKCl"id="idCampoEtapasNaCl" value="" placeholder="Etapas de solução de KCl" type="txt">	
+</div>	
+	
+	<div class="form-group">
+<label class="control-label" for="CampoEtapasVolume">Volume por etapa</label>
+<input class="form-control" name="CampoEtapasVolume"id="idCampoEtapasVolume" value="" placeholder="Volume total de cada etapa" type="txt">	
+</div>
+	
+<div class="form-group">
+<label class="control-label" for="CampoEtapasVelocidade">Velocidade ml/min ou microgts/min</label>
+<input class="form-control" name="CampoEtapasVelocidade"id="idCampoEtapasVelocidade" value="" placeholder="Velocidade em ml/h ou microgts/min" type="txt">	
+</div>
+	
+<div class="form-group">
+<label class="control-label" for="CampoEtapasGotas">Velocidade em gotas/min</label>
+<input class="form-control" name="CampoEtapasGotas"id="idCampoEtapasGotas" value="" placeholder="Velocidade em gotas/min" type="txt">	
+</div>	
+				
+</div>
+</div>
+</div><!-- /.col-sm-4 -->
+	
+		
+</form>
+<!--painel de anuncios-->	
+<div class="col-sm-5">
+<div class="panel panel-info">
+<div class="panel-heading">
+<h3 class="panel-title">Anúncios</h3>
+</div>
+<div class="panel-body">
+	
+<!-- primeiroanucio -->
+<a href="../about.html">CLIQUE AQUI PARA CONTRIBUIR COM O PROJETO</a>
+
+	
+</div>
+</div>
+</div>
+	
+	
+</div>
+
+
+
+ <div class="row">
+        <div class="col-sm-5">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">AVISO:</h3>
+            </div>
+            <div class="panel-body">
+              Todos os dados mostrados devem ser confirmados. O autor do site tenta mostrar os cálculos com o máximo de precisão, porém eles são apenas sugestões que não podem substituir a conduta médica. calped.com.br, nem qualquer outra parte envolvida na preparação ou publicação deste site, poderão ser resposabilizados por qualquer tipo de dano causado, inerente ao ato médico dos usuários deste site.
+            </div>
+          </div>
+ <!--         <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Panel title</h3>
+            </div>
+            <div class="panel-body">
+              Panel content
+            </div>
+          </div>-->
+        </div><!-- /.col-sm-5 -->
+        <div class="col-sm-5">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Direitos autorais</h3>
+            </div>
+            <div class="panel-body">
+              
+	<font  size="-1">  
+
+      <script language="JavaScript" src="js/copyright.js"></script>
+
+      Criação: Terça, 29 de dezembro de 2015.<BR>
+
+      Última modificação: 
+
+      <script language="javascript" src="js/mod.js"></script>
+	
+            </div>
+          </div>
+
+        </div><!-- /.col-sm-5 -->
+        <div class="col-sm-4">
+
+        </div><!-- /.col-sm-4 -->
+      </div>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/docs.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+    
+
+</body>
+</html>
