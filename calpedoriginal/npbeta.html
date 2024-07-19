@@ -1,0 +1,674 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head
+content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+<title>Nutrição Parenteral</title>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/theme.css" rel="stylesheet">
+
+<script src="js/ie-emulation-modes-warning.js"></script>
+
+<script language="JavaScript" src="js/calculaNpBeta.js"></script>
+<script language="JavaScript" src="js/validacaracterNpBeta.js"></script> 
+
+
+</head>
+	
+
+<body role="document">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../">CalPed</a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+<li class="active">
+<a href="../calpedoriginal/npbeta.html">NPP Neonatal</a>
+</li>
+<li>
+  <a href="../about.html">Sobre</a>
+  </li>
+  <li>
+  <a href="../contact.html">Contato</a>
+  </li>
+  <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Calculadoras <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+  <li>
+  <a href="../calculadora.html">Calculadoras</a>
+  </li>	
+<li role="separator" class="divider"></li>
+<li class="dropdown-header">CalPed</li>
+<li>
+<a href="../about.html">Sobre</a>
+</li>
+<li>
+<a href="../contact.html">Contato</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container theme-showcase" role="main">
+<!-- Main jumbotron for a primary marketing message or call to action
+-->
+<div class="jumbotron">
+<h2>CalPed</h2>
+<p>Calculadora Pediátrica</p>
+</div>
+
+
+
+<ul class="nav nav-pills" role="tablist"></ul>
+
+<div class="dropdown theme-dropdown clearfix">
+<a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+
+</div>
+
+
+<ul class="nav nav-pills" role="tablist"></ul>
+			
+			
+			
+
+<div class="page-header">
+<h3>Nutrição Parenteral em Neonatologia - Versão 2.0</h3>
+</div>
+<div class="row">
+<div class="col-sm-5">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">Nutrição Parenteral - variáveis</h3>
+</div>
+
+              <div class="panel-body">
+              
+                  <!--formulario-->
+<form  name ="form" id="idForm"  action="imprimenp.html" method="get">
+    
+   
+<label class="control-label"  for="CampoPeso">Peso (kg)</label>
+<input class="form-control" name="CampoPeso" id="idCampoPeso" value="2" placeholder="texto" type="txt" onBlur="javascript:NumericCampoPeso()">
+<label class="control-label" for="CampoTaxaHidricaTotal">Taxa hídrica total (ml/kg/dia)</label>
+<input class="form-control" name="CampoTaxaHidricaTotal"id="idCampoTaxaHidricaTotal" value="100" placeholder="texto" type="txt" onBlur="javascript:NumericCampoTaxaHidricaTotal()">
+<label class="control-label" for="CampoVIG">VIG ou TIG (mg/kg/min)</label>
+<input class="form-control" name="CampoVIG"id="idCampoVIG" value="5" placeholder="mg/kg/min" type="txt" onBlur="javascript:NumericCampoVIG()">
+
+<br>
+<label class="control-label" id="div1">Descontos da taxa hídrica:</label> 
+<br>
+<label class="control-label" for="CampoDieta">Dieta</label>
+<input class="form-control" name="CampoDieta"id="idCampoDieta" value="0" placeholder="ml" type="txt" onBlur="javascript:NumericCampoDieta()">
+    
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectDieta">Intervalo:</label>
+<div class="col-md-5">
+<select id="idselectDieta" name="selectDieta" class="form-control" onChange="calcula(form)">
+<option value="12">12x</option>
+<option value="8"selected>8x</option>
+<option value="4">4x</option>    
+</select>
+</div>
+</div> 
+<br><br>
+    
+<label class="control-label" for="CampoAntimicrobiano1">Antimicrobiano 1</label>
+<input class="form-control" name="CampoAntimicrobiano1"id="idCampoAntimicrobiano1" value="0" placeholder="ml" type="txt" onBlur="javascript:NumericCampoAntimicrobiano1()">
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectAntimicrobiano1">Intervalo:</label>
+<div class="col-md-5">
+<select id="idselectAntimicrobiano1" name="selectAntimicrobiano1" class="form-control" onChange="calcula(form)">
+<option value="4">4x</option>
+<option value="3">3x</option>
+<option value="2"selected>2x</option> 
+<option value="1">1x</option>       
+</select>
+</div>
+</div> 
+<br><br>
+    
+<label class="control-label" for="CampoAntimicrobiano2">Antimicrobiano 2</label>
+<input class="form-control" name="CampoAntimicrobiano2"id="idCampoAntimicrobiano2" value="0" placeholder="ml" type="txt" onBlur="javascript:NumericCampoAntimicrobiano2()">
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectAntimicrobiano2">Intervalo:</label>
+<div class="col-md-5">
+<select id="idselectAntimicrobiano2" name="selectAntimicrobiano2" class="form-control" onChange="calcula(form)">
+<option value="4">4x</option>
+<option value="3">3x</option>
+<option value="2">2x</option> 
+<option value="1"selected>1x</option>       
+</select>
+</div>
+</div> 
+<br><br>    
+    
+<label class="control-label" for="CampoAntimicrobiano3">Antimicrobiano 3</label>
+<input class="form-control" name="CampoAntimicrobiano3"id="idCampoAntimicrobiano3" value="0" placeholder="ml" type="txt" onBlur="javascript:NumericCampoAntimicrobiano3()">
+    
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectAntimicrobiano3">Intervalo:</label>
+<div class="col-md-5">
+<select id="idselectAntimicrobiano3" name="selectAntimicrobiano3" class="form-control" onChange="calcula(form)">
+<option value="4">4x</option>
+<option value="3">3x</option>
+<option value="2"selected>2x</option> 
+<option value="1">1x</option>       
+</select>
+</div>
+</div> 
+<br><br>     
+    
+<label class="control-label" for="CampoOutrasDrogas1">Outras medicações 1</label>
+<input class="form-control" name="CampoOutrasDrogas1"id="idCampoOutrasDrogas1" value="0" placeholder="ml" type="txt" onBlur="javascript:NumericCampoOutrasDrogas1()">
+<label class="control-label" for="CampoOutrasDrogas2">Outras medicações 2</label>
+<input class="form-control" name="CampoOutrasDrogas2"id="idCampoOutrasDrogas2" value="0" placeholder="ml" type="txt" onBlur="javascript:NumericCampoOutrasDrogas2()"> 
+    
+<br><br> 
+<label class="control-label" for="CampoDescontos">Descontos (ml/kg/dia)</label>
+<input class="form-control" name="CampoDescontos"id="idCampoDescontos" value="0" placeholder="texto" type="txt" onBlur="javascript:NumericCampoDescontos" >
+
+<br><br>    
+<label class="control-label" for="CampoTaxaHidrica">Taxa hídrica com descontos (ml/kg/dia)</label>
+<input class="form-control" name="CampoTaxaHidrica"id="idCampoTaxaHidrica" value="100" placeholder="texto" type="txt" onBlur="javascript:NumericCampoTaxaHidrica()" >
+
+</div>  
+
+</div>
+
+    <div class="panel panel-primary">
+    <div class="panel-heading">
+    <h3 class="panel-title">Nutrição Parenteral - variáveis de nutrientes/eletrólitos</h3>
+    </div>
+    <div class="panel-body">
+    
+<div class="form-group">
+<!--campo de textos	-->
+  <br>   
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectSolucaoA">Primeira solução:</label>
+<div class="col-md-5">
+<select id="idselectSolucaoA" name="selectSolucaoA" class="form-control" onChange="calcula(form)" hidden>
+<option value="0" >AD</option>
+<option value="5"selected>SG 5%</option>
+</select>
+</div>
+</div>
+    
+ <br> <br> 
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectSolucaoB">Segunda solução:</label>
+<div class="col-md-5">
+<select id="idselectSolucaoB" name="selectSolucaoB" class="form-control" onChange="calcula(form)">
+<!--<option value="5" >SG 5%</option>-->
+<option value="10">SG 10%</option>
+<option value="25">SG 25%</option>
+<option value="50"selected>SG 50%</option>    
+</select>
+</div>
+</div> 
+    <br><br> 
+<label class="control-label" for="CampoAminoacidos">Aminoácidos (g/kg/dia)</label>
+<input class="form-control" name="CampoAminoacidos"id="idCampoAminoacidos" value="1" placeholder="g/kg/dia" type="txt" onBlur="javascript:NumericCampoAminoacidos()">
+    
+    <br>    
+ 
+    <!--select -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectAminoacidos">Aminoácidos</label>
+<div class="col-md-5">
+<select id="idSelectAminoacidos" name="selectAminoacidos" class="form-control" onChange="calcula(form)">
+    <option value="0">Aminoped 10%</option>
+    <option value="1" >Aminosteril 10%</option>
+    <option value="2">Aminosteril Hepa 8%</option>
+    <option value="3">Aminosteril Nefro 6,5%</option>
+    <option value="4" selected>Aminoplasmal 10%</option>
+    <option value="5">Hepatoamino 4%</option>
+    <option value="6">Nefroamino 6,9%</option>	
+    <option value="7">Nephrotect 10%</option>
+</select>
+</div>
+</div>
+    <br>
+    
+<label class="control-label" for="CampoLipidios">Lipídios (g/kg/dia)</label>
+<input class="form-control" name="CampoLipidios"id="idCampoLipidios" value="1" placeholder="g/kg/dia" type="txt" onBlur="javascript:NumericCampoLipidios()">    
+ <br>
+    
+    <!--select -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectLipidios">Lipídios</label>
+<div class="col-md-5">
+<select id="idSelectLipidios" name="selectLipidios" class="form-control" onChange="calcula(form)">
+    <option value="0">Lipofundin MCT/LCT 10%</option>
+    <option value="1" >Lipofundin MCT/LCT 20%</option>
+    <option value="2">Lipovenos PLR 10%</option>
+    <option value="3">Lipovenos MCT 10%</option>
+    <option value="4" selected>Lipovenos MCT 20%</option>
+</select>
+</div>
+</div> 
+    <br>
+<label class="control-label" for="CampoSodio">Sódio (mEq/kg/dia)</label>
+<input class="form-control" name="CampoSodio"id="idCampoSodio" value="3" placeholder="mEq/kg/dia" type="txt" onBlur="javascript:NumericCampoSodio()">
+    
+    <br>
+	
+<!--select -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectNaCl">NaCl</label>
+<div class="col-md-5">
+<select id="idSelectNaCl" name="selectNaCl" class="form-control" onChange="calcula(form)">
+<!--<option value="0.9">0.9%</option>-->
+<option value="10" selected>10%</option>
+<option value="17.5">17.5%</option>
+<option value="20">20%</option>
+</select>
+</div>
+</div>
+  <br>  
+<label class="control-label" for="CampoPotassio">Potássio (mEq/kg/dia)</label>
+<input class="form-control" name="CampoPotassio"id="idCampoPotassio" value="1.3" placeholder="mEq/kg/dia" type="txt" onBlur="javascript:NumericCampoPotassio()">
+    
+    <br>
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectKCl">KCl</label>
+<div class="col-md-5">
+<select id="idSelectKCl" name="selectKCl" class="form-control" onChange="calcula(form)">
+<option value="10" selected>10%</option>
+<option value="15">15%</option>
+<option value="19.1">19.1%</option>
+<option value="20">20%</option>
+</select>
+</div>
+</div>
+    <br>
+<label class="control-label" for="CampoCalcio">Cálcio (mg/kg/dia)</label>
+<input class="form-control" name="CampoCalcio"id="idCampoCalcio" value="376" placeholder="mg/kg/dia" type="txt" onBlur="javascript:NumericCampoCalcio()">
+    
+    <br>
+	
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectCalcio">Cálcio</label>
+<div class="col-md-5">
+<select id="idSelectCalcio" name="selectCalcio" class="form-control" onChange="calcula(form)">
+<option value="Gluconato" selected> Gluconato de Cácio 10%</option>
+<option value="Cloreto">Cloreto de Cálcio 10%</option>
+</select>
+</div>
+</div>
+ <br>   
+<label class="control-label" for="CampoMagnesio">Magnésio (mEq/kg/dia)</label>
+<input class="form-control" name="CampoMagnesio"id="idCampoMagnesio" value="0.5" placeholder="mEq/kg/dia" type="txt" onBlur="javascript:NumericCampoMagnesio()">
+    
+    <br>	
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectMgSO4">MgSO4</label>
+<div class="col-md-5">
+<select id="idSelectMgSO4" name="selectMgSO4" class="form-control" onChange="calcula(form)">
+<option value="10" selected>10%</option>
+<option value="20">20%</option>
+<option value="50">50%</option>
+</select>
+</div>
+</div>
+   <br> 
+<label class="control-label" for="CampoFosforo">Fósforo (mEq/kg/dia)</label>
+<input class="form-control" name="CampoFosforo"id="idCampoFosforo" value="0.5" placeholder="mEq/kg/dia" type="txt" onBlur="javascript:NumericCampoFosforo()"> 
+     <br>	
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectFosforo">Fósforo</label>
+<div class="col-md-5">
+<select id="idSelectFosforo" name="selectFosforo" class="form-control" onChange="calcula(form)">
+<option value="0" selected>Fosfato de potássio 2mEq/ml</option>
+<option value="1">Fosfato monoácido de potássio 25%</option>
+<option value="2">Fosfato diácido de potássio 25%</option>
+</select>
+</div>
+</div> 
+    <br>
+<label class="control-label" for="CampoOligoelementos">Oligoelementos</label>
+<input class="form-control" name="CampoOligoelementos"id="idCampoOligoelementos" value="0.2" placeholder="" type="txt" onBlur="javascript:NumericCampoOligoelementos()">
+    
+    <br>
+    <!--select -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectOligoelementos">Oligoelementos</label>
+<div class="col-md-5">
+<select id="idSelectOligoelementos" name="selectOligoelementos" class="form-control" onChange="calcula(form)">
+		<option value="0" selected="">Ped-element - dose: 0,2ml/kg</option>
+		<option value="1">Oliped 4 - dose: 1,0ml/kg</option>
+		<option value="2">Olig-trat-Pediátrico - dose: 0,2ml/kg</option>
+		<option value="3">Politrace 4 - dose: 0,1ml/kg</option>
+		<option value="4">Politrace 5 - dose: 0,1ml/kg</option>
+</select>
+</div>
+</div> 
+   <br> 
+<label class="control-label" for="CampoVitaminas">Vitaminas</label>
+<input class="form-control" name="CampoVitaminas"id="idCampoVitaminas" value="2" placeholder="" type="txt" onBlur="javascript:NumericCampoVitaminas()">
+
+ <br>   
+        <!--select -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="selectVitaminas">Vitaminas</label>
+<div class="col-md-5">
+<select id="idSelectVitaminas" name="selectVitaminas" class="form-control" onChange="calcula(form)">
+		<option value="0">Frutovena</option>
+		<option value="1" selected="">Frutovitam - dose: 2 ml/kg</option>
+		<option value="2">MVI Opoplex Pediatr - dose: 0,5 ml/kg</option>
+		<option value="3">Cerne 12 - dose: 1,0 ml/kg</option>
+</select>
+</div>
+</div> 
+ <br>
+    </div>  
+<br>
+	
+<!--botões-->
+<div class="form-group">
+<!--<button type="button" class="btn btn-default" >Default</button>-->
+<button type="button" class="btn btn-primary"onclick="calcula(form)">Calcular</button>
+
+<button type="reset" class="btn btn-danger" type = "reset">Limpar</button>
+
+</div>
+
+
+
+    </div>
+    </div>
+
+</div>
+ 
+    
+            <div class="col-sm-5">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">Parâmetros:</h3>
+            </div>
+            <div class="panel-body">
+<!--             <label class="control-label" >Parâmetros:</label> -->
+<div class="form-group">	
+<label class="control-label" for="CampoCaloriasTotais">Calorias</label>
+<input class="form-control" name="CampoCaloriasTotais"id="idCampoCaloriasTotais" value="" placeholder="kCal" type="txt" >
+</div>
+    
+        <div class="form-group">	
+<label class="control-label" for="CamporelCNPgN">Relação de calorias não protéicas por g Nitrogênio</label>
+<input class="form-control" name="CamporelCNPgN"id="idCamporelCNPgN" value="" placeholder="1/" type="txt" disabled>
+</div>
+    
+<div class="form-group">	
+<label class="control-label" for="CampoACR">Aporte calórico em:</label>
+<input class="form-control" name="CampoACR"id="idCampoACR" value="" placeholder="%" type="txt" >
+</div> 
+                
+<div class="form-group">	
+<label class="control-label" for="CampoACF">Aporte calórico do volume que sobra:</label>
+<input class="form-control" name="CampoACF"id="idCampoACF" value="" placeholder="%" type="txt" disabled>
+</div> 
+                
+                
+<div class="form-group">	
+<label class="control-label" for="CampoOsmolaridade">Osmolaridade</label>
+<input class="form-control" name="CampoOsmolaridade"id="idCampoOsmolaridade" value="" placeholder="Osm" type="txt" >
+</div>
+    
+<div class="form-group">	
+<label class="control-label" for="CampoTotalPotassio">Total do potássio (KCl + Fósforo)</label>
+<input class="form-control" name="CampoTotalPotassio"id="idCampoTotalPotassio" value="" placeholder="mEq" type="txt" disabled>
+</div>
+    
+<div class="form-group">	
+<label class="control-label" for="CampoTotalDoseSugeridaFosforo">Dose sugerida do Fósforo</label>
+<input class="form-control" name="CampoTotalDoseSugeridaFosforo"id="idCampoDoseSugeridaFosforo" value="Relação da quantidade de Ca
+e P para manter a estabilidade" placeholder="mEq" type="txt" disabled>
+</div>
+                
+ <div class="form-group">	
+<label class="control-label" for="CampoConcentracaoTotalCalcio">Concentração total de cálcio</label>
+<input class="form-control" name="CampoConcentracaoTotalCalcio"id="idCampoConcentracaoTotalCalcio" value="Se >10mEq/L, pode instabilizar a solução" placeholder="mEq" type="txt" disabled>
+</div> 
+                
+  <div class="form-group">	
+<label class="control-label" for="CampoConcentracaoTotalCalcioMagnesio">Concentração total de cálcio e magnésio</label>
+<input class="form-control" name="CampoConcentracaoTotalCalcioMagnesio"id="idCampoConcentracaoTotalCalcioMagnesio" value="Se >16mEq/L, pode instabilizar a solução" placeholder="mEq" type="txt" disabled>
+</div>                
+                
+            </div>
+          </div>
+
+        </div><!-- /.col-sm-4 -->
+    
+    
+    
+ <div class="row">    
+<div class="col-sm-5">
+<div class="panel panel-primary" id="idpanel" class="conteudo">
+<div class="panel-heading">
+<h3 class="panel-title">Prescrição</h3>
+</div>
+
+<br>
+<label class="control-label" >&nbsp &nbsp Prescrição da glicose:</label>
+
+
+ 
+    
+<br>    
+<div class="panel-body">
+<div class="form-group">
+<label class="control-label" for="CampoVolumeSolucaoA">Primeira solução:<div id="messageSoluçãoA"></div></label>
+<input class="form-control" name="CampoVolumeSolucaoA"id="idCampoVolumeSolucaoA" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoSolucaoA"id="idCampoApresentacaoSolucaoA" hidden>
+</div>
+	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeSolucaoB">Segunda solução:<div id="messageSoluçãoB"></div></label>
+<input class="form-control" name="CampoVolumeSolucaoB"id="idCampoVolumeSolucaoB" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoSolucaoB"id="idCampoApresentacaoSolucaoB" hidden>
+</div> 
+    
+    <br>
+<label class="control-label" id="div1">Prescrição dos nutrientes:</label>
+<br><br> 
+    
+    
+    <div class="panel-body">
+<div class="form-group">
+<label class="control-label" for="CampoVolumeAminoacidos">Aminoácidos:<div id="messageAminoacidos"></div></label>
+<input class="form-control" name="CampoVolumeAminoacidos"id="idCampoVolumeAminoacidos" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoAminoacidos"id="idCampoApresentacaoAminoacidos" hidden>
+</div>
+	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeLipidios">Lipídios:<div id="messageLipidios"></div></label>
+<input class="form-control" name="CampoVolumeLipidios"id="idCampoVolumeLipidios" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoLipidios"id="idCampoApresentacaoLipidios" hidden>
+</div> 
+    
+    
+    
+<br>
+<label class="control-label" id="div1">Prescrição dos eletrólitos:</label>
+<br><br>  
+<div class="panel-body">
+<div class="form-group">
+<label class="control-label" for="CampoVolumeNaCl" >Volume do NaCl<div id="messageNaCl"  name="namemessageNaCl"></div></label>
+<input class="form-control" name="CampoVolumeNaCl"id="idCampoVolumeNaCl" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoNaCl"id="idCampoApresentacaoNaCl" hidden>
+</div>
+	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeKCl">Volume do KCl<div id="messageKCl"></div></label>
+<input class="form-control" name="CampoVolumeKCl"id="idCampoVolumeKCl" value="" placeholder="ml" type="txt">
+   <input  name="CampoApresentacaoKCl"id="idCampoApresentacaoKCl" hidden>
+</div>
+	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeCalcio">Volume do Calcio<div id="messageCalcio"></div></label>
+<input class="form-control" name="CampoVolumeCalcio"id="idCampoVolumeCalcio" value="" placeholder="ml" type="txt">
+    <input  name="CampoApresentacaoCalcio"id="idCampoApresentacaoCalcio" hidden>
+</div>
+	
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeMagnesio">Volume do magnésio<div id="messageMgSO4"></div></label>
+<input class="form-control" name="CampoVolumeMagnesio"id="idCampoVolumeMagnesio" value="" placeholder="ml" type="txt">
+<input  name="CampoApresentacaoMagnesio"id="idCampoApresentacaoMagnesio" hidden>
+</div>
+    
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeFosforo">Volume do fósforo<div id="messageFosforo"></div></label>
+<input class="form-control" name="CampoVolumeFosforo"id="idCampoVolumeFosforo" value="" placeholder="ml" type="txt">
+<input  name="CampoApresentacaoFosforo"id="idCampoApresentacaoFosforo" hidden>
+</div>
+    
+<br>
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeOligoelementos">Volume dos oligoelementos<div id="messageOligoelementos"></div></label>
+<input class="form-control" name="CampoVolumeOligoelementos"id="idCampoVolumeOligoelementos" value="" placeholder="ml" type="txt">
+<input  name="CampoApresentacaoOligoelementos"id="idCampoApresentacaoOligoelementos" hidden>
+</div>
+    
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeVitaminas">Volume das vitaminas<div id="messageVitaminas"></div></label>
+<input class="form-control" name="CampoVolumeVitaminas"id="idCampoVolumeVitaminas" value="" placeholder="ml" type="txt">
+<input  name="CampoApresentacaoVitaminas"id="idCampoApresentacaoVitaminas" hidden>
+</div>    
+<br>
+<div class="form-group">	
+<label class="control-label" for="CampoVolumeTotal">Volume total</label>
+<input class="form-control" name="CampoVolumeTotal"id="idCampoVolumeTotal" value="" placeholder="ml" type="txt" >
+</div>
+
+<div class="form-group1" >	
+<label class="control-label" for="CampoVelocidade">Velocidade</label>
+<input class="form-control" name="CampoVelocidade"id="idCampoVelocidade" value="" placeholder="ml/h" type="txt" >
+</div>
+    <br><br> 
+<div class="form-group1" >	
+<label class="control-label" for="CampoVolumeEquipo">Volume do equipo</label>
+<input class="form-control" name="CampoVolumeEquipo"id="idCampoVolumeEquipo" value="25" placeholder="ml" type="txt">
+</div>    
+
+ <br>   
+
+   <br><br> 
+
+
+<input  name="CampoTHO"id="idCampoTHO" hidden>
+<input  name="CampoTHM"id="idCampoTHM" hidden>  
+<input  name="CampoFC"id="idCampoFC" hidden>   
+<br>
+<input  name="CampoFCSolucaoA"id="idCampoFCSolucaoA" hidden>
+<br>
+<input  name="CampoFCSolucaoB"id="idCampoFCSolucaoB" hidden> 
+<br>
+<input  name="CampoFCAminoacidos"id="idCampoFCAminoacidos" hidden>   
+<br>
+<input  name="CampoFCLipidios"id="idCampoFCLipidios" hidden>
+<br>
+<input  name="CampoFCSodio"id="idCampoFCSodio" hidden> 
+<br>
+<input  name="CampoFCPotassio"id="idCampoFCPotassio" hidden> 
+<br>
+<input  name="CampoFCCalcio"id="idCampoFCCalcio" hidden> 
+<br>
+<input  name="CampoFCMagnesio"id="idCampoFCMagnesio" hidden> 
+<br>
+<input  name="CampoFCFosforo"id="idCampoFCFosforo" hidden>     
+<br>
+<input  name="CampoFCOligoelementos"id="idCampoFCOligoelementos" hidden> 
+<!--<label><input type="" name="ok" value="ok" /></label>   -->
+ <button type="submit" name="ok" class="btn btn-info">Imprimir prescrição</button> 
+<input  name="CampoFCVitaminas"id="idCampoFCVitaminas" hidden>  
+    
+</div>
+</div>
+</div><!-- /.col-sm-4 -->
+</form>
+</div>
+  </div>     
+    
+
+            
+	
+ <div class="row">
+        <div class="col-sm-5">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">AVISO:</h3>
+            </div>
+            <div class="panel-body">
+              Todos os dados mostrados devem ser confirmados. O autor do site tenta mostrar os cálculos com o máximo de precisão, porém eles são apenas sugestões que não podem substituir a conduta médica. calped.com.br, nem qualquer outra parte envolvida na preparação ou publicação deste site, poderão ser resposabilizados por qualquer tipo de dano causado, inerente ao ato médico dos usuários deste site.
+            </div>
+          </div>
+
+        </div><!-- /.col-sm-5 -->
+        <div class="col-sm-5">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Direitos autorais</h3>
+            </div>
+            <div class="panel-body">
+              
+	<font  size="-1">  
+
+      <script language="JavaScript" src="js/copyright.js"></script>
+
+      Criação: Segunda, 13 de janeiro de 2017.<BR>
+
+      Última modificação: 
+
+      <script language="javascript" src="js/mod.js"></script>
+       
+        
+            </div>
+          </div>
+
+        </div><!-- /.col-sm-5 -->
+        <div class="col-sm-4">
+
+        </div><!-- /.col-sm-4 -->
+      </div>	
+   
+            
+                   <div class="col-sm-4">
+   
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery-2.1.4.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/docs.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+    
+
+</body>
+</html>

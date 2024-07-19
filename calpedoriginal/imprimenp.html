@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Nutrição parenteral</title>
+ 
+<!--Arquivo javascript externo-->	
+<script language="JavaScript" src="js/imprimenp.js"></script>
+    
+<style type="text/css">
+  .botao{
+        font-size:15px;
+        font-family:Verdana,Helvetica;
+        font-weight:bold;
+        color:white;
+        background:#638cb5;
+        border:2px;
+        width:100px;
+        height:30px;
+       }
+ 
+    </style>  
+</head>
+<body>
+
+ 
+    
+<div id="print" class="conteudo">
+
+<h2>calped.com.br</h2> 
+
+<p>Hospital: __________________________________________________________</p>
+<p>Nome do paciente: __________________________________________________</p>
+<p>Registro: __________________ Ala/Enf: ________________ Leito:___________</p>
+<br>
+    
+    
+
+ 
+<label class="control-label" >Parâmetros:</label> 
+   
+ <p>TH Total: <strong id="idCampoTaxaHidricaTotal" ></strong> ml/kg/dia; TH NP: <strong id="idCampoTaxaHidrica" ></strong> ml/kg/dia; TH Oral: <strong id="idCampoTHO"> </strong> ml/kg/dia; TH Medicamentos: <strong id="idCampoTHM"> </strong> ml/kg/dia</p>
+ <p> VIG: <strong id="idCampoVIG" ></strong> mg/kg/min; Concentração: <strong id="idCampoACR"></strong> %; Calorias: <strong id="idCampoCaloriasTotais" ></strong> kCal; Osmolaridade: <strong id="idCampoOsmolaridade"></strong> mOsm/l </p>   
+  
+     
+
+<p>---------------------------------------------------------------------------> Fator de correção (FC): <strong id="idCampoFC"></strong></p>
+    <p><label class="control-label" >Prescrição da glicose:</label></p> 
+<p><strong id="idCampoApresentacaoSolucaoA" ></strong>% ---<strong id="idCampoVolumeSolucaoA" ></strong> ml ----------------------------------------------> FC: <strong id="idCampoFCSolucaoA" ></strong> ml</p> 
+<p><strong id="idCampoApresentacaoSolucaoB" ></strong>% --- <strong id="idCampoVolumeSolucaoB" ></strong> ml-------------------------------------------------------> FC: <strong id="idCampoFCSolucaoB" ></strong> ml</p> 
+<br>
+    
+<label class="control-label" >Prescrição dos nutrientes:</label> 
+
+<p><strong id="idCampoApresentacaoAminoacidos" ></strong>% ---<strong id="idCampoVolumeAminoacidos" ></strong> ml----------------------------------------------> FC: <strong id="idCampoFCAminoacidos" ></strong> ml</p> 
+<p><strong id="idCampoApresentacaoLipidios" ></strong>% --- <strong id="idCampoVolumeLipidios" ></strong> --------------------------------------> FC: <strong id="idCampoFCLipidios" ></strong> ml</p> 
+<br>
+<label class="control-label" >Prescrição dos eletrólitos:</label>   
+<p>(<strong id="idCampoSodio" ></strong>) NaCl: <strong id="idCampoApresentacaoNaCl" ></strong> % -----<strong id="idCampoVolumeNaCl" ></strong> ml--------------------------------------------------> FC: <strong id="idCampoFCSodio" ></strong> ml</p>
+<p>(<strong id="idCampoPotassio" ></strong>) KCl: <strong id="idCampoApresentacaoKCl" ></strong> % -----<strong id="idCampoVolumeKCl" ></strong> ml-------------------------------------------------> FC: <strong id="idCampoFCPotassio" ></strong> ml</p>
+<p>(<strong id="idCampoCalcio" ></strong>) Cálcio: <strong id="idCampoApresentacaoCalcio" ></strong> % -----<strong id="idCampoVolumeCalcio" ></strong> ml-------------------> FC: <strong id="idCampoFCCalcio" ></strong> ml</p>
+<p>(<strong id="idCampoMagnesio" ></strong>) Sulfato de Magnésio: <strong id="idCampoApresentacaoMagnesio" ></strong>% -----<strong id="idCampoVolumeMagnesio" ></strong> ml------------------------------> FC: <strong id="idCampoFCMagnesio" ></strong> ml</p>
+<p>(<strong id="idCampoFosforo" ></strong>) Fósforo: <strong id="idCampoApresentacaoFosforo" ></strong> -----<strong id="idCampoVolumeFosforo" ></strong> ml--------------> FC: <strong id="idCampoFCFosforo" ></strong> ml</p>
+<p>(<strong id="idCampoOligoelementos" ></strong>) Oligoelementos: <strong id="idCampoApresentacaoOligoelementos" ></strong> -----<strong id="idCampoVolumeOligoelementos" ></strong> ml------------------------> FC: <strong id="idCampoFCOligoelementos" ></strong> ml</p>
+<p>(<strong id="idCampoVitaminas" ></strong>) Vitaminas: <strong id="idCampoApresentacaoVitaminas" ></strong> -----<strong id="idCampoVolumeVitaminas" ></strong> ml------------------------------------> FC: <strong id="idCampoFCVitaminas" ></strong> ml</p> 
+<br>
+
+<p>Volume total: <strong id="idCampoVolumeTotal"></strong> ml</p>
+<p>Velocidade: <strong id="idCampoVelocidade"></strong> ml/h</p>   
+
+ 
+ 
+    
+    
+</div>
+
+<!--<p1>Prescrição com o fator de correção:</p1> -->
+
+
+<div align="left">
+
+    <input type="submit" value="Imprimir" class="botao" onclick="cont();">
+
+</div>
+    
+    
+
+<!--<input type="button" onclick="cont();" value="Imprimir">-->
+   
+</body>
+</html>
