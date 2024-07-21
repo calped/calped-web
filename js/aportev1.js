@@ -10,7 +10,7 @@ function calcularAporte() {
     const concentracaoCalcio = parseFloat(document.getElementById('concentracaoCalcio').value);
     const necessidadeMagnesio = parseFloat(document.getElementById('necessidadeMagnesio').value);
     const concentracaoMgSO4 = parseFloat(document.getElementById('concentracaoMgSO4').value);
-    const primeiraSolucao = document.getElementById('primeiraSolucao').value;
+    let primeiraSolucao = document.getElementById('primeiraSolucao').value;
     const segundaSolucao = document.getElementById('segundaSolucao').value;
 
     // Calculando o aporte hídrico total
@@ -37,6 +37,10 @@ function calcularAporte() {
     const mgTotalCa = peso * necessidadeCalcio;
     const volumeCalcio = necessidadeCalcio ? (mgTotalCa / concentracaoCalcio) : 0;
 
+    // Transformando mgTotalCa em mEq de cálcio
+    const meqPorMlCalcio = 0.465; // 1 ml de cálcio equivale a 0.465 mEq
+    const mEqTotalCa = (mgTotalCa * meqPorMlCalcio) / 100;
+
     // Obter a descrição da concentração de cálcio selecionada
     const concentracaoCalcioText = document.getElementById('concentracaoCalcio').options[document.getElementById('concentracaoCalcio').selectedIndex].text;
 
@@ -53,13 +57,19 @@ function calcularAporte() {
     // Calculando a concentração de glicose
     const concentracaoGlicose = (vig * peso * 144) / volumeRestante;
 
+    // Condicional para habilitar a primeira solução como AD se a concentração de glicose for menor que 5%
+    if (concentracaoGlicose < 5 && primeiraSolucao !== 'AD') {
+        primeiraSolucao = 'AD';
+        document.getElementById('primeiraSolucao').value = 'AD';
+        atualizarSegundaSolucao(); // Atualiza a segunda solução conforme a nova configuração da primeira solução
+        calcularAporte(); // Recalcula o aporte após a atualização da primeira solução
+        return;
+    }
+
     // Calculando os valores x e y para as soluções
     let x = primeiraSolucao === 'AD' ? 0 : 5;
     let y;
     switch (segundaSolucao) {
-        case 'AD':
-            y = 0;
-            break;
         case 'Glicose 5%':
             y = 5;
             break;
@@ -75,50 +85,61 @@ function calcularAporte() {
     }
 
     x = Math.abs(concentracaoGlicose - x);
-    y = Math.abs(concentracaoGlicose - y);
+    y = Math.abs(y - concentracaoGlicose);
 
     // Calculando os volumes W e Z
-    const W = (volumeRestante * x) / (x + y);
-    const Z = (volumeRestante * y) / (x + y);
+    const Z = (volumeRestante * x) / (x + y);
+    const W = (volumeRestante * y) / (x + y);
 
     // Calculando a velocidade de infusão
     const velocidadeInfusao = aporteHidricoTotal / 24;
 
-    // Calculando a osmolaridade
-    const osmolaridade = ((((vigTotalDia / 1000) * 5.5) + mEqTotalNa + mEqTotalK + (mgTotalCa / 20) + mEqTotalMg) / aporteHidricoTotal) * 1000;
-
     // Calculando as calorias totais
     const caloriasTotais = ((vigTotalDia / 1000) * 3.4) / peso;
 
+    const concentracaoreal = (vig * 144) / taxaHidrica;
+
+    const gGlicose = vigTotalDia / 1000;
+
+    // Calculando a osmolaridade
+    const osmolaridade = (((gGlicose * 5.5) + (mEqTotalNa + mEqTotalK + mEqTotalCa + mEqTotalMg)) / aporteHidricoTotal) * 1000;
+
+/*     <p>mg glicose total ao dia: ${vigTotalDia.toFixed(1)} mg/dia</p>  
+    <p>g de glicose: ${gGlicose.toFixed(1)} g</p> 
+    <p>mEq Ca: ${mEqTotalCa.toFixed(1)} mEq</p> 
+    <p>Concentração de glicose restante: ${concentracaoGlicose.toFixed(1)}%</p>  
+     <p>Volume restante: ${volumeRestante.toFixed(1)} ml</p>*/
+
     // Exibindo os resultados
     let resultado = `
-        <p>Primeira solução (${primeiraSolucao}): ${W.toFixed(2)} ml</p>
-        <p>Segunda solução (${segundaSolucao}): ${Z.toFixed(2)} ml</p>
-        <p>Concentração de glicose: ${concentracaoGlicose.toFixed(2)}%</p> 
-        <p>mg glicose total ao dia: ${vigTotalDia.toFixed(2)} mg/dia</p>      
-    `;
+        <p>Sódio: ${necessidadeSodio.toFixed(1)} mEq/kg/dia; Potássio: ${necessidadePotassio.toFixed(1)} mEq/kg/dia; Cálcio: ${necessidadeCalcio.toFixed(1)} mg/kg/dia; Magnésio: ${necessidadeMagnesio.toFixed(1)} mEq/kg/dia</p>
+        <p>Aporte em: ${concentracaoreal.toFixed(1)}%</p> 
+        <p>${primeiraSolucao}: ${W.toFixed(1)} ml</p>
+        <p>${segundaSolucao}: ${Z.toFixed(1)} ml</p>
+        
+        
     
+    `;
+
     if (necessidadeSodio) {
-        resultado += `<p>Volume de NaCl: ${volumeNaCl.toFixed(2)} ml/dia (${concentracaoNaClText})</p>`;
+        resultado += `<p>Sódio (${concentracaoNaClText}):  ${volumeNaCl.toFixed(1)} ml</p>`;
     }
     if (necessidadePotassio) {
-        resultado += `<p>Volume de KCl: ${volumeKCl.toFixed(2)} ml/dia (${concentracaoKClText})</p>`;
+        resultado += `<p>Potássio (${concentracaoKClText}): ${volumeKCl.toFixed(1)} ml</p>`;
     }
     if (necessidadeCalcio) {
-        resultado += `<p>Volume de cálcio: ${volumeCalcio.toFixed(2)} ml/dia (${concentracaoCalcioText})</p>`;
+        resultado += `<p>Cálcio (${concentracaoCalcioText}): ${volumeCalcio.toFixed(1)} ml </p>`;
     }
     if (necessidadeMagnesio) {
-        resultado += `<p>Volume de MgSO4: ${volumeMgSO4.toFixed(2)} ml/dia (${concentracaoMgSO4Text})</p>`;
+        resultado += `<p>Magnésio (${concentracaoMgSO4Text}): ${volumeMgSO4.toFixed(1)} ml </p>`;
     }
-   
+
     resultado += `
-        <p>Volume restante: ${volumeRestante.toFixed(2)} ml</p>
-        <p>Calorias totais: ${caloriasTotais.toFixed(2)} kcal/kg/dia</p>
-         <p>Osmolaridade: ${osmolaridade.toFixed(2)} mOsm/L</p>
-        <p>Aporte hídrico total: ${aporteHidricoTotal.toFixed(2)} ml/dia</p>
-        <p>Velocidade de infusão: ${velocidadeInfusao.toFixed(2)} ml/h</p>
        
-        
+        <p>Calorias totais: ${caloriasTotais.toFixed(1)} kcal/kg/dia</p>
+        <p>Osmolaridade: ${osmolaridade.toFixed(0)} mOsm/L</p>
+        <p>Aporte hídrico total: ${aporteHidricoTotal.toFixed(1)} ml/dia</p>
+        <p>Velocidade de infusão: ${velocidadeInfusao.toFixed(1)} ml/h</p>
     `;
 
     document.getElementById('resultado').innerHTML = resultado;
@@ -127,6 +148,13 @@ function calcularAporte() {
 function atualizarSegundaSolucao() {
     const primeiraSolucao = document.getElementById('primeiraSolucao').value;
     const segundaSolucao = document.getElementById('segundaSolucao');
+
+    // Remover a opção 'AD' da segunda solução
+    for (let i = 0; i < segundaSolucao.options.length; i++) {
+        if (segundaSolucao.options[i].value === 'AD') {
+            segundaSolucao.options[i].remove();
+        }
+    }
 
     for (let i = 0; i < segundaSolucao.options.length; i++) {
         segundaSolucao.options[i].disabled = false;
@@ -145,7 +173,6 @@ function atualizarSegundaSolucao() {
             }
         }
     }
-    calcularAporte();
 }
 
 function visualizarImpressao() {
@@ -173,7 +200,7 @@ function visualizarImpressao() {
         ${resultado}
         <button onclick="window.print()">Imprimir</button>
     </div>
-`;
+    `;
 
     const printWindow = window.open('', '', 'width=800,height=600');
     printWindow.document.write(printContent);

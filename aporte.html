@@ -8,7 +8,6 @@
     <!-- Adicionar o SDK do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="js/configfirebasesessao.js"></script>
 </head>
 <body>
     <header id="home">
@@ -33,7 +32,7 @@
     <main>
         <section id="calculator">
             <div class="form-container">
-                <h2>Calculadora de Aporte calórico, hídrico e de eletrólitos.</h2>
+                <h2>Calculadora de aporte calórico, hídrico e de eletrólitos.</h2>
                 <form id="calculatorForm" onsubmit="event.preventDefault(); calcularAporte();">
                     <label for="peso">Peso (kg):</label>
                     <input type="number" id="peso" name="peso" step="0.001" value="2" required>
@@ -49,9 +48,9 @@
 
                     <label for="concentracaoNaCl">Concentração de NaCl:</label>
                     <select id="concentracaoNaCl" name="concentracaoNaCl" onchange="calcularAporte()" >
-                        <option value="1.7">10% - 1,7 mEq/ml</option>
-                        <option value="3.0">17,5% - 3,0 mEq/ml</option>
-                        <option value="3.4">20% - 3,4 mEq/ml</option>
+                        <option value="1.7">NaCl 10% - 1,7 mEq/ml</option>
+                        <option value="3.0">NaCl 17,5% - 3,0 mEq/ml</option>
+                        <option value="3.4">NaCl 20% - 3,4 mEq/ml</option>
                     </select>
 
                     <label for="necessidadePotassio">Necessidade de Potássio (mEq/kg/dia):</label>
@@ -59,13 +58,13 @@
 
                     <label for="concentracaoKCl">Concentração de KCl:</label>
                     <select id="concentracaoKCl" name="concentracaoKCl" onchange="calcularAporte()" >
-                        <option value="1.34">10% - 1,34 mEq/ml</option>
-                        <option value="2.01">15% - 2,01 mEq/ml</option>
-                        <option value="2.56">19,1% - 2,56 mEq/ml</option>
+                        <option value="1.34">KCl 10% - 1,34 mEq/ml</option>
+                        <option value="2.01">KCl 15% - 2,01 mEq/ml</option>
+                        <option value="2.56">KCl 19,1% - 2,56 mEq/ml</option>
                     </select>
 
                     <label for="necessidadeCalcio">Necessidade de Cálcio (mg/kg/dia):</label>
-                    <input type="number" id="necessidadeCalcio" name="necessidadeCalcio" step="0.1" value="200" >
+                    <input type="number" id="necessidadeCalcio" name="necessidadeCalcio" step="0.1" value="300" >
 
                     <label for="concentracaoCalcio">Concentração de Cálcio:</label>
                     <select id="concentracaoCalcio" name="concentracaoCalcio" onchange="calcularAporte()" >
@@ -74,14 +73,14 @@
                     </select>
 
                     <label for="necessidadeMagnesio">Necessidade de Magnésio (mEq/kg/dia):</label>
-                    <input type="number" id="necessidadeMagnesio" name="necessidadeMagnesio" step="0.1" value="0.25" >
+                    <input type="number" id="necessidadeMagnesio" name="necessidadeMagnesio" step="0.1" value="0.5" >
 
                     <label for="concentracaoMgSO4">Concentração de MgSO4:</label>
                     <select id="concentracaoMgSO4" name="concentracaoMgSO4" onchange="calcularAporte()" >
-                        <option value="0.81">10% - 0.81 mEq/ml</option>
-                        <option value="1.01">12.5% - 1.01 mEq/ml</option>
-                        <option value="2.03">25% - 2.03 mEq/ml</option>
-                        <option value="4.05">50% - 4.05 mEq/ml</option>
+                        <option value="0.81">Sulfato de magnésio 10% - 0.81 mEq/ml</option>
+                        <option value="1.01">Sulfato de magnésio 12.5% - 1.01 mEq/ml</option>
+                        <option value="2.03">Sulfato de magnésio 25% - 2.03 mEq/ml</option>
+                        <option value="4.05">Sulfato de magnésio 50% - 4.05 mEq/ml</option>
                     </select>
 
                     <label for="primeiraSolucao">Primeira Solução:</label>
@@ -91,19 +90,21 @@
                     </select>
 
                     <label for="segundaSolucao">Segunda Solução:</label>
-                    <select id="segundaSolucao" name="segundaSolucao" onchange="atualizarSegundaSolucao(); calcularAporte();" required>
-                        <option value="Glicose 50%" selected>Glicose 50%</option>
+                    <select id="segundaSolucao" name="segundaSolucao" onchange="calcularAporte();" required>
                         <option value="Glicose 5%">Glicose 5%</option>
                         <option value="Glicose 10%">Glicose 10%</option>
                         <option value="Glicose 25%">Glicose 25%</option>
-                        <option value="AD">AD</option>
+                        <option value="Glicose 50%" selected>Glicose 50%</option>
                     </select>
 
                     <button type="submit">Calcular</button>
                     <button type="button" onclick="visualizarImpressao()">Visualizar Impressão</button>
                 </form>
             </div>
-            <div id="resultado" class="result-container"></div>
+            <div id="resultado" class="result-container">
+                
+            </div>
+
         </section>
     </main>
     <footer>

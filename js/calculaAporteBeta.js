@@ -176,7 +176,7 @@ function calcula(form) {
     var mlCalcio  = mlCalcio.toFixed(1);
     form.CampoVolumeCalcio.value= mlCalcio;
     document.getElementById("messageCalcio").innerHTML = "Gluconato de Cálcio 10%";
-    var mEqTotalCa =  ((eval(form.CampoCalcio.value) * eval(form.CampoPeso.value))*0.46)/100; 
+    var mEqTotalCa =  ((eval(form.CampoCalcio.value) * eval(form.CampoPeso.value))*0.465)/100; 
     form.CampoApresentacaoCalcio.value="Gluconato de Calcio 10";
     break
     
@@ -196,10 +196,7 @@ function calcula(form) {
     }
     }
         
-    
-        
-    
-        
+            
       
     
     var volumesobra = VT - (eval(form.CampoVolumeNaCl.value)+eval(form.CampoVolumeKCl.value)+eval(form.CampoVolumeCalcio.value)+eval(form.CampoVolumeMagnesio.value));
