@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gráfico de Bilirrubina - CalPed</title>
+    <title>CalPed - Gráfico de Bilirrubina </title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/stylesbhutani.css">
     <style>
@@ -65,7 +65,7 @@
 <body>
     <header id="home">
         <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Calculadora Pediátrica</h1>
+        <h1>Calculadora Pediátrica - Gráfico de Bhutani</h1>
     </header>
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
@@ -81,17 +81,17 @@
         </ul>
     </nav>
     <main>
-        <h2>Gráfico de percentis 40, 75 e 95 de bilirrubinemia sérica total, segundo a idade pós-natal em horas, em RN ≥35 semanas e peso ao nascer ≥2.000g.</h2>
+        <h2>Gráfico de Bhutani: Percentis de bilirrubinemia sérica total, segundo a idade pós-natal em horas, em RN ≥35 semanas e peso ao nascer ≥2.000g.</h2>
         <form id="dataForm" onsubmit="event.preventDefault(); adicionarPonto();">
             <label for="idade">Idade (horas):</label>
-            <input type="number" id="idade" name="idade" min="12" max="144" step="12" required>
+            <input type="number" id="idade" name="idade" min="12" max="144" step="1" required>
             <label for="bilirrubina">Bilirrubina Total (mg/dL):</label>
             <input type="number" id="bilirrubina" name="bilirrubina" step="0.1" required>
             <label for="entradaContinua">
                 <input type="checkbox" id="entradaContinua" name="entradaContinua" checked>
                 Entrada contínua
             </label>
-            <button type="submit">Adicionar Ponto</button>
+            <button type="submit">Adicionar bilirrubina</button>
             <button type="button" onclick="limparDados()">Limpar Dados</button>
         </form>
         <canvas id="myChart" width="400" height="200"></canvas>
@@ -156,7 +156,7 @@
                         min: 12,
                         max: 144,
                         ticks: {
-                            stepSize: 12
+                            stepSize: 1
                         }
                     },
                     y: {
