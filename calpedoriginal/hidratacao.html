@@ -17,12 +17,21 @@ content must come *after* these tags -->
 <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="css/theme.css" rel="stylesheet">
-
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]>
+<script src="../../assets/js/ie8-responsive-file-warning.js"></script>
+<![endif]-->
 <script src="js/ie-emulation-modes-warning.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements
+and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 
-<script language="JavaScript" src="js/calculaHVbeta.js"></script>
+<!--Arquivo javascript externo-->	
+<script language="JavaScript" src="js/calculaHV.js"></script>
 <script language="JavaScript" src="js/validacaracterHV.js"></script> 
-
 
 </head>
 	
@@ -94,7 +103,7 @@ content must come *after* these tags -->
 			
 
 <div class="page-header">
-<h2>Hidratação Venosa de Manutenção - Versão 1.1</h2>
+<h2>Hidratação Venosa de Manutenção - Versão 1.0</h2>
 </div>
 <div class="row">
 <div class="col-sm-5">
@@ -112,35 +121,13 @@ content must come *after* these tags -->
   <label class="control-label" for="CampoPeso">Peso</label>
   <input class="form-control" name="CampoPeso" id="idCampoPeso" value="10" placeholder="texto" type="text" onBlur="javascript:NumericCampoPeso()">
 
-</div>
-	<div><h4>Necessidades diárias:</h4></div>
-<div class="form-group">
-<label class="control-label" for="CampoCalorias">Calorias (kcal/kg/dia)</label>
-<input class="form-control" name="CampoCalorias"id="idCampoCalorias" value="" placeholder="kcal/kg/dia" type="txt" disabled>
-</div>
-	
-<div class="form-group">
-<label class="control-label" for="CampoAgua">Água (ml/kg/dia)</label>
-<input class="form-control" name="CampoAgua"id="idCampoAgua" value="" placeholder="ml/kg/dia" type="txt" disabled>
-</div>
-<div class="form-group">
-<label class="control-label" for="CampoNecessidadeGlicose">Glicose (g/kg/dia)</label>
-<input class="form-control" name="CampoNecessidadeGlicose"id="idCampoNecessidadeGlicose" value="" placeholder="g/kg/dia" type="txt" disabled>
+<!--botões-->
 </div>	
-<div class="form-group">
-<label class="control-label" for="CampoNecessidadeSodio">Sódio (mEq/kg/dia)</label>
-<input class="form-control" name="CampoNecessidadeSodio"id="idCampoNecessidadeSodio" value="" placeholder="mEq/kg/dia" type="txt" disabled>
-</div>
-	<div class="form-group">
-<label class="control-label" for="CampoNecessidadePotassio">Potásio (mEq/kg/dia)</label>
-<input class="form-control" name="CampoNecessidadePotassio"id="idCampoNecessidadePotassio" value="" placeholder="mEq/kg/dia" type="txt" disabled>
-</div>	
-<!--botões-->	
 <button type="button" class="btn btn-primary"onclick="calcula(formHV)">Calcular</button>
 <button type="reset" class="btn btn-danger" type = "reset">Limpar</button>
 <div class="form-group">		
-<label class="control-label" for="CampoGlicose10">Glicose 10%</label>
-<input class="form-control" name="CampoGlicose10"id="idCampoGlicose10" value="" placeholder="Glicose 5%" type="txt" disabled>
+<label class="control-label" for="CampoGlicose5">Glicose 5%</label>
+<input class="form-control" name="CampoGlicose5"id="idCampoGlicose5" value="" placeholder="Glicose 5%" type="txt" disabled>
 </div>
 	
 <!--select -->
@@ -148,10 +135,10 @@ content must come *after* these tags -->
 <label class="col-md-4 control-label" for="selectNaCl">NaCl</label>
 <div class="col-md-5">
 <select id="idSelectNaCl" name="selectNaCl" class="form-control" onChange="calcula(formHV)">
-<!-- <option value="0.9">0.9%</option> -->
-<option value="10" >10%</option>
-<!-- <option value="17.5">17.5%</option> -->
-<option value="20"selected>20%</option>
+<option value="0.9">0.9%</option>
+<option value="10" selected>10%</option>
+<option value="17.5">17.5%</option>
+<option value="20">20%</option>
 </select>
 </div>
 </div>
@@ -164,7 +151,7 @@ content must come *after* these tags -->
 <div class="form-group">
 <label class="col-md-4 control-label" for="selectNaCl">KCl</label>
 <div class="col-md-5">
-<select id="idSelectKCl" name="selectKCl" class="form-control" onChange="calcula(formHV)" disabled>
+<select id="idSelectKCl" name="selectKCl" class="form-control" onChange="calcula(formHV)">
 <option value="10" selected>10%</option>
 <option value="15">15%</option>
 <option value="19.1">19.1%</option>
@@ -204,8 +191,8 @@ content must come *after* these tags -->
 </div>
 	
 <div class="form-group">
-<label class="control-label" for="CampoEtapasGlicose10">Glicose 10%</label>
-<input class="form-control" name="CampoEtapasGlicose10"id="idCampoEtapasGlicose10" value="" placeholder="Etapas de solução glicosada a 5%" type="txt">	
+<label class="control-label" for="CampoEtapasGlicose5">Glicose 5%</label>
+<input class="form-control" name="CampoEtapasGlicose5"id="idCampoEtapasGlicose5" value="" placeholder="Etapas de solução glicosada a 5%" type="txt">	
 </div>	
 	
 <div class="form-group">
@@ -232,34 +219,15 @@ content must come *after* these tags -->
 <label class="control-label" for="CampoEtapasGotas">Velocidade em gotas/min</label>
 <input class="form-control" name="CampoEtapasGotas"id="idCampoEtapasGotas" value="" placeholder="Velocidade em gotas/min" type="txt">	
 </div>	
-				
+	
 </div>
 </div>
 </div><!-- /.col-sm-4 -->
-	
-		
 </form>
-<!--painel de anuncios-->	
-<div class="col-sm-5">
-<div class="panel panel-info">
-<div class="panel-heading">
-<h3 class="panel-title">Anúncios</h3>
-</div>
-<div class="panel-body">
-	
-<!-- primeiroanucio -->
-<a href="../about.html">CLIQUE AQUI PARA CONTRIBUIR COM O PROJETO</a>
-
-	
-</div>
-</div>
-</div>
-	
-	
 </div>
 
 
-
+	
  <div class="row">
         <div class="col-sm-5">
           <div class="panel panel-warning">
@@ -279,6 +247,24 @@ content must come *after* these tags -->
             </div>
           </div>-->
         </div><!-- /.col-sm-5 -->
+
+
+        <!--painel de anuncios-->	
+<div class="col-sm-5">
+  <div class="panel panel-info">
+  <div class="panel-heading">
+  <h3 class="panel-title">Anúncios</h3>
+  </div>
+  <div class="panel-body">
+    
+  <!-- primeiroanucio -->
+  <a href="../about.html">CLIQUE AQUI PARA CONTRIBUIR COM O PROJETO</a>
+  
+    
+  </div>
+  </div>
+  </div>
+
         <div class="col-sm-5">
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -295,16 +281,42 @@ content must come *after* these tags -->
       Última modificação: 
 
       <script language="javascript" src="js/mod.js"></script>
-	
             </div>
           </div>
-
+<!--          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Panel title</h3>
+            </div>
+            <div class="panel-body">
+              Panel content
+            </div>
+          </div>-->
         </div><!-- /.col-sm-5 -->
         <div class="col-sm-4">
-
+<!--          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">Panel title</h3>
+            </div>
+            <div class="panel-body">
+              Panel content
+            </div>
+          </div>-->
+<!--          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h3 class="panel-title">Panel title</h3>
+            </div>
+            <div class="panel-body">
+              Panel content
+            </div>
+          </div>-->
         </div><!-- /.col-sm-4 -->
       </div>
 
+            
+<!-- /container -->
+<!-- Bootstrap core JavaScript==================================================-
+->
+<!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-2.1.4.min.js"></script>
 <script>
 window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
