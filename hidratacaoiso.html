@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Prescrição de Hidratação Venosa Isotônica</title>
+    <link rel="stylesheet" href="css/stylesampicillin.css">
+    <!-- Adicionar o SDK do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+</head>
+<body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Calculadora de Prescrição de Hidratação Venosa</h1>
+        <p>Calcule a prescrição de soro fisiológico, glicose 5% ou glicose 10%.</p>
+    </header>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
+            <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+ 
+    <main>
+        <section id="calculator">
+            <div class="form-container">
+                <h2>Calculadora de Hidratação Venosa e escolha a solução de base</h2>
+                <form id="calculatorForm" onsubmit="event.preventDefault(); calcularHidratacao();">
+                    <label for="peso">Peso (kg):</label>
+                    <input type="number" id="peso" name="peso" step="0.001" value="2" required>
+
+                    <label for="solucao">Solução:</label>
+                    <select id="solucao" name="solucao" onchange="atualizarOpcoes(); calcularHidratacao();" required>
+                        <option value="Soro Fisiológico">Soro Fisiológico 0,9%</option>
+                        <option value="Glicose 5%">Glicose 5%</option>
+                        <option value="Glicose 10%">Glicose 10%</option>
+                    </select>
+
+                    <label for="glicose50">Adicionar Glicose 50%:</label>
+                    <select id="glicose50" name="glicose50">
+                        <option value="0">Não adicionar</option>
+                        <option value="50">50 ml para cada 500 ml</option>
+                        <option value="100">100 ml para cada 500 ml</option>
+                    </select>
+
+                    <label for="nacl20">Adicionar NaCl 20%:</label>
+                    <select id="nacl20" name="nacl20">
+                        <option value="0">Não adicionar</option>
+                        <option value="20">20 ml para cada 500 ml</option>
+                    </select>
+
+                    <label for="kcl">Adicionar KCl 10%:</label>
+                    <select id="kcl" name="kcl">
+                        <option value="0">Não adicionar</option>
+                        <option value="4">4 ml para cada 500 ml</option>
+                        <option value="8">8 ml para cada 500 ml</option>
+                        <option value="12">12 ml para cada 500 ml</option>
+                    </select>
+
+                    <button type="submit">Calcular</button>
+                    <button type="button" onclick="visualizarImpressao()">Imprimir</button>
+                </form>
+            </div>
+            <div id="resultado" class="result-container"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+    <script src="js/hidratacaoiso.js"></script>
+    <script src="js/menuresponsivov1.js"></script>
+    <script src="js/copiaremailpixv1.js"></script>
+    <script src="js/copirightv1.js"></script>
+    
+</body>
+</html>
