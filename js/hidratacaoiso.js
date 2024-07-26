@@ -86,11 +86,13 @@
             }
 
             const osmolaridadeFinal = osmolaridadeTotal / (volumeTotalLitros * 1000); // Conversão final correta
+            const volumeTotalFinal = (volumeTotal)+(volumeKCl) ; 
 
             let resultado = `
                 <p>Solução: ${solucao}</p>
-                <p>Volume Total: ${volumeTotal.toFixed(1)} ml/dia</p>
+                <p>Volume Total: ${volumeTotalFinal.toFixed(1)} ml/dia</p>
                 <p>Passar em ${etapas} etapa${etapas > 1 ? 's' : ''}</p>
+                <p>Volume por etapa: ${(volumeTotalFinal/etapas).toFixed(1)} ml/dia</p>
                 ${solucao === "Soro Fisiológico" && volumeSoroFisiologico > 0 ? `<p>Soro Fisiológico 0,9%: ${(volumeSoroFisiologico / etapas).toFixed(1)} ml por etapa</p>` : ''}
                 ${solucao !== "Soro Fisiológico" ? `<p>Glicose ${solucao === 'Glicose 5%' ? '5%' : '10%'}: ${(volumeGlicose5ou10 / etapas).toFixed(1)} ml por etapa</p>` : ''}
                 ${volumeGlicose50 > 0 ? `<p>Glicose 50%: ${(volumeGlicose50 / etapas).toFixed(1)} ml por etapa</p>` : ''}
