@@ -2,10 +2,39 @@
 <html>
 <head>
     <title>Prescrição Médica</title>
+    <style>
+        /* Esconder o botão imprimir durante a impressão */
+        @media print {
+            #printButton {
+                display: none;
+            }
+        }
+    </style>
     <script>
         function printPrescription() {
             window.print();
         }
+
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substring(1).split("&").forEach(function(pair) {
+                const [key, value] = pair.split("=");
+                params[key] = decodeURIComponent(value.replace(/\+/g, ' '));
+            });
+            return params;
+        }
+
+        function populateFields() {
+            const params = getQueryParams();
+            document.getElementById("dataPrescricao").innerText = params.dataPrescricao;
+            document.getElementById("nomePaciente").innerText = params.nomePaciente;
+            document.getElementById("peso").innerText = params.peso;
+            document.getElementById("medicamento").innerText = params.medicamento;
+            document.getElementById("dose").innerText = params.dose;
+            document.getElementById("resultadoCalculo").innerText = params.resultadoCalculo;
+        }
+
+        window.onload = populateFields;
     </script>
 </head>
 <body>
@@ -16,27 +45,6 @@
     <p><strong>Medicamento:</strong> <span id="medicamento"></span></p>
     <p><strong>Dose:</strong> <span id="dose"></span></p>
     <p><strong>Resultado do Cálculo (Peso x Dose):</strong> <span id="resultadoCalculo"></span></p>
-    <button onclick="printPrescription()">Imprimir</button>
-
-    <script>
-        // Função para obter os parâmetros da URL
-        function getQueryParams() {
-            const params = {};
-            window.location.search.substring(1).split("&").forEach(function(pair) {
-                const [key, value] = pair.split("=");
-                params[key] = decodeURIComponent(value);
-            });
-            return params;
-        }
-
-        // Obter os parâmetros e preencher os campos
-        const params = getQueryParams();
-        document.getElementById("dataPrescricao").innerText = params.dataPrescricao;
-        document.getElementById("nomePaciente").innerText = params.nomePaciente;
-        document.getElementById("peso").innerText = params.peso;
-        document.getElementById("medicamento").innerText = params.medicamento;
-        document.getElementById("dose").innerText = params.dose;
-        document.getElementById("resultadoCalculo").innerText = params.resultadoCalculo;
-    </script>
+    <button id="printButton" onclick="printPrescription()">Imprimir</button>
 </body>
 </html>
