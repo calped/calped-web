@@ -3,10 +3,17 @@
 <head>
     <title>Prescrição Médica</title>
     <style>
-        /* Esconder o botão imprimir durante a impressão */
+        /* Esconder o botão imprimir e outros elementos durante a impressão */
         @media print {
-            #printButton {
+            #printButton, header, footer {
                 display: none;
+            }
+            /* Configurar a página para impressão */
+            @page {
+                margin: 0;
+            }
+            body {
+                margin: 1cm;
             }
         }
     </style>
@@ -34,7 +41,10 @@
             document.getElementById("resultadoCalculo").innerText = params.resultadoCalculo;
         }
 
-        window.onload = populateFields;
+        window.onload = function() {
+            populateFields();
+            printPrescription();
+        };
     </script>
 </head>
 <body>
