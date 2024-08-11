@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dobutamina</title>
+    <link rel="stylesheet" href="css/stylesampicillin.css">
+    <!-- Adicionar o SDK do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+</head>
+<body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Calculadora de Dobutamina</h1>
+        <p>Calcule a dose contínua de dobutamina.</p>
+    </header>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
+            <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="calculator">
+            <div class="form-container">
+                <h2>Calculadora de Dobutamina</h2>
+                <form id="calculatorForm" onsubmit="event.preventDefault(); calcularDobutamina();">
+                    <label for="peso">Peso (kg):</label>
+                    <input type="number" id="peso" name="peso" step="0.001" value="2" required>
+
+                    <label for="dose">Dose (mcg/kg/min):</label>
+                    <input type="number" id="dose" name="dose" step="0.1" value="5" required>
+
+                    <label for="solucao">Solução para Diluição:</label>
+                    <select id="solucao" name="solucao" required>
+                        <option value="Soro Fisiológico 0,9%">Soro Fisiológico 0,9%</option>
+                        <option value="Soro Glicosado 5%">Soro Glicosado 5%</option>
+                    </select>
+
+                    <label for="volumeDiluir">Volume para Diluir (ml):</label>
+                    <select id="volumeDiluir" name="volumeDiluir" required>
+                        <option value="7.2">7,2 ml</option>
+                        <option value="12">12 ml</option>
+                        <option value="24">24 ml</option>
+                    </select>
+
+                    <label for="volumeEquipo">Volume do Equipo (ml):</label>
+                    <input type="number" id="volumeEquipo" name="volumeEquipo" step="0.1" value="2" required>
+
+                    <button type="submit">Calcular</button>
+                    <button type="button" onclick="visualizarImpressao()">Visualizar Impressão</button>
+                </form>
+            </div>
+            <div id="resultado" class="result-container"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+
+    <script src="js/menuresponsivov1.js"></script>
+    <script src="js/copiaremailpixv1.js"></script>
+    <script src="js/copirightv1.js"></script>
+    <script src="js/calculardobutamina.js"></script>
+    
+</body>
+</html>
