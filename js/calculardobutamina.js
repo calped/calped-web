@@ -48,7 +48,7 @@ function visualizarImpressao() {
         <div>
             <img src="img/logocalped.png" alt="Logo" style="display: block; margin: 0 auto; width: 100px; height: auto;">
             <h2 style="text-align: center; font-weight: bold;">calped.com.br</h2>
-            <h3 style="text-align: center; font-weight: bold;">Prescrição Contínua de Dobutamina</h3>
+            <h3 style="text-align: center; font-weight: bold;">Prescrição de Dobutamina</h3>
             <p style="font-weight: bold;">Hospital:__________________________________________________________</p>
             <p style="font-weight: bold;">Unidade de internação:_______________________________________________</p>
             <p style="font-weight: bold;">Registro:___________</p>
