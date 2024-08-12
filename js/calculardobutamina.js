@@ -19,6 +19,7 @@ function calcularDobutamina() {
     // Calcular as doses finais com o fator de correção
     const doseFinalDobutamina = doseCalculada * fatorCorrecao;
     const doseFinalDiluente = doseDiluente * fatorCorrecao;
+    const velocidade = volumeDiluir/24;
 
     let resultado = `
         <p>Peso: ${peso} kg</p>
@@ -29,6 +30,7 @@ function calcularDobutamina() {
         <p>Fator de Correção: ${fatorCorrecao.toFixed(2)}</p>
         <p>Dobutamina: ${doseFinalDobutamina.toFixed(2)} ml</p>
         <p>${solucao}: ${doseFinalDiluente.toFixed(2)} ml</p>
+        <p>Velocidade de infusão: ${velocidade.toFixed(1)} ml/h</p>
     `;
 
     document.getElementById('resultado').innerHTML = resultado;
