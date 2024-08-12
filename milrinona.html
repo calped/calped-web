@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Epinefrina</title>
+    <title>Calculadora de Milrinona</title>
     <link rel="stylesheet" href="css/stylesampicillin.css">
     <!-- Adicionar o SDK do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -12,8 +12,8 @@
 <body>
     <header id="home">
         <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Calculadora de Epinefrina (Adrenalina)</h1>
-        <p>Calcule a dose contínua de epinefrina.</p>
+        <h1>Calculadora de Milrinona</h1>
+        <p>Calcule a dose contínua de milrinona.</p>
     </header>
     <nav class="main-nav">
         <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
@@ -32,12 +32,12 @@
     <main>
         <section id="calculator">
             <div class="form-container">
-                <h2>Calculadora de Epinefrina (Adrenalina)</h2>
+                <h2>Calculadora de Milrinona </h2>
                 <form id="calculatorForm" onsubmit="event.preventDefault(); calcularDobutamina();">
                     <label for="peso">Peso (kg):</label>
                     <input type="number" id="peso" name="peso" step="0.001" value="2" required>
 
-                    <label for="dose">Dose (0,05-0,3 mcg/kg/min):</label>
+                    <label for="dose">Dose (0,25-1,0 mcg/kg/min):</label>
                     <input type="number" id="dose" name="dose" step="0.01" value="0.1" required>
 
                     <label for="solucao">Solução para Diluição:</label>
@@ -70,7 +70,7 @@
     <script src="js/menuresponsivov1.js"></script>
     <script src="js/copiaremailpixv1.js"></script>
     <script src="js/copirightv1.js"></script>
-    <script src="js/calcularepinefrina.js"></script>
+    <script src="js/calcularmilrinona.js"></script>
     
 </body>
 </html>
