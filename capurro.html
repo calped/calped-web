@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimativa da Idade Gestacional pelo Capurro</title>
+    <link rel="stylesheet" href="css/stylesampicillin.css">
+    <!-- Adicionar o SDK do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script>
+        function calcularCapurro() {
+            const mamilo = parseFloat(document.getElementById('mamilo').value);
+            const pregas = parseFloat(document.getElementById('pregas').value);
+            const pele = parseFloat(document.getElementById('pele').value);
+            const orelha = parseFloat(document.getElementById('orelha').value);
+            const glandula = parseFloat(document.getElementById('glandula').value);
+
+            const soma = ((mamilo + pregas + pele + orelha + glandula) + 204) / 7;
+            const somaDias = (mamilo + pregas + pele + orelha + glandula) + 204;
+
+            document.getElementById('capurro').value = soma.toFixed(1);
+            document.getElementById('capurroDias').value = somaDias.toFixed(0);
+        }
+
+        function calcularCapurroNeurologico() {
+            const mamilo2 = parseFloat(document.getElementById('mamilo2').value);
+            const pregas2 = parseFloat(document.getElementById('pregas2').value);
+            const pele2 = parseFloat(document.getElementById('pele2').value);
+            const orelha2 = parseFloat(document.getElementById('orelha2').value);
+            const xale = parseFloat(document.getElementById('xale').value);
+            const cabecaPescoco = parseFloat(document.getElementById('cabecaPescoco').value);
+            const glandula2 = parseFloat(document.getElementById('glandula2').value);
+
+            const soma3 = ((mamilo2 + pregas2 + pele2 + orelha2 + xale + cabecaPescoco + glandula2) + 207) / 7;
+            const soma4 = (mamilo2 + pregas2 + pele2 + orelha2 + xale + cabecaPescoco + glandula2) + 207;
+
+            document.getElementById('capurroNeurologico').value = soma3.toFixed(1);
+            document.getElementById('capurroNeurologicoDias').value = soma4.toFixed(0);
+        }
+    </script>
+</head>
+<body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Estimativa da Idade Gestacional pelo Capurro</h1>
+        <p>Calcule a idade gestacional pelo método Capurro.</p>
+    </header>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
+            <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="calculator">
+            <div class="form-container">
+                <h2>Calculadora de Idade Gestacional pelo Capurro</h2>
+                <form id="calculatorForm">
+                    <h3>Capurro Somático</h3>
+                    <label for="mamilo">Tamanho do mamilo:</label>
+                    <select name="mamilo" id="mamilo" onchange="calcularCapurro()">
+                        <option value="0">Mamilo pouco visível sem aréola</option>
+                        <option value="5">Mamilo nítido, aréola lisa e diâmetro < 0,75cm</option>
+                        <option value="10">Mamilo puntiforme aréola de borda não elevada > 0,75cm</option>
+                        <option value="15">Mamilo puntiforme aréola de borda elevada > 0,75cm</option>
+                    </select>
+
+                    <label for="pregas">Pregas plantares:</label>
+                    <select name="pregas" id="pregas" onchange="calcularCapurro()">
+                        <option value="0">Sem pregas</option>
+                        <option value="5">Discretas anteriores</option>
+                        <option value="10">Anteriores mais definidas</option>
+                        <option value="15">Sulcos anteriores</option>
+                        <option value="20">Sulcos na metade posterior</option>
+                    </select>
+
+                    <label for="pele">Pele:</label>
+                    <select name="pele" id="pele" onchange="calcularCapurro()">
+                        <option value="0">Fina e gelatinosa</option>
+                        <option value="10">Mais grossa c/ descamação fina</option>
+                        <option value="15">Grossa c/ sucos, descamação de mãos e pés</option>
+                        <option value="20">Grossa e apergaminhada, sucos profundos</option>
+                    </select>
+
+                    <label for="orelha">Orelha:</label>
+                    <select name="orelha" id="orelha" onchange="calcularCapurro()">
+                        <option value="0">Chata e disforme</option>
+                        <option value="10">Pouco encurvada</option>
+                        <option value="16">Encurvada em toda parte superior</option>
+                        <option value="24">Toda encurvada</option>
+                    </select>
+
+                    <label for="glandula">Glândula mamária:</label>
+                    <select name="glandula" id="glandula" onchange="calcularCapurro()">
+                        <option value="0">Não palpável</option>
+                        <option value="5">< 5mm</option>
+                        <option value="10">5 a 10mm</option>
+                        <option value="15">> 10mm</option>
+                    </select>
+
+                    <h3>Capurro Neurológico</h3>
+                    <label for="mamilo2">Tamanho do mamilo:</label>
+                    <select name="mamilo2" id="mamilo2" onchange="calcularCapurroNeurologico()">
+                        <option value="0">Mamilo pouco visível sem aréola</option>
+                        <option value="5">Mamilo nítido, aréola lisa e diâmetro < 0,75cm</option>
+                        <option value="10">Mamilo puntiforme aréola de borda não elevada > 0,75cm</option>
+                        <option value="15">Mamilo puntiforme aréola de borda elevada > 0,75cm</option>
+                    </select>
+
+                    <label for="pregas2">Pregas plantares:</label>
+                    <select name="pregas2" id="pregas2" onchange="calcularCapurroNeurologico()">
+                        <option value="0">Sem pregas</option>
+                        <option value="5">Discretas anteriores</option>
+                        <option value="10">Anteriores mais definidas</option>
+                        <option value="15">Sulcos anteriores</option>
+                        <option value="20">Sulcos na metade posterior</option>
+                    </select>
+
+                    <label for="pele2">Pele:</label>
+                    <select name="pele2" id="pele2" onchange="calcularCapurroNeurologico()">
+                        <option value="0">Fina e gelatinosa</option>
+                        <option value="10">Mais grossa c/ descamação fina</option>
+                        <option value="15">Grossa c/ sucos, descamação de mãos e pés</option>
+                        <option value="20">Grossa e apergaminhada, sucos profundos</option>
+                    </select>
+
+                    <label for="orelha2">Orelha:</label>
+                    <select name="orelha2" id="orelha2" onchange="calcularCapurroNeurologico()">
+                        <option value="0">Chata e disforme</option>
+                        <option value="10">Pouco encurvada</option>
+                        <option value="16">Encurvada em toda parte superior</option>
+                        <option value="24">Toda encurvada</option>
+                    </select>
+
+                    <label for="glandula2">Glândula mamária:</label>
+                    <select name="glandula2" id="glandula2" onchange="calcularCapurroNeurologico()">
+                        <option value="0">Não palpável</option>
+                        <option value="5">< 5mm</option>
+                        <option value="10">5 a 10mm</option>
+                        <option value="15">> 10mm</option>
+                    </select>
+
+                    <label for="xale">Manobra do xale:</label>
+                    <select name="xale" id="xale" onchange="calcularCapurroNeurologico()">
+                        <option value="0">Cotovelo na axila oposta</option>
+                        <option value="6">Cotovelo ultrapassa linha média</option>
+                        <option value="12">Cotovelo na linha média</option>
+                        <option value="18">Cotovelo não atinge a linha média</option>
+                    </select>
+
+                    <label for="cabecaPescoco">Ângulo da cabeça e pescoço:</label>
+                    <select name="cabecaPescoco" id="cabecaPescoco" onchange="calcularCapurroNeurologico()">
+                        <option value="0">Deflexionada a 270°</option>
+                        <option value="4">180 a 270°</option>
+                        <option value="8">180°</option>
+                        <option value="12">< 180°</option>
+                    </select>
+
+                    <label for="capurro">Capurro somático:</label>
+                    <input type="text" id="capurro" name="capurro" readonly>
+
+                    <label for="capurroDias">Capurro somático (dias):</label>
+                    <input type="text" id="capurroDias" name="capurroDias" readonly>
+
+                    <label for="capurroNeurologico">Capurro neurológico:</label>
+                    <input type="text" id="capurroNeurologico" name="capurroNeurologico" readonly>
+
+                    <label for="capurroNeurologicoDias">Capurro neurológico (dias):</label>
+                    <input type="text" id="capurroNeurologicoDias" name="capurroNeurologicoDias" readonly>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+
+    <script src="js/menuresponsivov1.js"></script>
+    <script src="js/copiaremailpixv1.js"></script>
+    <script src="js/copirightv1.js"></script>
+</body>
+</html>
