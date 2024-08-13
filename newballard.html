@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escore New Ballard Versão 1.0</title>
+    <link rel="stylesheet" href="css/stylesampicillin.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img.responsive {
+            width: 100%;
+            height: auto;
+        }
+        @media screen and (max-width: 768px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+        th, td {
+            padding: 5px;
+        }
+        img.responsive {
+            width: 40%; /* Reduzir a largura das imagens em dispositivos móveis */
+            height: auto;
+        }
+    }
+
+        
+    </style>
+    <!-- Adicionar o SDK do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script>
+        function calcularPontos() {
+            let totalNeuromuscular = 0;
+            let totalFisico = 0;
+
+            // Neuromuscular
+            const neuromuscularInputs = document.querySelectorAll('input[name^="neuromuscular"]:checked');
+            neuromuscularInputs.forEach(input => {
+                totalNeuromuscular += parseInt(input.value);
+            });
+
+            // Físico
+            const fisicoInputs = document.querySelectorAll('input[name^="fisico"]:checked');
+            fisicoInputs.forEach(input => {
+                totalFisico += parseInt(input.value);
+            });
+
+            document.getElementById('totalNeuromuscular').innerText = totalNeuromuscular;
+            document.getElementById('totalFisico').innerText = totalFisico;
+            document.getElementById('totalScore').innerText = totalNeuromuscular + totalFisico;
+
+            // Calcular semanas
+            const total = totalNeuromuscular + totalFisico;
+            let semanas;
+            if (total <= -10) {
+                semanas = 20;
+            } else if (total <= -5) {
+                semanas = 22;
+            } else if (total <= 0) {
+                semanas = 24;
+            } else if (total <= 5) {
+                semanas = 26;
+            } else if (total <= 10) {
+                semanas = 28;
+            } else if (total <= 15) {
+                semanas = 30;
+            } else if (total <= 20) {
+                semanas = 32;
+            } else if (total <= 25) {
+                semanas = 34;
+            } else if (total <= 30) {
+                semanas = 36;
+            } else if (total <= 35) {
+                semanas = 38;
+            } else if (total <= 40) {
+                semanas = 40;
+            } else if (total <= 45) {
+                semanas = 42;
+            } else {
+                semanas = 44;
+            }
+
+            document.getElementById('totalSemanas').innerText = semanas;
+        }
+    </script>
+</head>
+<body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
+        <h1>Estimativa da Idade Gestacional pelo New Ballard</h1>
+        <p>Calcule a idade gestacional pelo método New Ballard.</p>
+    </header>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
+            <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="calculator">
+            <div class="form-container">
+                <h2>Calculadora de Idade Gestacional pelo New Ballard</h2>
+                <form id="calculatorForm">
+                    <h3>MATURIDADE NEUROMUSCULAR</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sinal</th>
+                                <th>-1</th>
+                                <th>0</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Postura</td>
+                                <td></td>
+                                <td><input type="radio" name="neuromuscular_postura" value="0"><img src="img/image001.gif" class="responsive" alt="Postura 0"></td>
+                                <td><input type="radio" name="neuromuscular_postura" value="1"><img src="img/image002.gif" class="responsive" alt="Postura 1"></td>
+                                <td><input type="radio" name="neuromuscular_postura" value="2"><img src="img/image003.gif" class="responsive" alt="Postura 2"></td>
+                                <td><input type="radio" name="neuromuscular_postura" value="3"><img src="img/image004.gif" class="responsive" alt="Postura 3"></td>
+                                <td><input type="radio" name="neuromuscular_postura" value="3"><img src="img/image005.gif" class="responsive" alt="Postura 3"></td>
+                                
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Ângulo do pulso</td>
+                                <td><input type="radio" name="neuromuscular_pulso" value="-1"><img src="img/image006.gif" class="responsive" alt="Square window -1"></td>
+                                <td><input type="radio" name="neuromuscular_pulso" value="0"><img src="img/image007.gif" class="responsive" alt="Square window 0"></td>
+                                <td><input type="radio" name="neuromuscular_pulso" value="1"><img src="img/image008.gif" class="responsive" alt="Square window 1"></td>
+                                <td><input type="radio" name="neuromuscular_pulso" value="2"><img src="img/image009.gif" class="responsive" alt="Square window 2"></td>
+                                <td><input type="radio" name="neuromuscular_pulso" value="3"><img src="img/image010.gif" class="responsive" alt="Square window 3"></td>
+                                <td><input type="radio" name="neuromuscular_pulso" value="3"><img src="img/image011.gif" class="responsive" alt="Square window 3"></td>
+                               <td></td>
+                            </tr>
+                            <tr>
+                                <td>Retração do braço</td>
+                                <td></td>
+                                <td><input type="radio" name="neuromuscular_braco" value="0"><img src="img/image012.gif" class="responsive" alt="Retração do braço 0"></td>
+                                <td><input type="radio" name="neuromuscular_braco" value="1"><img src="img/image013.gif" class="responsive" alt="Retração do braço 1"></td>
+                                <td><input type="radio" name="neuromuscular_braco" value="2"><img src="img/image014.gif" class="responsive" alt="Retração do braço 2"></td>
+                                <td><input type="radio" name="neuromuscular_braco" value="3"><img src="img/image015.gif" class="responsive" alt="Retração do braço 3"></td>
+                                <td><input type="radio" name="neuromuscular_braco" value="4"><img src="img/image016.gif" class="responsive" alt="Retração do braço 4"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Ângulo Poplíteo</td>
+                                <td><input type="radio" name="neuromuscular_popliteo" value="-1"><img src="img/image017.gif" class="responsive" alt="Ângulo Poplíteo -1"></td>
+                                <td><input type="radio" name="neuromuscular_popliteo" value="0"><img src="img/image018.gif" class="responsive" alt="Ângulo Poplíteo 0"></td>
+                                <td><input type="radio" name="neuromuscular_popliteo" value="1"><img src="img/image019.gif" class="responsive" alt="Ângulo Poplíteo 1"></td>
+                                <td><input type="radio" name="neuromuscular_popliteo" value="2"><img src="img/image020.gif" class="responsive" alt="Ângulo Poplíteo 2"></td>
+                                <td><input type="radio" name="neuromuscular_popliteo" value="3"><img src="img/image021.gif" class="responsive" alt="Ângulo Poplíteo 3"></td>
+                                <td><input type="radio" name="neuromuscular_popliteo" value="4"><img src="img/image022.gif" class="responsive" alt="Ângulo Poplíteo 4"></td>
+                                <td><input type="radio" name="neuromuscular_popliteo" value="5"><img src="img/image023.gif" class="responsive" alt="Ângulo Poplíteo 5"></td>
+                            </tr>
+                            <tr>
+                                <td>Sinal do Xale</td>
+                                <td><input type="radio" name="neuromuscular_xale" value="-1"><img src="img/image024.gif" class="responsive" alt="Sinal do Xale -1"></td>
+                                <td><input type="radio" name="neuromuscular_xale" value="0"><img src="img/image025.gif" class="responsive" alt="Sinal do Xale 0"></td>
+                                <td><input type="radio" name="neuromuscular_xale" value="1"><img src="img/image026.gif" class="responsive" alt="Sinal do Xale 1"></td>
+                                <td><input type="radio" name="neuromuscular_xale" value="2"><img src="img/image027.gif" class="responsive" alt="Sinal do Xale 2"></td>
+                                <td><input type="radio" name="neuromuscular_xale" value="3"><img src="img/image028.gif" class="responsive" alt="Sinal do Xale 3"></td>
+                                <td><input type="radio" name="neuromuscular_xale" value="4"><img src="img/image029.gif" class="responsive" alt="Sinal do Xale 4"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Calcanhar à orelha</td>
+                                <td><input type="radio" name="neuromuscular_calcanhar" value="-1"><img src="img/image030.gif" class="responsive" alt="Calcanhar à orelha -1"></td>
+                                <td><input type="radio" name="neuromuscular_calcanhar" value="0"><img src="img/image031.gif" class="responsive" alt="Calcanhar à orelha 0"></td>
+                                <td><input type="radio" name="neuromuscular_calcanhar" value="1"><img src="img/image032.gif" class="responsive" alt="Calcanhar à orelha 1"></td>
+                                <td><input type="radio" name="neuromuscular_calcanhar" value="2"><img src="img/image033.gif" class="responsive" alt="Calcanhar à orelha 2"></td>
+                                <td><input type="radio" name="neuromuscular_calcanhar" value="3"><img src="img/image034.gif" class="responsive" alt="Calcanhar à orelha 3"></td>
+                                <td><input type="radio" name="neuromuscular_calcanhar" value="4"><img src="img/image035.gif" class="responsive" alt="Calcanhar à orelha 4"></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>MATURIDADE FÍSICA</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sinal</th>
+                                <th>-2</th>
+                                <th>-1</th>
+                                <th>0</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pele</td>
+                                <td></td>
+                                <td><input type="radio" name="fisico_pele" value="-1"> Pegajoso, friável, transparente</td>
+                                <td><input type="radio" name="fisico_pele" value="0"> Gelatinoso, vermelho, translúcido</td>
+                                <td><input type="radio" name="fisico_pele" value="1"> Veias cor-de-rosa, visíveis lisas</td>
+                                <td><input type="radio" name="fisico_pele" value="2"> Rash descascando superficial de &/ou, poucas veias</td>
+                                <td><input type="radio" name="fisico_pele" value="3"> Descamação grosseira, áreas de palidez, raras veias</td>
+                                <td><input type="radio" name="fisico_pele" value="4"> Apergaminhada, fissuras profundas, sem vasos</td>
+                                <td><input type="radio" name="fisico_pele" value="5"> Coriácea, fissuras profundas, enrugada</td>
+                            </tr>
+                            <tr>
+                                <td>Lanugo</td>
+                                <td></td>
+                                <td><input type="radio" name="fisico_lanugo" value="-1"> Nenhum</td>
+                                <td><input type="radio" name="fisico_lanugo" value="0"> Escasso</td>
+                                <td><input type="radio" name="fisico_lanugo" value="1"> Abundante</td>
+                                <td><input type="radio" name="fisico_lanugo" value="2"> Diluir</td>
+                                <td><input type="radio" name="fisico_lanugo" value="3"> Áreas sem pelo</td>
+                                <td><input type="radio" name="fisico_lanugo" value="4"> Praticamente ausente</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Superfície Plantar</td>
+                                
+                                <td><input type="radio" name="fisico_plantar" value="-2"> Salto-dedo do pé 40-50mm:<br>&lt;40mm: -2</td>
+                                <td><input type="radio" name="fisico_plantar" value="-1"> Salto-dedo do pé 40-50mm:<br>-1</td>
+                                <td><input type="radio" name="fisico_plantar" value="0"> &gt;50 milímetro<br>nenhum vinco</td>
+                                <td><input type="radio" name="fisico_plantar" value="1"> Marcas vermelhas fracas</td>
+                                <td><input type="radio" name="fisico_plantar" value="2"> Vinco transversal anterior somente</td>
+                                <td><input type="radio" name="fisico_plantar" value="3"> Vinca a formiga. 2/3</td>
+                                <td><input type="radio" name="fisico_plantar" value="4"> Sola inteira do excesso dos vincos</td>
+                            </tr>
+                            <tr>
+                                <td>Peito (Aréola)</td>
+                                <td></td>
+                                <td><input type="radio" name="fisico_peito" value="-1"> Imperceptível</td>
+                                <td><input type="radio" name="fisico_peito" value="0"> Pouco perceptível</td>
+                                <td><input type="radio" name="fisico_peito" value="1"> Aréola lisa sem glândula</td>
+                                <td><input type="radio" name="fisico_peito" value="2"> Aréola parcialmente elevada<br>Glândula 1-2 mm</td>
+                                <td><input type="radio" name="fisico_peito" value="3"> Aréola elevada<br>Glândula 3-4 mm</td>
+                                <td><input type="radio" name="fisico_peito" value="4"> Borda elevada<br>Glândula 5-10 mm</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Olho/orelha</td>
+                                <td><input type="radio" name="fisico_olho_orelha" value="-2"> Pálpebras fundidas firmemente: -2</td>
+                                <td><input type="radio" name="fisico_olho_orelha" value="-1"> Pálpebras fundidas frouxamente: -1</td>
+                                <td><input type="radio" name="fisico_olho_orelha" value="0"> Pálpebras abertas pavilhão plano permanece dobrado</td>
+                                <td><input type="radio" name="fisico_olho_orelha" value="1"> Pavilhão parcialmente encurvado, mole com recolhimento lento</td>
+                                <td><input type="radio" name="fisico_olho_orelha" value="2"> Pavilhão completamente encurvado, mole c/ recolhimento rápido</td>
+                                <td><input type="radio" name="fisico_olho_orelha" value="3"> Pavilhão completamente encurvado, firme c/ recolhimento instantâneo</td>
+                                <td><input type="radio" name="fisico_olho_orelha" value="4"> Cartilagem grossa<br>orelha firme</td>
+                            </tr>
+                            
+                                <tr>
+                                    <td>Genital (macho)</td>
+                                    <td></td>
+                                    <td><input type="radio" name="genital_macho" value="-1"> Bolsa escrotal achatada e lisa</td>
+                                    <td><input type="radio" name="genital_macho" value="0"> Bolsa vazia, Rugas tênues</td>
+                                    <td><input type="radio" name="genital_macho" value="1"> Testículo canal, Rugas raras</td>
+                                    <td><input type="radio" name="genital_macho" value="2"> Testículo descendo, Poucas rugas</td>
+                                    <td><input type="radio" name="genital_macho" value="3"> Testículo na bolsa. Com rugas</td>
+                                    <td><input type="radio" name="genital_macho" value="4"> Testículos pendentes, Rugas profundas</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Genital (fêmea)</td>
+                                    <td></td>
+                                    <td><input type="radio" name="genital_macho" value="-1"> Clitóris proeminente, Lábios chatos</td>
+                                    <td><input type="radio" name="genital_macho" value="0"> Clitóris proeminente, Pequenos lábios pequenos</td>
+                                    <td><input type="radio" name="genital_macho" value="1"> Clitóris proeminente, Pequenos lábios evidentes</td>
+                                    <td><input type="radio" name="genital_macho" value="2"> Pequenos e grandes lábios proeminentes</td>
+                                    <td><input type="radio" name="genital_macho" value="3"> Grandes lábios maiores que os pequenos</td>
+                                    <td><input type="radio" name="genital_macho" value="4"> Clitóris e pequenos lábios encobertos</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            
+                        
+                        
+                        
+                        
+                    </table>
+
+                    <div>
+                        <h3>Resultados</h3>
+                        <p>Total Neuromuscular: <span id="totalNeuromuscular">0</span></p>
+                        <p>Total Físico: <span id="totalFisico">0</span></p>
+                        <p>Total Score: <span id="totalScore">0</span></p>
+                        <p>Semanas: <span id="totalSemanas">0</span></p>
+                    </div>
+                    <button type="button" onclick="calcularPontos()">Calcular</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+
+    <script src="js/menuresponsivov1.js"></script>
+    <script src="js/copiaremailpixv1.js"></script>
+    <script src="js/copirightv1.js"></script>
+</body>
+</html>
