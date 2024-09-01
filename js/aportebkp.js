@@ -10,19 +10,11 @@ function calcularAporte() {
     const concentracaoCalcio = parseFloat(document.getElementById('concentracaoCalcio').value);
     const necessidadeMagnesio = parseFloat(document.getElementById('necessidadeMagnesio').value);
     const concentracaoMgSO4 = parseFloat(document.getElementById('concentracaoMgSO4').value);
-    const volumeDieta = parseFloat(document.getElementById('volumeDieta').value); // Novo campo
-
     let primeiraSolucao = document.getElementById('primeiraSolucao').value;
     const segundaSolucao = document.getElementById('segundaSolucao').value;
 
-    // Calcular o volume da dieta dividido pelo peso
-    const volumeDietaPorPeso = volumeDieta / peso;
-
-    // Subtrair esse valor da taxa hídrica
-    const taxaHidricaAjustada = taxaHidrica - volumeDietaPorPeso;
-
-    // Calculando o aporte hídrico total usando a taxa hídrica ajustada
-    const aporteHidricoTotal = peso * taxaHidricaAjustada;
+    // Calculando o aporte hídrico total
+    const aporteHidricoTotal = peso * taxaHidrica;
 
     // Calculando a VIG total ao dia
     const vigTotalDia = peso * vig * 1440;
@@ -78,16 +70,16 @@ function calcularAporte() {
     let x = primeiraSolucao === 'AD' ? 0 : 5;
     let y;
     switch (segundaSolucao) {
-        case 'GLICOSE 5%':
+        case 'Glicose 5%':
             y = 5;
             break;
-        case 'GLICOSE 10%':
+        case 'Glicose 10%':
             y = 10;
             break;
-        case 'GLICOSE 25%':
+        case 'Glicose 25%':
             y = 25;
             break;
-        case 'GLICOSE 50%':
+        case 'Glicose 50%':
             y = 50;
             break;
     }
@@ -105,73 +97,54 @@ function calcularAporte() {
     // Calculando as calorias totais
     const caloriasTotais = ((vigTotalDia / 1000) * 3.4) / peso;
 
-    const concentracaoreal = (vig * 144) / taxaHidricaAjustada;
+    const concentracaoreal = (vig * 144) / taxaHidrica;
 
     const gGlicose = vigTotalDia / 1000;
 
     // Calculando a osmolaridade
     const osmolaridade = (((gGlicose * 5.5) + (mEqTotalNa + mEqTotalK + mEqTotalCa + mEqTotalMg)) / aporteHidricoTotal) * 1000;
 
-// Exibindo os resultados
-let resultadoEletrólitos = '';
+/*     <p>mg glicose total ao dia: ${vigTotalDia.toFixed(1)} mg/dia</p>  
+    <p>g de glicose: ${gGlicose.toFixed(1)} g</p> 
+    <p>mEq Ca: ${mEqTotalCa.toFixed(1)} mEq</p> 
+    <p>Concentração de glicose restante: ${concentracaoGlicose.toFixed(1)}%</p>  
+     <p>Volume restante: ${volumeRestante.toFixed(1)} ml</p>*/
 
-// Adicionando os eletrólitos se forem prescritos
-if (necessidadeSodio > 0) {
-    resultadoEletrólitos += `SÓDIO: ${necessidadeSodio.toFixed(1)} mEq/kg/dia; `;
-}
-if (necessidadePotassio > 0) {
-    resultadoEletrólitos += `POTÁSSIO: ${necessidadePotassio.toFixed(1)} mEq/kg/dia; `;
-}
-if (necessidadeCalcio > 0) {
-    resultadoEletrólitos += `CÁLCIO: ${necessidadeCalcio.toFixed(1)} mg/kg/dia; `;
-}
-if (necessidadeMagnesio > 0) {
-    resultadoEletrólitos += `MAGNÉSIO: ${necessidadeMagnesio.toFixed(1)} mEq/kg/dia; `;
-}
+    // Exibindo os resultados
+    let resultado = `
+        <p>Sódio: ${necessidadeSodio.toFixed(1)} mEq/kg/dia; Potássio: ${necessidadePotassio.toFixed(1)} mEq/kg/dia; Cálcio: ${necessidadeCalcio.toFixed(1)} mg/kg/dia; Magnésio: ${necessidadeMagnesio.toFixed(1)} mEq/kg/dia</p>
+        <p>Aporte em: ${concentracaoreal.toFixed(1)}%</p> 
+        <p>${primeiraSolucao}: ${W.toFixed(1)} ml</p>
+        <p>${segundaSolucao}: ${Z.toFixed(1)} ml</p>
+        
+        
+    
+    `;
 
-// Remover o último '; ' e fechar a tag <p> se houver algum eletrólito
-if (resultadoEletrólitos.length > 0) {
-    resultadoEletrólitos = `<p>${resultadoEletrólitos.slice(0, -2)}</p>`;  // Remove o último '; '
-}
+    if (necessidadeSodio) {
+        resultado += `<p>Sódio (${concentracaoNaClText}):  ${volumeNaCl.toFixed(1)} ml</p>`;
+    }
+    if (necessidadePotassio) {
+        resultado += `<p>Potássio (${concentracaoKClText}): ${volumeKCl.toFixed(1)} ml</p>`;
+    }
+    if (necessidadeCalcio) {
+        resultado += `<p>Cálcio (${concentracaoCalcioText}): ${volumeCalcio.toFixed(1)} ml </p>`;
+    }
+    if (necessidadeMagnesio) {
+        resultado += `<p>Magnésio (${concentracaoMgSO4Text}): ${volumeMgSO4.toFixed(1)} ml </p>`;
+    }
 
-let resultado = '';
-if (resultadoEletrólitos) {
-    resultado += resultadoEletrólitos;
-}
-
-resultado += `
-    <p>TAXA HÍDRICA TOTAL: ${taxaHidrica.toFixed(1)} ml/kg/dia - VOLUME DE DIETA/MEDICAÇÕES: ${volumeDietaPorPeso.toFixed(1)} ml/kg/dia = ${taxaHidricaAjustada.toFixed(1)} ml/kg/dia</p>
-    <p>VIG: ${vig.toFixed(1)} mg/kg/min - APORTE EM: ${concentracaoreal.toFixed(1)}%</p> 
-    <p>${primeiraSolucao}: ${W.toFixed(1)} ml</p>
-    <p>${segundaSolucao}: ${Z.toFixed(1)} ml</p>
-`;
-
-// Adicionando as concentrações e volumes de cada eletrólito se prescritos
-if (necessidadeSodio > 0) {
-    resultado += `<p>SÓDIO (${concentracaoNaClText}): ${volumeNaCl.toFixed(1)} ml</p>`;
-}
-if (necessidadePotassio > 0) {
-    resultado += `<p>POTÁSSIO (${concentracaoKClText}): ${volumeKCl.toFixed(1)} ml</p>`;
-}
-if (necessidadeCalcio > 0) {
-    resultado += `<p>CÁLCIO (${concentracaoCalcioText}): ${volumeCalcio.toFixed(1)} ml</p>`;
-}
-if (necessidadeMagnesio > 0) {
-    resultado += `<p>MAGNÉSIO (${concentracaoMgSO4Text}): ${volumeMgSO4.toFixed(1)} ml</p>`;
-}
-
-resultado += `
-    <p>CALORIAS TOTAIS: ${caloriasTotais.toFixed(1)} kcal/kg/dia</p>
-    <p>OSMOLARIDADE: ${osmolaridade.toFixed(0)} mOsm/l</p>
-    <p>APORTE HÍDRICO TOTAL: ${aporteHidricoTotal.toFixed(1)} ml/dia</p>
-    <p>VELOCIDADE DE INFUSÃO: ${velocidadeInfusao.toFixed(1)} ml/h</p>
-`;
-
-
-
+    resultado += `
+       
+        <p>Calorias totais: ${caloriasTotais.toFixed(1)} kcal/kg/dia</p>
+        <p>Osmolaridade: ${osmolaridade.toFixed(0)} mOsm/l</p>
+        <p>Aporte hídrico total: ${aporteHidricoTotal.toFixed(1)} ml/dia</p>
+        <p>Velocidade de infusão: ${velocidadeInfusao.toFixed(1)} ml/h</p>
+    `;
 
     document.getElementById('resultado').innerHTML = resultado;
 }
+
 function atualizarSegundaSolucao() {
     const primeiraSolucao = document.getElementById('primeiraSolucao').value;
     const segundaSolucao = document.getElementById('segundaSolucao');
@@ -193,9 +166,9 @@ function atualizarSegundaSolucao() {
                 segundaSolucao.options[i].disabled = true;
             }
         }
-    } else if (primeiraSolucao === 'GLICOSE 5%') {
+    } else if (primeiraSolucao === 'Glicose 5%') {
         for (let i = 0; i < segundaSolucao.options.length; i++) {
-            if (segundaSolucao.options[i].value === 'GLICOSE 5%') {
+            if (segundaSolucao.options[i].value === 'Glicose 5%') {
                 segundaSolucao.options[i].disabled = true;
             }
         }
@@ -212,13 +185,6 @@ function visualizarImpressao() {
 
     const printContent = `
     <div>
-        <style>
-            @media print {
-                .no-print {
-                    display: none;
-                }
-            }
-        </style>
         <img src="img/logocalped.png" alt="Logo" style="display: block; margin: 0 auto; width: 100px; height: auto;">
         <h2 style="text-align: center; font-weight: bold;">calped.com.br</h2>
         <h3 style="text-align: center; font-weight: bold;">Aporte Calórico Neonatal</h3>
@@ -227,11 +193,12 @@ function visualizarImpressao() {
         <p style="font-weight: bold;">Registro:___________</p>
         <p style="font-weight: bold;">Leito:_____________</p>
         <p style="font-weight: bold;">Nome do paciente: ___________________________________________________</p>
-        <p>DATA: ${date}</p>
-        <p>PESO: ${peso} kg</p>
-        
+        <p>Data: ${date}</p>
+        <p>Peso: ${peso} kg</p>
+        <p>Taxa hídrica: ${taxaHidrica} ml/kg/dia</p>
+        <p>VIG: ${vig} mg/kg/min</p>
         ${resultado}
-        <button class="no-print" onclick="window.print()">Imprimir</button>
+        <button onclick="window.print()">Imprimir</button>
     </div>
     `;
 
@@ -240,8 +207,6 @@ function visualizarImpressao() {
     printWindow.document.close();
     printWindow.focus();
 }
-
-
 
 // Adicionando os eventos de mudança para calcular automaticamente
 document.addEventListener('DOMContentLoaded', (event) => {

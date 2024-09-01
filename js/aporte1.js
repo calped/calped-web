@@ -112,66 +112,103 @@ function calcularAporte() {
     // Calculando a osmolaridade
     const osmolaridade = (((gGlicose * 5.5) + (mEqTotalNa + mEqTotalK + mEqTotalCa + mEqTotalMg)) / aporteHidricoTotal) * 1000;
 
-// Exibindo os resultados
-let resultadoEletrólitos = '';
+    // Exibindo os resultados
+    let resultadoEletrólitos = '';
 
-// Adicionando os eletrólitos se forem prescritos
-if (necessidadeSodio > 0) {
-    resultadoEletrólitos += `SÓDIO: ${necessidadeSodio.toFixed(1)} mEq/kg/dia; `;
-}
-if (necessidadePotassio > 0) {
-    resultadoEletrólitos += `POTÁSSIO: ${necessidadePotassio.toFixed(1)} mEq/kg/dia; `;
-}
-if (necessidadeCalcio > 0) {
-    resultadoEletrólitos += `CÁLCIO: ${necessidadeCalcio.toFixed(1)} mg/kg/dia; `;
-}
-if (necessidadeMagnesio > 0) {
-    resultadoEletrólitos += `MAGNÉSIO: ${necessidadeMagnesio.toFixed(1)} mEq/kg/dia; `;
-}
+    // Adicionando os eletrólitos se forem prescritos
+    if (necessidadeSodio > 0) {
+        resultadoEletrólitos += `SÓDIO: ${necessidadeSodio.toFixed(1)} mEq/kg/dia; `;
+    }
+    if (necessidadePotassio > 0) {
+        resultadoEletrólitos += `POTÁSSIO: ${necessidadePotassio.toFixed(1)} mEq/kg/dia; `;
+    }
+    if (necessidadeCalcio > 0) {
+        resultadoEletrólitos += `CÁLCIO: ${necessidadeCalcio.toFixed(1)} mg/kg/dia; `;
+    }
+    if (necessidadeMagnesio > 0) {
+        resultadoEletrólitos += `MAGNÉSIO: ${necessidadeMagnesio.toFixed(1)} mEq/kg/dia; `;
+    }
 
-// Remover o último '; ' e fechar a tag <p> se houver algum eletrólito
-if (resultadoEletrólitos.length > 0) {
-    resultadoEletrólitos = `<p>${resultadoEletrólitos.slice(0, -2)}</p>`;  // Remove o último '; '
-}
+    // Remover o último '; ' e fechar a tag <p> se houver algum eletrólito
+    if (resultadoEletrólitos.length > 0) {
+        resultadoEletrólitos = `<p>${resultadoEletrólitos.slice(0, -2)}</p>`;  // Remove o último '; '
+    }
 
-let resultado = '';
-if (resultadoEletrólitos) {
-    resultado += resultadoEletrólitos;
-}
+    let resultado = '';
+    if (resultadoEletrólitos) {
+        resultado += resultadoEletrólitos;
+    }
 
-resultado += `
-    <p>TAXA HÍDRICA TOTAL: ${taxaHidrica.toFixed(1)} ml/kg/dia - VOLUME DE DIETA/MEDICAÇÕES: ${volumeDietaPorPeso.toFixed(1)} ml/kg/dia = ${taxaHidricaAjustada.toFixed(1)} ml/kg/dia</p>
-    <p>VIG: ${vig.toFixed(1)} mg/kg/min - APORTE EM: ${concentracaoreal.toFixed(1)}%</p> 
-    <p>${primeiraSolucao}: ${W.toFixed(1)} ml</p>
-    <p>${segundaSolucao}: ${Z.toFixed(1)} ml</p>
+    resultado = `
+    <p>
+        <span style="font-weight: bold;">TAXA HÍDRICA TOTAL:</span>
+        <span>${taxaHidrica.toFixed(1)} ml/kg/dia</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">VOLUME DE DIETA/MEDICAÇÕES:</span>
+        <span>${volumeDietaPorPeso.toFixed(1)} ml/kg/dia</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">VIG:</span>
+        <span>${vig.toFixed(1)} mg/kg/min</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">APORTE EM:</span>
+        <span>${concentracaoreal.toFixed(1)}%</span>
+    </p>
+
+    <p>
+        <span style="font-weight: bold;">${primeiraSolucao}</span>
+        <span style="font-weight: bold;">${W.toFixed(1)} ml</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">${segundaSolucao}</span>
+        <span>${Z.toFixed(1)} ml</span>
+    </p>
+
+    <p>
+        <span style="font-weight: bold;">SÓDIO: (${concentracaoNaClText})</span>
+        <span>${volumeNaCl.toFixed(1)} ml</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">POTÁSSIO: (${concentracaoKClText})</span>
+        <span>${volumeKCl.toFixed(1)} ml</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">CÁLCIO: (${concentracaoCalcioText})</span>
+        <span>${volumeCalcio.toFixed(1)} ml</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">MAGNÉSIO: (${concentracaoMgSO4Text})</span>
+        <span>${volumeMgSO4.toFixed(1)} ml</span>
+    </p>
+
+    <p>
+        <span style="font-weight: bold;">CALORIAS TOTAIS:</span>
+        <span>${caloriasTotais.toFixed(1)} kcal/kg/dia</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">OSMOLARIDADE:</span>
+        <span>${osmolaridade.toFixed(0)} mOsm/l</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">APORTE HÍDRICO TOTA:L</span>
+        <span>${aporteHidricoTotal.toFixed(1)} ml/dia</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">VELOCIDADE DE INFUSÃO:</span>
+        <span>${velocidadeInfusao.toFixed(1)} ml/h</span>
+    </p>
 `;
 
-// Adicionando as concentrações e volumes de cada eletrólito se prescritos
-if (necessidadeSodio > 0) {
-    resultado += `<p>SÓDIO (${concentracaoNaClText}): ${volumeNaCl.toFixed(1)} ml</p>`;
-}
-if (necessidadePotassio > 0) {
-    resultado += `<p>POTÁSSIO (${concentracaoKClText}): ${volumeKCl.toFixed(1)} ml</p>`;
-}
-if (necessidadeCalcio > 0) {
-    resultado += `<p>CÁLCIO (${concentracaoCalcioText}): ${volumeCalcio.toFixed(1)} ml</p>`;
-}
-if (necessidadeMagnesio > 0) {
-    resultado += `<p>MAGNÉSIO (${concentracaoMgSO4Text}): ${volumeMgSO4.toFixed(1)} ml</p>`;
-}
 
-resultado += `
-    <p>CALORIAS TOTAIS: ${caloriasTotais.toFixed(1)} kcal/kg/dia</p>
-    <p>OSMOLARIDADE: ${osmolaridade.toFixed(0)} mOsm/l</p>
-    <p>APORTE HÍDRICO TOTAL: ${aporteHidricoTotal.toFixed(1)} ml/dia</p>
-    <p>VELOCIDADE DE INFUSÃO: ${velocidadeInfusao.toFixed(1)} ml/h</p>
-`;
 
 
 
 
     document.getElementById('resultado').innerHTML = resultado;
 }
+
 function atualizarSegundaSolucao() {
     const primeiraSolucao = document.getElementById('primeiraSolucao').value;
     const segundaSolucao = document.getElementById('segundaSolucao');
@@ -217,6 +254,15 @@ function visualizarImpressao() {
                 .no-print {
                     display: none;
                 }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 8px;
+                    text-align: left;
+                }
             }
         </style>
         <img src="img/logocalped.png" alt="Logo" style="display: block; margin: 0 auto; width: 100px; height: auto;">
@@ -227,8 +273,8 @@ function visualizarImpressao() {
         <p style="font-weight: bold;">Registro:___________</p>
         <p style="font-weight: bold;">Leito:_____________</p>
         <p style="font-weight: bold;">Nome do paciente: ___________________________________________________</p>
-        <p>DATA: ${date}</p>
-        <p>PESO: ${peso} kg</p>
+        <p style="font-weight: bold;">DATA: ${date}</p>
+        <p style="font-weight: bold;">PESO: ${peso} kg</p>
         
         ${resultado}
         <button class="no-print" onclick="window.print()">Imprimir</button>
@@ -240,8 +286,6 @@ function visualizarImpressao() {
     printWindow.document.close();
     printWindow.focus();
 }
-
-
 
 // Adicionando os eventos de mudança para calcular automaticamente
 document.addEventListener('DOMContentLoaded', (event) => {
