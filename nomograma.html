@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Pediátrica - CalPed</title>
+    <link rel="stylesheet" href="css/stylesampicillin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header id="home">
+        <img src="img/header-banner.jpg" alt="Banner de Calculadora Pediátrica" class="responsive-image">
+        <h1>Calculadora Pediátrica</h1>
+        <p>Calcule com precisão a concentração e a VIG utilizando nossa ferramenta gráfica.</p>
+    </header>
+    <nav class="main-nav">
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            ☰
+        </button>
+        <ul id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Acesso à Calculadora Pediátrica</a></li>
+            <li><a href="prontuario.html">Prontuário Médico</a></li>
+            <li><a href="fundamentos.html">Fundamentos da Prescrição</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="about.html">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="calculator" class="form-container">
+            <h2>Calculadora Pediátrica</h2>
+            <div class="inputs">
+                <label for="solucaoX">Solução X:</label>
+                <select id="solucaoX">
+                    <option value="0">Água Destilada</option>
+                    <option value="5">Glicose 5%</option>
+                    <option value="10">Glicose 10%</option>
+                    <option value="25">Glicose 25%</option>
+                    <option value="50">Glicose 50%</option>
+                </select>
+
+                <label for="volumeX">Volume X (ml):</label>
+                <input type="number" id="volumeX" value="0">
+
+                <label for="solucaoY">Solução Y:</label>
+                <select id="solucaoY">
+                    <option value="0">Água Destilada</option>
+                    <option value="5">Glicose 5%</option>
+                    <option value="10">Glicose 10%</option>
+                    <option value="25">Glicose 25%</option>
+                    <option value="50">Glicose 50%</option>
+                </select>
+
+                <label for="volumeY">Volume Y (ml):</label>
+                <input type="number" id="volumeY" value="0">
+
+                <label for="volumeZ">Volume Z (ml) - Eletrólitos:</label>
+                <input type="number" id="volumeZ" value="0">
+<p></p>
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" value="2">
+
+                <button id="atualizar">Atualizar</button>
+                <button id="limpar">Limpar</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="copyright-year"></span>: CalPed. Todos os direitos reservados. |  <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </footer>
+
+
+    <script src="js/copirightv1.js"></script>
+   
+    <script src="js/menuresponsivov1.js"></script>
+    <script src="js/scriptnomograma.js"></script>
+</body>
+</html>

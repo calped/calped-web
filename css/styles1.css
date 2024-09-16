@@ -1,0 +1,148 @@
+:root {
+    --color-bg: #F0F8FF; /* AliceBlue */
+    --color-primary: #007BFF; /* Azul */
+    --color-secondary: #0964b4; /* Cinza */
+    --color-accent: #28A745; /* Verde */
+    --color-accent-dark: #218838; /* Verde Escuro */
+    --color-text: #2F4F4F; /* DarkSlateGray */
+    --color-white: #FFFFFF; /* Branco */
+    --color-light-gray: #F8F9FA; /* Cinza Claro */
+    --color-lighter-gray: #E9ECEF; /* Cinza Muito Claro */
+    --color-link: #FFD700; /* Dourado */
+    --color-link-hover: #FF4500; /* Laranja Vermelho */
+    --color-link-visited: #FF4500; /* Vermelho */
+}
+
+/* Estilos básicos */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Espaço entre o header e o menu */
+}
+
+header p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+}
+
+h1 {
+    color: var(--color-primary);
+    margin-top: 20px;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: justify; /* Justifica o texto */
+}
+
+/* Aplicando estilos do form-container */
+.container {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.inputs {
+    margin-bottom: 20px;
+}
+
+.inputs label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.inputs input,
+.inputs select,
+.inputs button {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    width: auto;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+button#limpar {
+    background-color: #dc3545;
+}
+
+button:hover {
+    background-color: var(--color-accent-dark);
+}
+
+.chart-container {
+    width: 800px;
+    height: 600px;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    header {
+        border-radius: 4px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .inputs input,
+    .inputs select,
+    .inputs button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+        width: auto;
+    }
+
+    .chart-container {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+}
