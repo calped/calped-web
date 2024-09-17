@@ -1,66 +1,100 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre o CalPed</title>
-    <link rel="stylesheet" href="css/stylesglobalv1.css">
+    <link rel="stylesheet" href="css/styles1.css">
 </head>
 <body>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>CalPed</h1>
-    </header>
-    <nav class="main-nav">
-        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
-            ☰
-        </button>
-        <ul id="menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Acesso à Calculadora Pediátrica</a></li>
-            <li><a href="prontuario.html">Prontuário Médico</a></li>
-            <li><a href="fundamentos.html">Fundamentos da prescrição</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li><a href="about.html">Sobre</a></li>
-            
-        </ul>
-    </nav>
+    <!-- Início do Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="brand">CalPed</a>
+                <button class="menu-toggle" aria-label="Abrir Menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    
+                    <li><a href="calculadoras.html">Calculadoras Pediátricas</a></li>
+                    <li><a href="fundamentos.html">Fundamentos da prescrição</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                    <li><a href="about.html">Sobre</a></li>
+                </ul>
+            </div>
+        </nav>
 
+        <div class="hero hero-small">
+            <div class="container">
+                <h1>Sobre o CalPed</h1>
+            </div>
+        </div>
+    </header>
+    <!-- Fim do Header -->
+
+    <!-- Início do Main -->
     <main>
-        <section id="about" class="container">
+        <section class="calculator-benefits">
+            <div class="container">
             <h2>Sobre a CalPed</h2>
             <p>O CalPed é uma plataforma inovadora desenvolvida para auxiliar pediatras em sua prática diária. Nossa missão é proporcionar ferramentas precisas e seguras que facilitem o trabalho dos profissionais de saúde na área pediátrica.</p>
             <p>Nosso objetivo é otimizar o dia a dia dos pediatras com ferramentas tecnológicas que permitem realizar cálculos médicos de maneira rápida e precisa, além de gerenciar prontuários médicos de forma eficiente e segura.</p>
+        </div>
         </section>
-        <section id="mission" class="container">
+
+        <section class="calculator-benefits">
+            <div class="container">
             <h2>Missão do CalPed</h2>
-            <img src="img/mission.png" alt="Missão do CalPed" class="responsive-image">
+            
             <p>A missão do CalPed é melhorar a qualidade do atendimento pediátrico por meio da inovação tecnológica. Oferecemos ferramentas que ajudam os pediatras a fornecer cuidados de saúde mais precisos e eficientes, garantindo que as crianças recebam o melhor tratamento possível.</p>
+        </div>
         </section>
-        <section id="vision" class="container">
+
+        <section class="calculator-benefits">
+            <div class="container">
             <h2>Visão do CalPed</h2>
-            <img src="img/future.png" alt="Visão do CalPed" class="responsive-image">
+            
             <p>Nossa visão é ser a principal plataforma digital de apoio à pediatria, reconhecida pela excelência em tecnologia e segurança de dados. Queremos capacitar os profissionais de saúde com ferramentas que facilitem o diagnóstico, tratamento e acompanhamento dos pacientes pediátricos.</p>
+        </div>
         </section>
-        <section id="responsible" class="container">
-            <h2>Responsável pelo CalPed</h2>
-            <img src="img/mauricio-leonardi.png" alt="Mauricio Leonardi" class="small-image">
-            <p><strong>Mauricio Leonardi</strong>, médico pediatra em Belém do Pará, Brasil, é o responsável pelo projeto CalPed. Com vasta experiência na área pediátrica, Mauricio dedica-se a melhorar o atendimento e a qualidade dos serviços de saúde para crianças através da inovação tecnológica.</p>
+
+        <section class="calculator-benefits">
+            <div class="container">
+                <h2>Responsável pelo CalPed</h2>
+                <img src="img/mauricio-leonardi.png" alt="Mauricio Leonardi" class="profile-image">
+                <p><strong>Mauricio Leonardi</strong>, médico pediatra em Belém do Pará, Brasil, é o responsável pelo projeto CalPed. Com vasta experiência na área pediátrica, Mauricio dedica-se a melhorar o atendimento e a qualidade dos serviços de saúde para crianças através da inovação tecnológica.</p>
+            </div>
         </section>
-        <section id="donation" class="container">
-            <h2>Doação</h2>
-            <h3>Se você deseja apoiar o projeto CalPed, pode fazer uma doação através do PIX.</h3>
-            <img src="img/pix-qrcode.png" alt="QR Code para doação via PIX" class="small-image">
-            <h3>PIX: <strong id="pix-email">calculospediatricos@gmail.com</strong> <button onclick="copyPixEmail()">Copia e cola</button></h3>
+        
+
+        <section class="calculator-benefits">
+            <div class="container">
+                <section id="donation" class="container">
+                    <h2>Doação</h2>
+                    <p>Se você deseja apoiar o projeto CalPed, pode fazer uma doação através do PIX.</p>
+                    <h4>PIX: <strong id="pix-email">calculospediatricos@gmail.com</strong></h4>
+                    <button onclick="copyPixEmail()" class="btn btn-secondary">PIX copia e cola</button>
+                </section>
+            </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
-    </footer>
-  
-    <script src="js/menuresponsivov1.js"></script>
-    <script src="js/copiaremailpixv1.js"></script>
-    <script src="js/copirightv1.js"></script>
-    <script src="js/script.js"></script>
+    <!-- Fim do Main -->
+
+ <!-- Início do Footer -->
+ <footer>
+    <div class="container">
+        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados.</p>
+        <p><a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </div>
+</footer>
+
+<!-- Fim do Footer -->
+
+<!-- Script para Atualizar o Ano -->
+<script src="js/copiright.js"></script>
+<script src="js/copiarpix.js"></script>
+<script src="js/cotato.js"></script>
 </body>
 </html>

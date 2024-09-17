@@ -4,7 +4,8 @@
 /* Variáveis de Cores */
 :root {
     --color-primary: #007BFF;
-    --color-secondary: #28A745;
+    --color-secondary: #6C757D;
+    --color-success: #28A745;
     --color-white: #FFFFFF;
     --color-light: #F8F9FA;
     --color-dark: #343A40;
@@ -35,9 +36,8 @@ body {
 .navbar {
     background-color: var(--color-white);
     padding: 10px 0;
-    border-bottom: 1px solid var(--color-dark);
+    border-bottom: 1px solid var(--color-secondary);
     position: relative;
-    z-index: 1000;
 }
 
 .navbar .brand {
@@ -52,12 +52,6 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    transform: scale(1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.navbar .menu-toggle:hover {
-    transform: scale(1.1);
 }
 
 .navbar .hamburger {
@@ -109,16 +103,17 @@ body {
 
 /* Hero Section */
 .hero {
-    background-image: url('../img/banner-highres.jpg');
+    background-image: url('../img/banner.jpg');
     background-size: cover;
     background-position: center;
     padding: 100px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
     color: var(--color-white);
     position: relative;
+}
+
+.hero-small {
+    padding: 50px 0;
 }
 
 .hero::after {
@@ -163,60 +158,73 @@ section h2 {
     color: var(--color-primary);
 }
 
-.about p, .importance p, .testimonial p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.feature {
-    flex: 1 1 45%;
-    background-color: var(--color-white);
-    margin-bottom: 40px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.feature img {
+/* Barra de Pesquisa */
+#search-bar {
     width: 100%;
-    height: auto;
-}
-
-.feature h3 {
-    font-size: 28px;
-    margin: 20px 0;
-    color: var(--color-dark);
-}
-
-.feature p {
+    padding: 10px;
+    margin-bottom: 20px;
     font-size: 16px;
-    padding: 0 20px;
-    margin-bottom: 20px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 4px;
 }
 
-.feature .btn {
-    margin-bottom: 20px;
+/* Accordion */
+.accordion-item {
+    margin-bottom: 10px;
 }
 
-/* Testimonials */
-.testimonials {
-    background-color: var(--color-light);
-    padding: 60px 0;
+.accordion-button {
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 5px;
+    border-radius: 4px;
 }
 
-.testimonial {
-    margin-bottom: 40px;
-    text-align: center;
-    font-style: italic;
+.accordion-button:hover {
+    background-color: var(--color-dark);
+}
+
+.accordion-button.active {
+    background-color: var(--color-dark);
+}
+
+.accordion-content {
+    display: none;
+    overflow: hidden;
+    background-color: var(--color-white);
+    padding: 0 15px 15px;
+    border-left: 2px solid var(--color-primary);
+    border-right: 2px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    border-radius: 0 0 4px 4px;
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.accordion-content li {
+    margin-bottom: 10px;
+}
+
+.accordion-content a {
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.accordion-content a:hover {
     color: var(--color-dark);
 }
 
@@ -240,14 +248,26 @@ section h2 {
 }
 
 .btn-secondary {
-    background-color: var(--color-secondary);
+    background-color: var(--color-success);
 }
 
-.importance p {
+/* Benefícios */
+.calculator-benefits p,
+.calculator-benefits ul {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 20px;
     text-align: center;
+}
+
+.calculator-benefits ul {
+    list-style: disc;
+    padding-left: 40px;
+    text-align: left;
+}
+
+.calculator-benefits li {
+    margin-bottom: 10px;
 }
 
 /* Footer */
@@ -330,65 +350,4 @@ footer a:hover {
     .hero p {
         font-size: 20px;
     }
-}
-/* Estilos para o Formulário de Login */
-#login {
-    padding: 60px 0;
-}
-
-#login h2 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 40px;
-    color: var(--color-primary);
-}
-
-#login form {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-#login label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-#login input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid var(--color-secondary);
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-#login button {
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#login button:hover {
-    background-color: var(--color-dark);
-}
-
-#loginMessage {
-    text-align: center;
-    margin-top: 20px;
-    color: var(--color-danger);
-}
-
-#login a {
-    color: var(--color-primary);
-    text-decoration: none;
-}
-
-#login a:hover {
-    text-decoration: underline;
 }

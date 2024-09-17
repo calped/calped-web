@@ -1,73 +1,108 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
+    <!-- Meta Tags Essenciais -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - CalPed</title>
-   <!--  <link rel="stylesheet" href="css/stylesvcontatov2.css"> -->
-    <link rel="stylesheet" href="css/stylesglobalv1.css">
+
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="Entre em contato com a equipe do CalPed para mais informações ou apoio ao projeto.">
+    <meta name="keywords" content="contato, calped, calculadora pediátrica, pediatria, saúde infantil">
+    <meta name="author" content="CalPed">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Link para o CSS -->
+    <link rel="stylesheet" href="css/styles1.css">
+
+    <!-- Fontes do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    
+     <!-- Script para o Menu Responsivo -->
+     <script defer src="js/scripts.js"></script>
 </head>
 <body>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner de Contato" class="responsive-image">
-        <h1>Contato</h1>
-        <p>Entre em contato conosco para mais informações ou para apoiar o projeto CalPed.</p>
+    <!-- Início do Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="brand">CalPed</a>
+                <button class="menu-toggle" aria-label="Abrir Menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="calculadoras.html">Calculadoras Pediátricas</a></li>
+                    <li><a href="fundamentos.html">Fundamentos Teóricos</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="login.html" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="hero hero-small">
+            <div class="container">
+                <h1>Contato</h1>
+                <p>Entre em contato conosco para mais informações ou para apoiar o projeto CalPed.</p>
+            </div>
+        </div>
     </header>
-    <nav class="main-nav">
-        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
-            ☰
-        </button>
-        <ul id="menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Acesso à Calculadora Pediátrica</a></li>
-            <li><a href="prontuario.html">Prontuário Médico</a></li>
-            <li><a href="fundamentos.html">Fundamentos da Prescrição</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li><a href="about.html">Sobre</a></li>
-        </ul>
-    </nav>
+    <!-- Fim do Header -->
 
-    <main>
-        <section id="contact-info" class="container">
-            <h2>Informações de Contato</h2>
-            <p>Você pode entrar em contato conosco através do email <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a> ou preencher o formulário abaixo.</p>
-        </section>
-        <section id="contact-form" class="container">
-            <h2>Formulário de Contato</h2>
-            <form id="contactForm" action="https://formspree.io/f/mpwaaqen" method="POST">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-                
-                <button type="submit">Enviar</button>
-            </form>
-            <div id="formMessage"></div>
-        </section>
-        <section id="donation" class="container">
-            <h2>Doação</h2>
-            <h3>Se você deseja apoiar o projeto CalPed, pode fazer uma doação através do PIX.</h3>
-            <img src="img/pix-qrcode.png" alt="QR Code para doação via PIX" class="small-image">
-            <h3>PIX: <strong id="pix-email">calculospediatricos@gmail.com</strong> <button onclick="copyPixEmail()">PIX copia e cola</button></h3>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; <span id="startYear"></span> - <span id="currentYear"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
-    </footer>
-    <script>
-        // Script para atualizar o ano no rodapé automaticamente
-        const startYear = 2017;
-        const currentYear = new Date().getFullYear();
-        document.getElementById('startYear').textContent = startYear;
-        document.getElementById('currentYear').textContent = currentYear;
+<!-- Início do Main -->
+<main>
+  
 
+    <section id="contact-form" class="container">
+        <h2>Formulário de Contato</h2>
+        <form id="contactForm" action="https://formspree.io/f/mpwaaqen" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
 
-        
-    </script>
-    <script src="js/scriptvcontatov2.js"></script>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <p></p>
+        <div id="formMessage"></div>
+    </section>
+    <section class="calculator-benefits">
+        <div class="container">
+            <section id="donation" class="container">
+                <h2>Doação</h2>
+                <p>Se você deseja apoiar o projeto CalPed, pode fazer uma doação através do PIX.</p>
+                <h4>PIX: <strong id="pix-email">calculospediatricos@gmail.com</strong></h4>
+                <button onclick="copyPixEmail()" class="btn btn-secondary">PIX copia e cola</button>
+            </section>
+        </div>
+    </section>
+    
+</main>
+
+    <!-- Fim do Main -->
+
+ <!-- Início do Footer -->
+ <footer>
+    <div class="container">
+        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados.</p>
+        <p><a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </div>
+</footer>
+
+<!-- Fim do Footer -->
+
+<!-- Script para Atualizar o Ano -->
+<script src="js/copiright.js"></script>
+<script src="js/copiarpix.js"></script>
+<script src="js/cotato.js"></script>
 </body>
 </html>

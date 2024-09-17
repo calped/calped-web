@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Meta Tags Essenciais -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Pediátrica - CalPed</title>
+
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="CalPed - Calculadoras pediátricas para auxiliar profissionais de saúde em cálculos precisos e eficientes.">
+    <meta name="keywords" content="calculadora pediátrica, calped, pediatria, saúde infantil, cálculos médicos">
+    <meta name="author" content="CalPed">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Link para o CSS -->
+    <link rel="stylesheet" href="css/styles1.css">
+
+    <!-- Fontes do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<!-- Configuração do Firebase -->
+<script src="js/configfirebase.js"></script>
+
+<!-- Verificação de Sessão e Logout -->
+<script src="js/firebasesessao.js"></script>
+
+<!-- Outros Scripts -->
+<script defer src="js/scripts1.js"></script>
+
+
+</head>
+<body>
+    <!-- Início do Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="brand">CalPed</a>
+                <button class="menu-toggle" aria-label="Abrir Menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="calculadoras.html">Calculadoras Pediátricas</a></li>
+                    <li><a href="fundamentos.html">Fundamentos Teóricos</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="login.html" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="hero hero-small">
+            <div class="container">
+                <h1>Calculadora Pediátrica</h1>
+            </div>
+        </div>
+    </header>
+    <!-- Fim do Header -->
+
+    <!-- Início do Main -->
+    <main>
+        <section class="calculator-sections">
+            <div class="container">
+                <h2>Calculadoras Pediátricas</h2>
+
+                <!-- Barra de Pesquisa -->
+                <input type="text" id="search-bar" placeholder="Pesquisar calculadoras..." />
+
+                <!-- Accordion Items -->
+                <div class="accordion-item">
+                    <button class="accordion-button">Calculadoras Neonatais</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><a href="aporte.html">Aporte Calórico e Hídrico</a></li>
+                            <li><a href="ampicilin.html">Ampicilina</a></li>
+                            <li><a href="gentamicin.html">Gentamicina</a></li>
+                            <li><a href="penicilinaG.html">Penicilina G</a></li>
+                            <li><a href="npbeta.html">NPP Versão Original</a></li>
+                            <li><a href="cefepime.html">Cefepime</a></li>
+                            <li><a href="piperacilina.html">Piperacilina + Tazobactam</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">Calculadoras Neonatais em Teste</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><a href="bhutani.html">Gráfico de Bhutani</a></li>
+                            <li><a href="capurro.html">Idade Gestacional (Capurro)</a></li>
+                            <li><a href="newballard.html">Idade Gestacional (New Ballard)</a></li>
+                            <li><a href="nomograma.html">Nomograma do Aporte Neonatal</a></li>
+                            <li><a href="dobutamina.html">Calculadora de Dobutamina</a></li>
+                            <li><a href="epinefrina.html">Calculadora de Epinefrina</a></li>
+                            <li><a href="norepinefrina.html">Calculadora de Norepinefrina</a></li>
+                            <li><a href="milrinona.html">Calculadora de Milrinona</a></li>
+                            <li><a href="fentanil.html">Calculadora de Fentanil</a></li>
+                            <li><a href="midazolam.html">Calculadora de Midazolam</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">Calculadoras Pediátricas</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><a href="amoxicilina.html">Dose de Amoxicilina</a></li>
+                            <li><a href="hidratacao.html">Hidratação Venosa de Manutenção (Versão 1)</a></li>
+                            <li><a href="hidratacaobeta.html">Hidratação Venosa de Manutenção (Versão 2)</a></li>
+                            <li><a href="hidratacaoiso.html">Hidratação Venosa Isotônica</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">Calculadoras de Idade e Tempo</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><a href="tempo-vivido.html">Calculadora de Tempo Vivido</a></li>
+                            <!-- Adicione outras calculadoras aqui -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Benefícios -->
+        <section class="calculator-benefits">
+            <div class="container">
+                <h2>Benefícios</h2>
+                <p>Utilizar a Calculadora Pediátrica do CalPed traz diversos benefícios para os profissionais de saúde e para os pacientes:</p>
+                <ul>
+                    <li>Precisão nos cálculos, reduzindo o risco de erros médicos.</li>
+                    <li>Agilidade no atendimento, permitindo que os pediatras se concentrem mais no cuidado ao paciente.</li>
+                    <li>Facilidade de uso, com uma interface intuitiva e amigável.</li>
+                    <li>Confiabilidade dos resultados, baseada em fórmulas e referências pediátricas reconhecidas.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <!-- Fim do Main -->
+
+       <!-- Início do Footer -->
+       <footer>
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados.</p>
+            <p><a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        </div>
+    </footer>
+   
+    <!-- Fim do Footer -->
+
+    <!-- Script para Atualizar o Ano -->
+    <script src="js/copiright.js"></script>
+    <script src="js/logout.js"></script>
+</body>
+</html>

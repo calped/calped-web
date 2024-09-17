@@ -1,58 +1,117 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
+    <!-- Meta Tags Essenciais -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - CalPed</title>
-    <link rel="stylesheet" href="css/stylesglobalv1.css">
-    <!-- Adicionar o SDK do Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="js/configfirebase.js"></script>
+
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="CalPed - Faça login para acessar as calculadoras pediátricas.">
+    <meta name="keywords" content="login, calped, calculadora pediátrica, pediatria, saúde infantil">
+    <meta name="author" content="CalPed">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Link para o CSS -->
+    <link rel="stylesheet" href="css/styles1.css">
+
+    <!-- Fontes do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+   <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<!-- Configuração do Firebase -->
+<script src="js/configfirebase.js"></script>
+
+
+    <!-- Scripts -->
+    <script defer src="js/login.js"></script>
+
+        <!-- Script para o Menu Responsivo -->
+        <script defer src="js/scripts.js"></script>
 </head>
 <body>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image"> 
-        <h1>Login</h1>
-        <p>Acesse a calculadora.</p>
+    <!-- Início do Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="brand">CalPed</a>
+                <button class="menu-toggle" aria-label="Abrir Menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="calculadoras.html">Calculadoras Pediátricas</a></li>
+                    <li><a href="fundamentos.html">Fundamentos Teóricos</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="login.html" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="hero hero-small">
+            <div class="container">
+                <h1>Login</h1>
+                <p>Acesse as calculadoras.</p>
+            </div>
+        </div>
     </header>
-    <nav class="main-nav">
-        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
-            ☰
-        </button>
-        <ul id="menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="reset-password.html">Redefinir senha</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li><a href="about.html">Sobre</a></li> 
-        </ul>
-    </nav>
+    <!-- Fim do Header -->
+
+    <!-- Início do Main -->
     <main>
         <section id="login">
-            <h2>Faça Login para Acessar as Calculadoras</h2>
-            <form id="loginForm">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
-                
-                <button type="submit">Login</button>
-            </form>
-            <div id="loginMessage"></div>
-            <button class="reset-button" onclick="window.location.href='reset-password.html'">Esqueceu a Senha?</button>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
-    </footer>
+            <div class="container">
+                <h2>Faça login para acessar as calculadoras</h2>
+                <form id="loginForm">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
 
-    <script src="js/checkTerms.js"></script> <!-- Script para verificar termos -->
-    <script src="js/scriptlogintermosv1.js"></script>
-    <script src="js/menuresponsivov1.js"></script>
-    <script src="js/copiaremailpixv1.js"></script>
-    <script src="js/copirightv1.js"></script>
-    <script src="js/script.js"></script>
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <div id="loginMessage"></div>
+                <div class="button-container">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='reset-password.html'">Esqueceu a Senha?</button>
+                </div>
+                
+                
+            </div>
+        </section>
+        <section class="calculator-benefits">
+            <div class="container">
+                <h2>Área Restrita a Profissionais de Saúde</h2>
+                <p>Nossas calculadoras pediátricas são ferramentas desenvolvidas exclusivamente para uso por médicos e profissionais de saúde. Devido à natureza sensível e especializada dos cálculos médicos, o acesso é restrito para garantir a segurança e a precisão no cuidado aos pacientes.</p>
+                <p>Se você é um profissional de saúde e ainda não possui acesso, entre em contato conosco para solicitar sua liberação.</p>
+                <div class="button-container">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='contact.html'">Solicite acesso</button>
+                </div>
+             
+            </div>
+        </section>
+        
+    </main>
+    <!-- Fim do Main -->
+
+ <!-- Início do Footer -->
+ <footer>
+    <div class="container">
+        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados.</p>
+        <p><a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </div>
+</footer>
+
+<!-- Fim do Footer -->
+
+<!-- Script para Atualizar o Ano -->
+<script src="js/copiright.js"></script>
 </body>
 </html>

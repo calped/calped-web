@@ -1,79 +1,127 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-72H4MPJ1DQ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-72H4MPJ1DQ');
-    </script>
+    <!-- Meta Tags Essenciais -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao CalPed</title>
-    <!-- <link rel="stylesheet" href="css/stylestruste.css"> -->
-    <link rel="stylesheet" href="css/stylesglobalv1.css">
-    
+    <title>CalPed - Calculadora Pediátrica</title>
+
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="CalPed - Otimize seu dia a dia com nossa calculadora pediátrica e gestão de prontuários médicos.">
+    <meta name="keywords" content="calculadora pediátrica, calped, pediatria, saúde infantil, cálculo médico">
+    <meta name="author" content="CalPed">
+    <meta property="og:title" content="CalPed - Calculadora Pediátrica">
+    <meta property="og:description" content="Otimize seu dia a dia com nossa calculadora pediátrica e gestão de prontuários médicos.">
+    <meta property="og:image" content="img/share-image.jpg">
+    <meta property="og:url" content="https://www.calped.com.br">
+    <meta name="twitter:card" content="summary_large_image">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-72H4MPJ1DQ');
+      </script>
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+   
+
+    <!-- Fontes do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+     <!-- Link para o CSS -->
+     <link rel="stylesheet" href="css/styles1.css">
+
+    <!-- Script para o Menu Responsivo -->
+    <script defer src="js/scripts.js"></script>
 </head>
 <body>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Bem-vindo à CalPed</h1>
-        <p>Otimizar o dia a dia do pediatra com cálculos médicos e gestão de prontuários.</p>
-    </header>
-    <nav class="main-nav">
-        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
-            ☰
-        </button>
-        <ul id="menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Calculadora Pediátrica</a></li>
-            <li><a href="prontuario.html">Prontuário Médico</a></li>
-            <li><a href="fundamentos.html">Fundamentos teóricos</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li><a href="about.html">Sobre</a></li>
-            
-        </ul>
-    </nav>
-    <main>
-        <section id="about">
+    <!-- Início do Header -->
+    <header>
+        <nav class="navbar">
             <div class="container">
-                <h2>CalPed</h2>
-                <p>CalPed é uma plataforma inovadora desenvolvida para auxiliar pediatras em sua prática diária. Nossa missão é proporcionar ferramentas precisas e seguras que facilitem o trabalho dos profissionais de saúde na área pediátrica.</p>
-                <p>Nosso objetivo é otimizar o dia a dia dos pediatras com ferramentas tecnológicas que permitem realizar cálculos médicos de maneira rápida e precisa, além de gerenciar prontuários médicos de forma eficiente e segura.</p>
-            </div>
-        </section>
-        <section id="calculator">
-            <div class="container">
-                <h2>Calculadora Pediátrica</h2>
-                <img src="img/pediatric-tools.png" alt="Ferramentas Pediátricas" class="responsive-image">
-                <p>A Calculadora Pediátrica é uma ferramenta essencial para os pediatras, oferecendo diversas funcionalidades que simplificam o trabalho clínico. Com ela, é possível calcular dosagens de medicamentos, índices de massa corporal (IMC), percentis de crescimento, entre outros. Ao automatizar esses cálculos, nossa calculadora ajuda a reduzir o risco de erros médicos causados por fadiga e cansaço, proporcionando maior segurança e precisão no atendimento aos pacientes. Além disso, ao liberar os pediatras dessas tarefas repetitivas, permite que eles se concentrem mais na análise clínica e no cuidado direto com o paciente, aumentando a produtividade e a qualidade do atendimento.</p>
-            
-                <a href="calculadora.html" class="button">Saiba Mais</a>
-            </div>
-        </section>
-        <section id="prontuario">
-            <div class="container">
-                <h2>Prontuário Médico</h2>
-                <img src="img/prontuario-medico.png" alt="Prontuário Médico" class="responsive-image">
-                <p>Nosso sistema de prontuário médico eletrônico oferece uma maneira segura e eficiente de gerenciar os dados dos pacientes. Com uma interface intuitiva, permite aos pediatras acessar rapidamente o histórico médico, registrar novas consultas e acompanhar o desenvolvimento dos pacientes ao longo do tempo.</p>
-                <ul>
-                    <li><strong>Armazenamento Seguro de Dados:</strong> Garantimos a proteção dos dados médicos com tecnologias de criptografia avançada.</li>
-                    <li><strong>Acesso Rápido ao Histórico Médico:</strong> Facilita o acesso aos registros médicos completos, melhorando a qualidade do atendimento.</li>
-                    <li><strong>Relatórios e Análises:</strong> Ferramentas de análise que ajudam na tomada de decisões clínicas informadas.</li>
+                <a href="index.html" class="brand">CalPed</a>
+                <button class="menu-toggle" aria-label="Abrir Menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Calculadoras Pediátricas</a></li>
+                    
+                    <li><a href="fundamentos.html">Fundamentos Teóricos</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                    <li><a href="about.html">Sobre</a></li>
                 </ul>
-                <a href="prontuario.html" class="button">Saiba Mais</a>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <div class="container">
+                <h1>Bem-vindo à CalPed</h1>
+                <p>Otimize o seu dia a dia com nossa calculadora pediátrica.</p>
+                <a href="#" class="btn btn-primary">Explore as Soluções</a>
+            </div>
+        </div>
+    </header>
+    <!-- Fim do Header -->
+
+    <!-- Início do Main -->
+    <main>
+        <section class="about">
+            <div class="container">
+                <h2>Sobre a CalPed</h2>
+                <p>A <strong>CalPed</strong> é uma plataforma inovadora desenvolvida para auxiliar pediatras em sua prática diária. Nossa missão é proporcionar ferramentas precisas e seguras que facilitem o trabalho dos profissionais de saúde na área pediátrica.</p>
+                <p>Com nossa calculadora pediátrica, você pode realizar cálculos médicos de maneira rápida e precisa, reduzindo o risco de erros e aumentando a eficiência no atendimento aos pacientes.</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="feature">
+                    <img src="img/calculadora.jpg" alt="Calculadora Pediátrica">
+                    <h3>Calculadora Pediátrica</h3>
+                    <p>Realize cálculos de dosagens, IMC, percentis de crescimento e muito mais com nossa ferramenta intuitiva e confiável.</p>
+                    <a href="#" class="btn btn-secondary">Ver Mais</a>
+                </div>
+             
+            </div>
+        </section>
+
+        <section class="importance">
+            <div class="container">
+                <h2>A Importância da Calculadora Pediátrica</h2>
+                <p>Em um ambiente clínico movimentado, a precisão e a eficiência são essenciais. Nossa calculadora pediátrica ajuda a reduzir o risco de erros médicos causados por cálculos manuais, permitindo que os profissionais se concentrem no cuidado direto ao paciente.</p>
+                <p>Ao automatizar cálculos complexos, contribuímos para um atendimento mais seguro e eficaz, melhorando a qualidade dos serviços prestados na área da pediatria.</p>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>O que os Pediatras Dizem</h2>
+                <div class="testimonial">
+                    <p>"A CalPed tem sido uma ferramenta essencial no meu dia a dia, facilitando muito a gestão dos cálculos pediátricos!"</p>
+                    <span>- Dr. João Silva, Pediatra</span>
+                </div>
+                <div class="testimonial">
+                    <p>"Recomendo a todos os colegas pediatras. A precisão e praticidade da calculadora são impressionantes!"</p>
+                    <span>- Dra. Maria Oliveira, Pediatra</span>
+                </div>
             </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
-    </footer>
+    <!-- Fim do Main -->
 
-    <script src="js/menuresponsivov1.js"></script>
-    <script src="js/copiaremailpixv1.js"></script>
-    <script src="js/copirightv1.js"></script>
-    <script src="js/script.js"></script>
+    <!-- Início do Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados.</p>
+            <p><a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+        </div>
+    </footer>
+   
+    <!-- Fim do Footer -->
+
+    <!-- Script para Atualizar o Ano -->
+    <script src="js/copiright.js"></script>
+   
 </body>
 </html>
