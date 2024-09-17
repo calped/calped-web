@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="css/styles1.css">
     <link rel="stylesheet" href="css/stylesnomograma.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<!-- Configuração do Firebase -->
+<script src="js/configfirebase.js"></script>
+
+<!-- Verificação de Sessão e Logout -->
+<script src="js/firebasesessao.js"></script>
 </head>
 <body>
     <!-- Início do Header -->
@@ -24,6 +34,7 @@
                     <li><a href="fundamentos.html">Fundamentos da Prescrição</a></li>
                     <li><a href="contact.html">Contato</a></li>
                     <li><a href="about.html">Sobre</a></li>
+                    <li><a href="login.html" onclick="logout()">Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -98,5 +109,6 @@
     <script src="js/copiright.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/scriptnomograma1.js"></script>
+    <script src="js/logout.js"></script>
 </body>
 </html>
