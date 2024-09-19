@@ -12,7 +12,25 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
             window.location.href = 'calculadoras.html';
         })
         .catch((error) => {
-            // Exibir mensagem de erro
-            loginMessage.textContent = error.message;
+            // Tratar diferentes tipos de erros
+            switch (error.code) {
+                case 'auth/invalid-email':
+                    loginMessage.textContent = 'O formato do e-mail fornecido é inválido.';
+                    break;
+                case 'auth/user-disabled':
+                    loginMessage.textContent = 'Este usuário foi desativado.';
+                    break;
+                case 'auth/user-not-found':
+                    loginMessage.textContent = 'Usuário não encontrado. Verifique o e-mail digitado.';
+                    break;
+                case 'auth/wrong-password':
+                    loginMessage.textContent = 'Senha incorreta. Por favor, tente novamente.';
+                    break;
+                default:
+                    loginMessage.textContent = 'Erro ao fazer login. Verifique as credenciais.';
+            }
+
+            // Adicionar logging para depuração, se necessário
+            console.log(`Error [${error.code}]: ${error.message}`);
         });
 });
