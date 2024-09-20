@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico e Tratamento de Asma - GINA 2024</title>
+    
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="Calculadora de diagnóstico e tratamento de asma pediátrica de acordo com o GINA 2024">
+    <meta name="keywords" content="calculadora pediátrica, asma, tratamento, GINA 2024">
+    <meta name="author" content="CalPed">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Link para o CSS -->
+    <link rel="stylesheet" href="css/styles1.css">
+
+    <!-- Fontes do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Configuração do Firebase -->
+    <script src="js/configfirebase.js"></script>
+
+    <!-- Verificação de Sessão e Logout -->
+    <script src="js/firebasesessao.js"></script>
+
+    <!-- Scripts -->
+    <script defer src="js/scriptasma.js"></script>
+</head>
+<body>
+    <!-- Início do Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="brand">CalPed</a>
+                <button class="menu-toggle" aria-label="Abrir Menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="calculadoras.html">Calculadoras Pediátricas</a></li>
+                   
+                    <li><a href="contact.html">Contato</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="reset-password.html">Redefinir senha</a></li>
+                    <li><a href="login.html" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="hero hero-small">
+            <div class="container">
+                <h1> Diagnóstico e Tratamento de Asma - GINA 2024</h1>
+                <p>Classifique o controle da asma e descubra o tratamento adequado (GINA - Global Initiative for Asthma).</p>
+            </div>
+        </div>
+    </header>
+    <!-- Fim do Header -->
+
+    <!-- Início do Main -->
+    <main>
+
+        <section id="calculator">
+            <h2>Diagnóstico e Tratamento de Asma</h2>
+            <form id="calculatorForm" onsubmit="event.preventDefault(); classifyAndTreat();">
+                <div class="input-container">
+                    <label for="age">Idade do paciente (anos):</label>
+                    <input type="number" id="age" min="1" max="18" value="7" placeholder="Insira a idade" required>
+
+                    <label for="symptoms">Quantos dias por semana há sintomas diurnos?</label>
+                    <select id="symptoms" required>
+                        <option value="0">0 dias</option>
+                        <option value="1">1 dia</option>
+                        <option value="2">2 dias</option>
+                        <option value="3">3 dias</option>
+                        <option value="4">4 dias</option>
+                        <option value="5">5 dias</option>
+                        <option value="6">6 dias</option>
+                        <option value="7">7 dias</option>
+                    </select>
+
+                    <label for="nocturnal">Quantos dias por semana há sintomas noturnos?</label>
+                    <select id="nocturnal" required>
+                        <option value="0">0 dias</option>
+                        <option value="1">1 dia</option>
+                        <option value="2">2 dias</option>
+                        <option value="3">3 dias</option>
+                        <option value="4">4 dias</option>
+                        <option value="5">5 dias</option>
+                        <option value="6">6 dias</option>
+                        <option value="7">7 dias</option>
+                    </select>
+
+                    <label for="rescue">Quantas vezes por semana há uso de medicação de resgate (SABA)?</label>
+                    <select id="rescue" required>
+                        <option value="0">0 vezes</option>
+                        <option value="1">1 vez</option>
+                        <option value="2">2 vezes</option>
+                        <option value="3">3 vezes</option>
+                        <option value="4">4 vezes</option>
+                        <option value="5">5 vezes</option>
+                        <option value="6">6 vezes</option>
+                        <option value="7">7 vezes</option>
+                    </select>
+
+                    <label for="limitation">Há limitação de atividades?</label>
+                    <select id="limitation" required>
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
+                    </select>
+
+                    <div class="button-container">
+                        <button type="submit" class="btn btn-primary">Avaliação e conduta</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section id="resultSection" class="result-section">
+            <div class="container">
+                <div id="result" class="result-container">
+                    <!-- O resultado será exibido aqui -->
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    <!-- Fim do Main -->
+
+  <!-- Início do Footer -->
+  <footer>
+    <div class="container">
+        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados.</p>
+        <p><a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </div>
+</footer>
+<!-- Fim do Footer -->
+
+<script src="js/copiright.js"></script>
+    <script src="js/logout.js"></script>
+    <script defer src="js/scripts.js"></script>
+</body>
+</html>
