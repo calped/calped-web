@@ -44,9 +44,10 @@
                 <ul class="nav-menu">
                     <li><a href="index.html">Início</a></li>
                     <li><a href="calculadoras.html">Calculadoras Pediátricas</a></li>
-                    <li><a href="prontuario.html">Prontuário Médico</a></li>
+                    <li><a href="fundamentos.html">Fundamentos Teóricos</a></li>
                     <li><a href="contact.html">Contato</a></li>
-                    <li><a href="about.html">Sobre</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="reset-password.html">Redefinir senha</a></li>
                     <li><a href="login.html" onclick="logout()">Logout</a></li>
                 </ul>
             </div>
@@ -63,11 +64,14 @@
 
     <!-- Início do Main -->
     <main>
-        <section id="calculator" class="container">
-            <div class="container">
-                <h2>Calculadora de Aporte Hídrico</h2>
-                <form id="calculatorForm" onsubmit="event.preventDefault(); calcularAporte();">
-                    <div class="input-container">
+
+        <section id="calculator">
+            <h2>Calculadora de Aporte Hídrico</h2>
+            <form id="calculatorForm" onsubmit="event.preventDefault(); calcularAporte();">
+                <div class="input-container">
+
+     
+                    
                         <label for="peso">Peso (kg):</label>
                         <input type="number" id="peso" name="peso" step="0.001" value="2" required>
         
@@ -133,25 +137,30 @@
                             <option value="GLICOSE 25%">Glicose 25%</option>
                             <option value="GLICOSE 50%" selected>Glicose 50%</option>
                         </select>
+                        <div class="button-container">
+                            <button type="submit" class="btn btn-primary">Calcular</button>
+                           
+                        </div>
                       
                     </div>
+                    
         
-                    <div class="button-container">
-                        <button type="submit" class="btn btn-primary">Calcular</button>
-                       
-                    </div>
+                  
+                
                 </form>
             </div>
             <div class="container">
                 <div id="resultado" class="result-container">
                     <!-- O resultado será exibido aqui -->
-                    
+  
+                </div>
+                <div class="button-container">
+ 
+                    <button type="button" class="btn btn-secondary" onclick="visualizarImpressao()">Visualizar Impressão</button>
                 </div>
             </div>
-            <div class="button-container">
- 
-                <button type="button" class="btn btn-secondary" onclick="visualizarImpressao()">Visualizar Impressão</button>
-            </div>
+          
+
         </section>
         
     </main>

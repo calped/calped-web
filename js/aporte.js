@@ -112,21 +112,21 @@ function calcularAporte() {
     // Calculando a osmolaridade
     const osmolaridade = (((gGlicose * 5.5) + (mEqTotalNa + mEqTotalK + mEqTotalCa + mEqTotalMg)) / aporteHidricoTotal) * 1000;
 
-// Exibindo os resultados
+/// Exibindo os resultados
 let resultadoEletrólitos = '';
 
 // Adicionando os eletrólitos se forem prescritos
 if (necessidadeSodio > 0) {
-    resultadoEletrólitos += `SÓDIO: ${necessidadeSodio.toFixed(1)} mEq/kg/dia; `;
+    resultadoEletrólitos += `<hr> Na⁺: ${necessidadeSodio.toFixed(1)} mEq/kg/dia; `;
 }
 if (necessidadePotassio > 0) {
-    resultadoEletrólitos += `POTÁSSIO: ${necessidadePotassio.toFixed(1)} mEq/kg/dia; `;
+    resultadoEletrólitos += `K⁺: ${necessidadePotassio.toFixed(1)} mEq/kg/dia; `;
 }
 if (necessidadeCalcio > 0) {
-    resultadoEletrólitos += `CÁLCIO: ${necessidadeCalcio.toFixed(1)} mg/kg/dia; `;
+    resultadoEletrólitos += `Ca²⁺: ${necessidadeCalcio.toFixed(1)} mg/kg/dia; `;
 }
 if (necessidadeMagnesio > 0) {
-    resultadoEletrólitos += `MAGNÉSIO: ${necessidadeMagnesio.toFixed(1)} mEq/kg/dia; `;
+    resultadoEletrólitos += `Mg²⁺: ${necessidadeMagnesio.toFixed(1)} mEq/kg/dia; `;
 }
 
 // Remover o último '; ' e fechar a tag <p> se houver algum eletrólito
@@ -141,36 +141,37 @@ if (resultadoEletrólitos) {
 
 resultado += `
     <p>TAXA HÍDRICA TOTAL: ${taxaHidrica.toFixed(1)} ml/kg/dia - VOLUME DE DIETA/MEDICAÇÕES: ${volumeDietaPorPeso.toFixed(1)} ml/kg/dia = ${taxaHidricaAjustada.toFixed(1)} ml/kg/dia</p>
-    <p>VIG: ${vig.toFixed(1)} mg/kg/min - APORTE EM: ${concentracaoreal.toFixed(1)}%</p> 
+    <p>VIG: ${vig.toFixed(1)} mg/kg/min - APORTE EM: ${concentracaoreal.toFixed(1)}%</p><hr> 
     <p>${primeiraSolucao}: ${W.toFixed(1)} ml</p>
     <p>${segundaSolucao}: ${Z.toFixed(1)} ml</p>
 `;
 
 // Adicionando as concentrações e volumes de cada eletrólito se prescritos
 if (necessidadeSodio > 0) {
-    resultado += `<p>SÓDIO (${concentracaoNaClText}): ${volumeNaCl.toFixed(1)} ml</p>`;
+    resultado += `<p>${concentracaoNaClText}: ${volumeNaCl.toFixed(1)} ml</p>`;
 }
 if (necessidadePotassio > 0) {
-    resultado += `<p>POTÁSSIO (${concentracaoKClText}): ${volumeKCl.toFixed(1)} ml</p>`;
+    resultado += `<p>${concentracaoKClText}: ${volumeKCl.toFixed(1)} ml</p>`;
 }
 if (necessidadeCalcio > 0) {
-    resultado += `<p>CÁLCIO (${concentracaoCalcioText}): ${volumeCalcio.toFixed(1)} ml</p>`;
+    resultado += `<p>${concentracaoCalcioText}: ${volumeCalcio.toFixed(1)} ml</p>`;
 }
 if (necessidadeMagnesio > 0) {
-    resultado += `<p>MAGNÉSIO (${concentracaoMgSO4Text}): ${volumeMgSO4.toFixed(1)} ml</p>`;
+    resultado += `<p>${concentracaoMgSO4Text}: ${volumeMgSO4.toFixed(1)} ml</p><hr> `;
 }
 
 resultado += `
     <p>CALORIAS TOTAIS: ${caloriasTotais.toFixed(1)} kcal/kg/dia</p>
     <p>OSMOLARIDADE: ${osmolaridade.toFixed(0)} mOsm/l</p>
     <p>APORTE HÍDRICO TOTAL: ${aporteHidricoTotal.toFixed(1)} ml/dia</p>
-    <p>VELOCIDADE DE INFUSÃO: ${velocidadeInfusao.toFixed(1)} ml/h</p>
+    <p>VELOCIDADE DE INFUSÃO: ${velocidadeInfusao.toFixed(1)} ml/h</p><hr> <hr> 
 `;
 
 
 
+// Atualizando o conteúdo da div com o id 'resultado'
+document.getElementById('resultado').innerHTML = resultado;
 
-    document.getElementById('resultado').innerHTML = resultado;
 }
 function atualizarSegundaSolucao() {
     const primeiraSolucao = document.getElementById('primeiraSolucao').value;
@@ -202,6 +203,8 @@ function atualizarSegundaSolucao() {
     }
 }
 
+
+
 function visualizarImpressao() {
     const peso = document.getElementById('peso').value;
     const taxaHidrica = document.getElementById('taxaHidrica').value;
@@ -227,13 +230,17 @@ function visualizarImpressao() {
         <p style="font-weight: bold;">Registro:___________</p>
         <p style="font-weight: bold;">Leito:_____________</p>
         <p style="font-weight: bold;">Nome do paciente: ___________________________________________________</p>
+        <hr> <hr> 
         <p>DATA: ${date}</p>
         <p>PESO: ${peso} kg</p>
         
         ${resultado}
         <button class="no-print" onclick="window.print()">Imprimir</button>
+        
     </div>
-    `;
+`;
+
+
 
     const printWindow = window.open('', '', 'width=800,height=600');
     printWindow.document.write(printContent);
@@ -258,3 +265,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('primeiraSolucao').addEventListener('change', atualizarSegundaSolucao);
     document.getElementById('segundaSolucao').addEventListener('change', calcularAporte);
 });
+

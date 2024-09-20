@@ -4,50 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Tempo Vivido - CalPed</title>
-    <link rel="stylesheet" href="css/stylestempovivido.css">
-    
-    <!-- Adicionar o SDK do Firebase -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="js/cofigfirebasesessao.js"></script>
+
+    <link rel="stylesheet" href="css/styles1.css">
+
+        <!-- Fontes do Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+        <!-- Firebase SDKs -->
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+     <!-- Configuração do Firebase -->
+     <script src="js/configfirebase.js"></script>
+     
+     <!-- Verificação de Sessão e Logout -->
+     <script src="js/firebasesessao.js"></script>
 </head>
 <body>
 
-    <nav class="main-nav">
-        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
-            ☰
-        </button>
-        <ul id="menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="calculadora.html">Calculadora Pediátrica</a></li>
-            <li><a href="prontuario.html">Prontuário Médico</a></li>
-            <li><a href="contact.html">Contato</a></li>
-            <li><a href="about.html">Sobre</a></li>
-            <li><a href="#" onclick="logout()">Logout</a></li>
-        </ul>
-    </nav>
-    <header id="home">
-        <img src="img/header-banner.jpg" alt="Banner do CalPed" class="responsive-image">
-        <h1>Calculadora de Tempo Vivido</h1>
-        <p>Calcule o tempo vivido em horas, dias, meses e anos.</p>
+    <!-- Início do Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="brand">CalPed</a>
+                <button class="menu-toggle" aria-label="Abrir Menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="calculadoras.html">Calculadoras Pediátricas</a></li>
+                    <li><a href="fundamentos.html">Fundamentos Teóricos</a></li>
+                    <li><a href="contact.html">Contato</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="reset-password.html">Redefinir senha</a></li>
+                    <li><a href="login.html" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="hero hero-small">
+            <div class="container">
+                <h1>Calculadora do Tempo Vivido</h1>
+                <p>Calcule a idade em anos, meses, semanas, dias e horas.</p>
+            </div>
+        </div>
     </header>
+    <!-- Fim do Header -->
+
     <main>
         <section id="calculator">
             <h2>Tempo Vivido</h2>
             <form id="calculatorForm">
+                <div class="input-container">
                 <label for="birthDateTime">Data e Hora de Nascimento:</label>
                 <input type="datetime-local" id="birthDateTime" name="birthDateTime" required>
-                <button type="submit">Calcular</button>
+
+                <!-- Botões -->
+                <div class="button-container">
+                    <button type="button" id="btnCalcular" class="btn btn-primary">Calcular</button>
+                    <button type="button" id="btnLimpar" class="btn btn-secondary">Limpar</button>
+                </div>
+            </div>
             </form>
-            <div id="result-container">
+
+            <div class="container">
+                <div id="resultado" class="result-container">
                 <h3>Resultados</h3>
                 <div id="result"></div>
             </div>
+            </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 CalPed. Todos os direitos reservados. | <a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
-    </footer>
+
+ <!-- Início do Footer -->
+ <footer>
+    <div class="container">
+        <p>&copy; <span id="copyright-year"></span> CalPed. Todos os direitos reservados.</p>
+        <p><a href="mailto:calculospediatricos@gmail.com">calculospediatricos@gmail.com</a></p>
+    </div>
+</footer>
+<!-- Fim do Footer -->
+
+<!-- Script para Atualizar o Ano -->
+<script src="js/copiright.js"></script>
+<script src="js/logout.js"></script>
+
     <script src="js/scripttempovivido.js"></script>
 </body>
 </html>
