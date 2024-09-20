@@ -45,9 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
             diasFinais -= 7;
         }
 
-        // Exibir o resultado
+        // Exibir o resultado com singular/plural para "dia" e "semana"
+        const pluralSemanas = semanasFinais === 1 ? 'semana' : 'semanas';
+        const pluralDias = diasFinais === 1 ? 'dia' : 'dias';
+
         resultContainer.innerHTML = `
-            <p>Idade Gestacional Corrigida: ${semanasFinais} semanas e ${diasFinais} dias.</p>
+            <p>Idade Gestacional Corrigida: ${semanasFinais} ${pluralSemanas} e ${diasFinais} ${pluralDias}.</p>
         `;
     }
 
